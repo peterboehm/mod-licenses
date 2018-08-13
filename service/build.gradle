@@ -95,6 +95,14 @@ tasks.withType(Test) {
     systemProperty "webdriver.gecko.driver", System.getProperty('webdriver.gecko.driver')
 }
 
+sourceSets {
+  main {
+    resources {
+      srcDir 'grails-app/migrations'
+    }
+  }
+}
+
 task generateDescriptors(type: Copy) {
 
   dependsOn buildProperties
