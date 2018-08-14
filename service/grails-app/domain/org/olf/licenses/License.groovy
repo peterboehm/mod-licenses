@@ -1,4 +1,4 @@
-package mod.license
+package org.olf.licenses
 
 class License {
 
@@ -11,7 +11,7 @@ class License {
   static mapping = {
          id column: 'lic_id', generator: 'uuid', length:36
        name column: 'lic_name'
-    version column: 'ali_version'
+    version column: 'lic_version'
 
   }
 

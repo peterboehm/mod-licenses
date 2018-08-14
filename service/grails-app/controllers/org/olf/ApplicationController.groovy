@@ -1,4 +1,4 @@
-package mod.license
+package org.olf
 
 import grails.core.GrailsApplication
 import grails.plugins.*
