@@ -12,6 +12,11 @@ fi
 
 echo Running
 
+echo get licenses config
+curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X GET http://localhost:8080/licenses/kiwt/config
+
+
+echo Create test licenses
 TEST_LICENSE_1=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
 {
   name: "Test License 001"
