@@ -32,3 +32,17 @@ TEST_LICENSE_3=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: applicati
   name: "Test License 003"
 } ' | jq -r ".id"`
 
+TEST_LICENSE_4=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
+{
+  name: "BMJ Journals Online 2011-2012 NESLi2"
+} ' | jq -r ".id"`
+
+TEST_LICENSE_5=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
+{
+  name: "Academic Rights Press/Test Consortium/InteLex Collections - Perpetual Purchase Agreement"
+} ' | jq -r ".id"`
+
+TEST_LICENSE_6=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
+{
+  name: "American Association for the Advancement of Science/NESLi2/Science Classic/2014-2114"
+} ' | jq -r ".id"`
