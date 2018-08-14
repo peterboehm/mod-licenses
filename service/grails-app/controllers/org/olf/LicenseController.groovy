@@ -16,7 +16,7 @@ import grails.converters.JSON
 @CurrentTenant
 class LicenseController extends OkapiTenantAwareController<License>  {
 
-  Licenses() {
+  LicenseController() {
     super(License)
   }
 }

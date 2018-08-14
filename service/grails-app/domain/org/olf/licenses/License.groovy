@@ -1,6 +1,9 @@
 package org.olf.licenses
 
-class License {
+import grails.gorm.MultiTenant
+
+
+class License implements MultiTenant<License> {
 
   String id
   String name

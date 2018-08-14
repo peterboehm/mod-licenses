@@ -15,6 +15,15 @@ echo Running
 TEST_LICENSE_1=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
 {
   name: "Test License 001"
-}
-' | jq -r ".id"`
+} ' | jq -r ".id"`
+
+TEST_LICENSE_2=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
+{
+  name: "Test License 002"
+} ' | jq -r ".id"`
+
+TEST_LICENSE_3=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
+{
+  name: "Test License 003"
+} ' | jq -r ".id"`
 
