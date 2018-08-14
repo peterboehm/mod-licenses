@@ -8,7 +8,7 @@
       "handlers" : [
         {
           "methods": ["GET", "POST"],
-          "pathPattern": "/license/*"
+          "pathPattern": "/licenses/*"
         }
       ]
     },{
