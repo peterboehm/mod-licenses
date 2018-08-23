@@ -1,6 +1,8 @@
 package com.k_int.custprops
 
-class ObjectProperty {
+import grails.gorm.MultiTenant
+
+class ObjectProperty implements MultiTenant<ObjectProperty> {
 
   def propName
 

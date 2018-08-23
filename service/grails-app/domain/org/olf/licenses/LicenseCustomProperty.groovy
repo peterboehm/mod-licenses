@@ -9,10 +9,6 @@ class LicenseCustomProperty extends CustomProperty {
   @Transient
   def grailsApplication
 
-  @Transient
-  def messageSource
-
-
   static auditable = true
 
   static belongsTo = [

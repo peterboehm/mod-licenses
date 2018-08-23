@@ -2,7 +2,9 @@ package com.k_int.refdata;
 
 import org.hibernate.proxy.HibernateProxy
 
-class RefdataValue {
+import grails.gorm.MultiTenant
+
+class RefdataValue implements MultiTenant<RefdataValue> {
 
   String value
   String icon

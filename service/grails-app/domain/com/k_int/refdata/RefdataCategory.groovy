@@ -1,6 +1,8 @@
 package com.k_int.refdata;
 
-class RefdataCategory {
+import grails.gorm.MultiTenant
+
+class RefdataCategory implements MultiTenant<RefdataCategory> {
 
   String desc
   String label

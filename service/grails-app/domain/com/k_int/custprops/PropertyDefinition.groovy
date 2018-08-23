@@ -6,9 +6,10 @@ import javax.persistence.Transient
 import javax.validation.UnexpectedTypeException
 import groovy.util.logging.Log4j
 
+import grails.gorm.MultiTenant
 
 @Log4j
-class PropertyDefinition {
+class PropertyDefinition implements MultiTenant<PropertyDefinition> {
 
     @Transient
     final static String[] AVAILABLE_DESCR =[LIC_PROP,ORG_CONF,SYS_CONF]

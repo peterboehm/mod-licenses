@@ -1,6 +1,8 @@
 package com.k_int.custprops
 
-class PropertyValue {
+import grails.gorm.MultiTenant
+
+class PropertyValue implements MultiTenant<PropertyValue> {
 
   static constraints = {
   }

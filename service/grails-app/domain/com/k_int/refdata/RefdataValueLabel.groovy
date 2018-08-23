@@ -2,7 +2,9 @@ package com.k_int.refdata;
 
 import org.hibernate.proxy.HibernateProxy
 
-class RefdataValueLabel {
+import grails.gorm.MultiTenant
+
+class RefdataValueLabel implements MultiTenant<RefdataValueLabel> {
 
   RefdataValue owner
   String locale
