@@ -1,4 +1,4 @@
-package org.olf.licenses;
+package com.k_int.refdata;
 
 class RefdataCategory {
 
