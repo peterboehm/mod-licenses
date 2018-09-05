@@ -6,7 +6,7 @@ databaseChangeLog = {
                 constraints(nullable: "false")
             }
 
-            column(name: "ali_version", type: "BIGINT") {
+            column(name: "lic_version", type: "BIGINT") {
                 constraints(nullable: "false")
             }
 

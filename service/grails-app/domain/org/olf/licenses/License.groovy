@@ -1,6 +1,9 @@
-package mod.license
+package org.olf.licenses
 
-class License {
+import grails.gorm.MultiTenant
+
+
+class License implements MultiTenant<License> {
 
   String id
   String name
@@ -11,7 +14,7 @@ class License {
   static mapping = {
          id column: 'lic_id', generator: 'uuid', length:36
        name column: 'lic_name'
-    version column: 'ali_version'
+    version column: 'lic_version'
 
   }
 

@@ -1,4 +1,4 @@
-package mod.license
+package org.olf
 
 class UrlMappings {
 
@@ -6,6 +6,15 @@ class UrlMappings {
 
     "/"(controller: 'application', action:'index')
     "/_/tenant"(controller: 'okapi', action:'tenant')
+
+    "/licenses/licenses"(resources:'license')
+
+    "/licenses/kiwt/config/$extended?" (controller: 'config' , action: "resources")
+    "/licenses/kiwt/config/schema/$type" (controller: 'config' , action: "schema")
+    "/licenses/kiwt/config/schema/embedded/$type" (controller: 'config' , action: "schemaEmbedded")
+
+    "/licenses/ref/blank/$domain/$prop" (controller: 'ref', action: 'blank')
+
 
     delete "/$controller/$id(.$format)?"(action:"delete")
     get "/$controller(.$format)?"(action:"index")
