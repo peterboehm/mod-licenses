@@ -1,4 +1,15 @@
 {
+  "refdata":[
+     { 
+       "catname":"YNO", 
+       "description":"Yes/No/Other", 
+       "values":[
+          { "value":"Yes", "label":"Yes", "style":"" },
+          { "value":"No", "label":"No", "style":"" },
+          { "value":"Other", "label":"Other (see notes)", "style":"" }
+       ]
+     }
+  ],
   "propertyDefinitions":[
     { "propname":"WalkInAccess", "type":"RDV", "category":"YNO" },
     { "propname":"AnnualOptOut", "type":"RDV", "category":"YNO" },
