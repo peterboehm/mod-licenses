@@ -8,6 +8,55 @@ class License implements MultiTenant<License> {
   String id
   String name
 
+// allRightsReserved 
+// applicabaleCopyrightLaw 
+// archivingAllowed 
+// archivingFormat 
+// authorizedUsers 
+// concurrentUsers 
+// confidentialityofAgreementRequired 
+// confidentialityofUserInformationProtected 
+// copyDigital 
+// copyPrint 
+// coursePackElectronic 
+// coursePackPrint 
+// distanceEducation 
+// fairUseClause 
+// governingJurisdiction 
+// governingLaw 
+// illElectronic 
+// illPrint 
+// illSecureElectronic 
+// indemnificationbyLicensee 
+// indemnificationbyLicensor 
+// licenseDuration 
+// licenseEndAdvanceNoticeRequired 
+// licenseEndDate 
+// licenseLocation 
+// licenseNotes 
+// licenseStartDate 
+// licenseStatus 
+// licenseType 
+// linkElectronic 
+// otherRestrictions 
+// perpetualAccess 
+// publisherAcceptsSERU 
+// reservesElectronic 
+// reservesPrint 
+// reviewer 
+// reviewerNotes 
+// scholarlySharing 
+// walkIns 
+
+
+  static hasMany = [
+    properties:LicenseCustomProperty
+  ]
+
+  static mappedBy = [
+    properties:'owner'
+  ] 
+
   static constraints = {
   }
 
