@@ -44,7 +44,7 @@ grails:
 
 info:
     app:
-        name: 'mod-license'
+        name: 'mod-licenses'
         version: '@info.app.version@'
         grailsVersion: '@info.app.grailsVersion@'
 spring:
@@ -143,5 +143,5 @@ environments:
 ---
 okapi:
   schema:
-    appName: 'mod-license'
+    appName: 'mod-licenses'
 

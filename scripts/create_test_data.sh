@@ -19,7 +19,8 @@ curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X GET 
 echo Create test licenses
 TEST_LICENSE_1=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
 {
-  name: "Test License 001"
+  name: "Test License 001",
+  description: "This is a test licenses"
 } ' | jq -r ".id"`
 
 TEST_LICENSE_2=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
@@ -44,5 +45,6 @@ TEST_LICENSE_5=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: applicati
 
 TEST_LICENSE_6=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
 {
-  name: "American Association for the Advancement of Science/NESLi2/Science Classic/2014-2114"
+  name: "American Association for the Advancement of Science/NESLi2/Science Classic/2014-2114",
+  description: "AAA/NESLi2 consortial license. DIKU University is a signatory to this consortial license"
 } ' | jq -r ".id"`

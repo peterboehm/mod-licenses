@@ -13,6 +13,10 @@ databaseChangeLog = {
             column(name: "lic_name", type: "VARCHAR(255)") {
                 constraints(nullable: "false")
             }
+
+            column(name: "lic_description", type: "TEXT") {
+                constraints(nullable: "true")
+            }
         }
     }
 
