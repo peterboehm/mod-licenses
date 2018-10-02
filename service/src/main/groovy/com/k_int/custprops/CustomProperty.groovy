@@ -5,9 +5,8 @@ import com.k_int.refdata.RefdataValue
 import javax.persistence.Transient
 
 /**
- * Created by ioannis on 26/06/2014.
  * Custom properties must always follow the naming convention: Owner + CustomProperty, where owner is the
- * name of owner class and be under com.k_int.kbplus . For example LicenceCustomProperty , SubscriptionCustomProperty.
+ * name of owner class and be under a domain package . For example LicenceCustomProperty , SubscriptionCustomProperty.
  * Relevant code in PropertyDefinition, createPropertyValue
  */
 abstract class CustomProperty implements Serializable{

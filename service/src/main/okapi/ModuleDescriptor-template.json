@@ -34,7 +34,7 @@
       "visible": false
     },
     {
-      "permissionName": "olf-license.user",
+      "permissionName": "mod-licenses.user",
       "displayName": "OLF License - User",
       "description": "A user of OLF License",
       "subPermissions": [

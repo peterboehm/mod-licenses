@@ -3,6 +3,7 @@ package org.olf.licenses
 import grails.gorm.MultiTenant
 
 
+
 class License implements MultiTenant<License> {
 
   String id
@@ -50,11 +51,11 @@ class License implements MultiTenant<License> {
 
 
   static hasMany = [
-    props:LicenseCustomProperty
+    licenseProps:LicenseCustomProperty
   ]
 
   static mappedBy = [
-    props:'owner'
+    licenseProps:'owner'
   ] 
 
   static constraints = {

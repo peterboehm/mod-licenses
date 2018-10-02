@@ -3,11 +3,14 @@ package org.olf.licenses;
 import com.k_int.custprops.PropertyDefinition
 import com.k_int.custprops.CustomProperty
 import javax.persistence.Transient
+import grails.gorm.MultiTenant
 
-class LicenseCustomProperty extends CustomProperty {
-
-  @Transient
-  def grailsApplication
+/**
+ * The setup of this class is slightly unusual :: see /src/main/groovy/com/k_int/custprops/CustomProperty.groovy
+ * for the definition of CustomProperty - it is not an abstract domain class used for polymorphic inheritance at the database
+ * level, but instead a template or different kinds of custom property.
+ */
+class LicenseCustomProperty extends CustomProperty implements MultiTenant<LicenseCustomProperty> {
 
   static auditable = true
 
@@ -18,9 +21,4 @@ class LicenseCustomProperty extends CustomProperty {
 
   PropertyDefinition type
   License owner
-
-  @Transient
-  def onSave = {
-    log.debug("LicenseCustomProperty inserted")
-  }
 }
