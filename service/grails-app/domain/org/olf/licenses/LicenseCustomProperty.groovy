@@ -21,4 +21,12 @@ class LicenseCustomProperty extends CustomProperty implements MultiTenant<Licens
 
   PropertyDefinition type
   License owner
+
+  static mapping = {
+             id column: 'lcp_id', generator: 'uuid', length:36
+           type column: 'lcp_type'
+          owner column: 'lcp_owner'
+        version column: 'lcp_version'
+  }
+
 }

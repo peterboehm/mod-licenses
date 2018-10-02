@@ -107,12 +107,12 @@ dataSource:
   pooled: true
   jmxExport: false
   dbCreate: none
-  username: folio
-  password: folio
+  schemaHandler: com.k_int.okapi.OkapiSchemaHandler
+  username: "${db.username:folio_admin}"
+  password: "${db.password:folio_admin}"
   driverClassName: org.postgresql.Driver
   dialect: org.hibernate.dialect.PostgreSQL94Dialect
-  url: jdbc:postgresql://localhost:5432/olfdev
-  schemaHandler: com.k_int.okapi.OkapiSchemaHandler
+  url: "jdbc:postgresql://${db.host:localhost}:${db.port:5432}/${db.database:okapi_modules}"
 
 environments:
   test:
@@ -140,6 +140,18 @@ environments:
         abandonWhenPercentageFull: 50
         jdbcInterceptors: ConnectionState
         defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+  dbGen:
+    grails:
+      gorm:
+        multiTenancy:
+          mode: SCHEMA
+          tenantResolverClass: org.grails.datastore.mapping.multitenancy.resolvers.SystemPropertyTenantResolver # System prop of gorm.tenantId
+        plugin:
+          databasemigration:
+            updateOnStart: true
+            updateOnStartFileName: module-tenant-changelog.groovy
+    gorm:
+      tenantId: public # Used by SystemPropertyTenantResolver
 ---
 okapi:
   schema:
