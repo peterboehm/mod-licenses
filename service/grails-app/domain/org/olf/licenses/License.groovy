@@ -50,11 +50,11 @@ class License implements MultiTenant<License> {
 
 
   static hasMany = [
-    properties:LicenseCustomProperty
+    props:LicenseCustomProperty
   ]
 
   static mappedBy = [
-    properties:'owner'
+    props:'owner'
   ] 
 
   static constraints = {
