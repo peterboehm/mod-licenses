@@ -20,7 +20,7 @@ curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST
 
 echo Fetch value list for YNO
 ## This will retrieve a JSON document describing the YNO category and all it's values
-YNO_CAT_VALUES=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X GET http://localhost:8080/licenses/refdataValues?filters='owner.desc%3D%3DYNO'`
+YNO_CAT_VALUES=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X GET http://localhost:8080/licenses/refdataValues?filters='owner.desc%3D%3DYNO'\&sort=value`
 YNO_CAT_ID=`echo $YNO_CAT_VALUES | jq -r ".[0].owner.id" | tr -d '\r'`
 YNO_NO_ID=`echo $YNO_CAT_VALUES | jq -r ".[0].id" | tr -d '\r'`
 YNO_OTHER_ID=`echo $YNO_CAT_VALUES | jq -r ".[1].id" | tr -d '\r'`
@@ -71,3 +71,6 @@ TEST_LICENSE_6=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: applicati
   name: "American Association for the Advancement of Science/NESLi2/Science Classic/2014-2114",
   description: "AAA/NESLi2 consortial license. DIKU University is a signatory to this consortial license"
 } ' | jq -r ".id"`
+
+echo Retrieve license 1
+curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X GET http://localhost:8080/licenses/licenses/$TEST_LICENSE_1
