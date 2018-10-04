@@ -11,7 +11,7 @@
      }
   ],
   "propertyDefinitions":[
-    { "propname":"WalkInAccess", "type":"RDV", "category":"YNO" },
+    { "propname":"WalkInAccess", "type":"RDV", "category":"YNO", "desc":"Is Walk In Access Allowed" },
     { "propname":"AnnualOptOut", "type":"RDV", "category":"YNO" },
     { "propname":"ILL", "type":"RDV", "category":"YNO" },
     { "propname":"PartnerAccess", "type":"RDV", "category":"YNO" },
@@ -52,6 +52,8 @@
     { "propname":"publisherAcceptsSERU", "type":"RDV", "category":"YNO" },
     { "propname":"reservesElectronic", "type":"RDV", "category":"YNO" },
     { "propname":"reservesPrint", "type":"RDV", "category":"YNO" },
-    { "propname":"scholarlySharing", "type":"RDV", "category":"YNO" }
+    { "propname":"scholarlySharing", "type":"RDV", "category":"YNO" },
+    { "propname":"aIntegerProp", "type":"Number" },
+    { "propname":"aDecimalProp", "type":"Decimal" }
   ]
 }

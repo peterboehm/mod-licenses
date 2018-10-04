@@ -2,6 +2,7 @@ package org.olf.license
 
 import grails.gorm.transactions.Transactional
 import com.k_int.refdata.*;
+import com.k_int.custprops.PropertyDefinition
 
 @Transactional
 class DataloadService {
@@ -49,7 +50,9 @@ class DataloadService {
   // ],
   def upsertRefdataCategory(rdc) {
     log.debug("upsertRefdataCategory(${rdc})");
-    def cat = RefdataCategory.lookupOrCreate(rdc.catname,rdc.description)
+
+    def cat = RefdataCategory.findByDesc(rdc.catname) ?: new RefdataCategory(desc:rdc.catname, label:rdc.description).save(flush:true, failOnError:true);
+
     rdc.values.each { rdcv ->
       def val = RefdataValue.findByOwnerAndValue(cat, rdcv.value) ?: new RefdataValue(owner:cat, 
                                                                                       value:rdcv.value, 
@@ -61,5 +64,9 @@ class DataloadService {
 
   def upsertPropertyDefinition(pd) {
     log.debug("upsertPropertyDefinition(${pd})");
+    PropertyDefinition dbpd = PropertyDefinition.findByName(pd.propname)
+    if ( dbpd == null ) {
+      dbpd = new PropertyDefinition(name:pd.propname, descr:pd.desc, type:pd.type, refdataCategory:pd.category).save(flush:true, failOnError:true);
+    }
   }
 }

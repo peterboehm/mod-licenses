@@ -5,6 +5,7 @@ class UrlMappings {
   static mappings = {
 
     "/"(controller: 'application', action:'index')
+    "/config"(controller: 'application', action:'config')
     "/_/tenant"(controller: 'okapi', action:'tenant')
 
     "/licenses/licenses"(resources:'license')
