@@ -22,6 +22,7 @@ class UrlMappings {
       }
     }
 
+    '/licenses/custprops'(resources: 'custprops') 
 
 
     delete "/$controller/$id(.$format)?"(action:"delete")

@@ -18,11 +18,32 @@ curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X GET 
 echo Load test config
 curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/config -d @license_properties.json
 
+echo Fetch value list for YNO
+## This will retrieve a JSON document describing the YNO category and all it's values
+YNO_CAT_VALUES=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X GET http://localhost:8080/licenses/refdataValues?filters='owner.desc%3D%3DYNO'`
+YNO_CAT_ID=`echo $YNO_CAT_VALUES | jq -r ".[0].owner.id" | tr -d '\r'`
+YNO_NO_ID=`echo $YNO_CAT_VALUES | jq -r ".[0].id" | tr -d '\r'`
+YNO_OTHER_ID=`echo $YNO_CAT_VALUES | jq -r ".[1].id" | tr -d '\r'`
+YNO_YES_ID=`echo $YNO_CAT_VALUES | jq -r ".[2].id" | tr -d '\r'`
+echo KEYS for refdata - YNO Category $YNO_CAT_ID - No=$YNO_NO_ID Yes=$YNO_YES_ID Other=$YNO_OTHER_ID
+
+echo Looking up WalkInAccess property
+PROP_WIA=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X GET http://localhost:8080/licenses/custprops?filters='name%3D%3DWalkInAccess' | jq -r ".[0].id"`
+PROP_LIC_LOC=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X GET http://localhost:8080/licenses/custprops?filters='name%3D%3DlicenseLocation' | jq -r ".[0].id"`
+PROP_INT=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X GET http://localhost:8080/licenses/custprops?filters='name%3D%3DaIntegerProp' | jq -r ".[0].id"`
+PROP_DEC=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X GET http://localhost:8080/licenses/custprops?filters='name%3D%3DaDecimalProp' | jq -r ".[0].id"`
+
 echo Create test licenses
 TEST_LICENSE_1=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
 {
   name: "Test License 001",
-  description: "This is a test licenses"
+  description: "This is a test licenses",
+  licenseProps:[
+    { type: "'"$PROP_WIA"'", refValue:"'"$YNO_YES_ID"'", note:"This is a refdata property"  },
+    { type: "'"$PROP_LIC_LOC"'", stringValue:"sent in, sent back, queried, lost, found, subjected to public inquiry, lost again, and finally buried in soft peat for three months and recycled as firelighters.", note:"This is a string property" },
+    { type: "'"$PROP_INT"'", intValue:34, note:"This is an int property" },
+    { type: "'"$PROP_DEC"'", decValue:1.23, note:"This is a dec property" }
+  ]
 } ' | jq -r ".id"`
 
 TEST_LICENSE_2=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
