@@ -12,13 +12,12 @@ import grails.gorm.MultiTenant
  */
 class LicenseCustomProperty extends CustomProperty implements MultiTenant<LicenseCustomProperty> {
 
-  static auditable = true
-
   static belongsTo = [
       type : PropertyDefinition,
       owner: License
   ]
 
+  String id
   PropertyDefinition type
   License owner
 

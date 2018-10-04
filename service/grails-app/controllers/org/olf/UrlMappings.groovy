@@ -5,6 +5,7 @@ class UrlMappings {
   static mappings = {
 
     "/"(controller: 'application', action:'index')
+    "/config"(controller: 'application', action:'config')
     "/_/tenant"(controller: 'okapi', action:'tenant')
 
     "/licenses/licenses"(resources:'license')
@@ -14,6 +15,14 @@ class UrlMappings {
     "/licenses/kiwt/config/schema/embedded/$type" (controller: 'config' , action: "schemaEmbedded")
 
     "/licenses/ref/blank/$domain/$prop" (controller: 'ref', action: 'blank')
+
+    '/licenses/refdataValues'(resources: 'refdata') {
+      collection {
+        "/$domain/$property" (controller: 'refdata', action: 'lookup')
+      }
+    }
+
+    '/licenses/custprops'(resources: 'custprops') 
 
 
     delete "/$controller/$id(.$format)?"(action:"delete")
