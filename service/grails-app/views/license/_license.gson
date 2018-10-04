@@ -1,0 +1,5 @@
+import groovy.transform.*
+import org.olf.licenses.License
+
+@Field License license
+json g.render(license, [expand: ['licenseProps']])
