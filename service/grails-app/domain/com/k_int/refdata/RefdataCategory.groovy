@@ -9,7 +9,7 @@ class RefdataCategory implements MultiTenant<RefdataCategory> {
   Set values
 
   static mapping = {
-         id column:'rdc_id'
+         id column: 'rdc_id', generator: 'uuid', length:36
     version column:'rdc_version'
       label column:'rdc_label'
        desc column:'rdc_description', index:'rdc_description_idx'

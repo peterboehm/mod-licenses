@@ -40,7 +40,7 @@ class PropertyDefinition implements MultiTenant<PropertyDefinition> {
     }
 
     static mapping = {
-                      id column: 'pd_id'
+                      id column: 'pd_id', generator: 'uuid', length:36
                    descr column: 'pd_description'
                     name column: 'pd_name', index: 'td_name_idx'
                     type column: 'pd_type', index: 'td_type_idx'

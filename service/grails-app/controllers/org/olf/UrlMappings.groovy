@@ -16,6 +16,13 @@ class UrlMappings {
 
     "/licenses/ref/blank/$domain/$prop" (controller: 'ref', action: 'blank')
 
+    '/licenses/refdataValues'(resources: 'refdata') {
+      collection {
+        "/$domain/$property" (controller: 'refdata', action: 'lookup')
+      }
+    }
+
+
 
     delete "/$controller/$id(.$format)?"(action:"delete")
     get "/$controller(.$format)?"(action:"index")

@@ -15,7 +15,7 @@ class RefdataValueLabel implements MultiTenant<RefdataValueLabel> {
   ]
 
   static mapping = {
-    id column:'rdvl_id'
+    id column: 'rdvl_id', generator: 'uuid', length:36
     version column:'rdvl_version'
     owner column:'rdvl_owner', index:'rdvl_entry_idx'
     locale column:'rdvl_locale', index:'rdvl_entry_idx'
