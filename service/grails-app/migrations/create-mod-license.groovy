@@ -1,6 +1,6 @@
 databaseChangeLog = {
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-1") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-1") {
         createTable(tableName: "license") {
             column(name: "lic_id", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
@@ -18,9 +18,9 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-2") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-2") {
         createTable(tableName: "license_custom_property") {
-            column(name: "lcp_id", type: "BIGINT") {
+            column(name: "lcp_id", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
             }
 
@@ -28,19 +28,19 @@ databaseChangeLog = {
                 constraints(nullable: "false")
             }
 
-            column(name: "ref_value_id", type: "BIGINT")
+            column(name: "ref_value_id", type: "VARCHAR(36)")
 
             column(name: "int_value", type: "INT")
 
+            column(name: "string_value", type: "VARCHAR(255)")
+
             column(name: "dec_value", type: "NUMBER(19, 2)")
 
-            column(name: "lcp_owner", type: "VARCHAR(36)") {
+            column(name: "lcp_type", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
             }
 
-            column(name: "string_value", type: "VARCHAR(255)")
-
-            column(name: "lcp_type", type: "BIGINT") {
+            column(name: "lcp_owner", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
             }
 
@@ -48,9 +48,9 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-3") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-3") {
         createTable(tableName: "property_definition") {
-            column(name: "pd_id", type: "BIGINT") {
+            column(name: "pd_id", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
             }
 
@@ -72,9 +72,9 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-4") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-4") {
         createTable(tableName: "refdata_category") {
-            column(name: "rdc_id", type: "BIGINT") {
+            column(name: "rdc_id", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
             }
 
@@ -90,9 +90,9 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-5") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-5") {
         createTable(tableName: "refdata_value") {
-            column(name: "rdv_id", type: "BIGINT") {
+            column(name: "rdv_id", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
             }
 
@@ -100,7 +100,7 @@ databaseChangeLog = {
                 constraints(nullable: "false")
             }
 
-            column(name: "rdv_use_instead", type: "BIGINT")
+            column(name: "rdv_use_instead", type: "VARCHAR(36)")
 
             column(name: "rdv_icon", type: "VARCHAR(255)")
 
@@ -108,7 +108,7 @@ databaseChangeLog = {
                 constraints(nullable: "false")
             }
 
-            column(name: "rdv_owner", type: "BIGINT") {
+            column(name: "rdv_owner", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
             }
 
@@ -118,9 +118,9 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-6") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-6") {
         createTable(tableName: "refdata_value_label") {
-            column(name: "rdvl_id", type: "BIGINT") {
+            column(name: "rdvl_id", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
             }
 
@@ -132,7 +132,7 @@ databaseChangeLog = {
                 constraints(nullable: "false")
             }
 
-            column(name: "rdvl_owner", type: "BIGINT") {
+            column(name: "rdvl_owner", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
             }
 
@@ -142,41 +142,41 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-7") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-7") {
         addPrimaryKey(columnNames: "lic_id", constraintName: "licensePK", tableName: "license")
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-8") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-8") {
         addPrimaryKey(columnNames: "lcp_id", constraintName: "license_custom_propertyPK", tableName: "license_custom_property")
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-9") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-9") {
         addPrimaryKey(columnNames: "pd_id", constraintName: "property_definitionPK", tableName: "property_definition")
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-10") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-10") {
         addPrimaryKey(columnNames: "rdc_id", constraintName: "refdata_categoryPK", tableName: "refdata_category")
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-11") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-11") {
         addPrimaryKey(columnNames: "rdv_id", constraintName: "refdata_valuePK", tableName: "refdata_value")
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-12") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-12") {
         addPrimaryKey(columnNames: "rdvl_id", constraintName: "refdata_value_labelPK", tableName: "refdata_value_label")
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-13") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-13") {
         addUniqueConstraint(columnNames: "pd_name", constraintName: "UC_PROPERTY_DEFINITIONPD_NAME_COL", tableName: "property_definition")
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-14") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-14") {
         createIndex(indexName: "rdc_description_idx", tableName: "refdata_category") {
             column(name: "rdc_description")
         }
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-15") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-15") {
         createIndex(indexName: "rdv_entry_idx", tableName: "refdata_value") {
             column(name: "rdv_value")
 
@@ -184,7 +184,7 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-16") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-16") {
         createIndex(indexName: "rdvl_entry_idx", tableName: "refdata_value_label") {
             column(name: "rdvl_locale")
 
@@ -192,7 +192,7 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-17") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-17") {
         createIndex(indexName: "td_type_idx", tableName: "property_definition") {
             column(name: "pd_type")
 
@@ -200,27 +200,27 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-18") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-18") {
         addForeignKeyConstraint(baseColumnNames: "ref_value_id", baseTableName: "license_custom_property", constraintName: "FKa06xkp9kqh4ldae6svxk62uqd", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "rdv_id", referencedTableName: "refdata_value")
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-19") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-19") {
         addForeignKeyConstraint(baseColumnNames: "rdvl_owner", baseTableName: "refdata_value_label", constraintName: "FKclotewcgrrbmoy8gcyakn3u93", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "rdv_id", referencedTableName: "refdata_value")
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-20") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-20") {
         addForeignKeyConstraint(baseColumnNames: "rdv_owner", baseTableName: "refdata_value", constraintName: "FKh4fon2a7k4y8b2sicjm0i6oy8", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "rdc_id", referencedTableName: "refdata_category")
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-21") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-21") {
         addForeignKeyConstraint(baseColumnNames: "lcp_type", baseTableName: "license_custom_property", constraintName: "FKhltbuif2p9dko3qky5k0fx4l1", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "pd_id", referencedTableName: "property_definition")
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-22") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-22") {
         addForeignKeyConstraint(baseColumnNames: "lcp_owner", baseTableName: "license_custom_property", constraintName: "FKiun8uoio1qhrb9pf8fd6nqgwd", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "lic_id", referencedTableName: "license")
     }
 
-    changeSet(author: "ibbo (generated)", id: "1538645785423-23") {
+    changeSet(author: "ibbo (generated)", id: "1538647155368-23") {
         addForeignKeyConstraint(baseColumnNames: "rdv_use_instead", baseTableName: "refdata_value", constraintName: "FKpk86botisjrgyfd5aqljbwla", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "rdv_id", referencedTableName: "refdata_value")
     }
 }

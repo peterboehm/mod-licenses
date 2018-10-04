@@ -6,6 +6,7 @@ import grails.gorm.MultiTenant
 
 class RefdataValue implements MultiTenant<RefdataValue> {
 
+  String id
   String value
   String icon
   String description

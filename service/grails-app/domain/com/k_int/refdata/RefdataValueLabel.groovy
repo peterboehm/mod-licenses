@@ -6,6 +6,7 @@ import grails.gorm.MultiTenant
 
 class RefdataValueLabel implements MultiTenant<RefdataValueLabel> {
 
+  String id
   RefdataValue owner
   String locale
   String label

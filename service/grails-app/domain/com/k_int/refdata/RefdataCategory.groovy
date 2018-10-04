@@ -4,12 +4,13 @@ import grails.gorm.MultiTenant
 
 class RefdataCategory implements MultiTenant<RefdataCategory> {
 
+  String id
   String desc
   String label
   Set values
 
   static mapping = {
-         id column: 'rdc_id', generator: 'uuid', length:36
+         id column:'rdc_id', generator: 'uuid', length:36
     version column:'rdc_version'
       label column:'rdc_label'
        desc column:'rdc_description', index:'rdc_description_idx'

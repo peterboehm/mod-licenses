@@ -11,6 +11,8 @@ import grails.gorm.MultiTenant
 @Log4j
 class PropertyDefinition implements MultiTenant<PropertyDefinition> {
 
+    String id
+
     @Transient
     final static String[] AVAILABLE_DESCR =[LIC_PROP,ORG_CONF,SYS_CONF]
     @Transient
