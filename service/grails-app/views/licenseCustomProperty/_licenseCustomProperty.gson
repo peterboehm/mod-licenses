@@ -1,0 +1,5 @@
+import groovy.transform.*
+import org.olf.licenses.LicenseCustomProperty
+
+@Field LicenseCustomProperty licenseCustomProperty
+json g.render(licenseCustomProperty, [expand: ['type', 'refValue']])
