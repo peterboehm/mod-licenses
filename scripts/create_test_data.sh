@@ -43,33 +43,53 @@ TEST_LICENSE_1=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: applicati
     { type: "'"$PROP_LIC_LOC"'", stringValue:"sent in, sent back, queried, lost, found, subjected to public inquiry, lost again, and finally buried in soft peat for three months and recycled as firelighters.", note:"This is a string property" },
     { type: "'"$PROP_INT"'", intValue:34, note:"This is an int property" },
     { type: "'"$PROP_DEC"'", decValue:1.23, note:"This is a dec property" }
+  ],
+  tags: [
+    {value: "Legacy"},
+    "Other value",
+    "legacy"
   ]
 } ' | jq -r ".id"`
 
 TEST_LICENSE_2=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
 {
-  name: "Test License 002"
+  name: "Test License 002",
+  tags: [
+    "legacy"
+  ]
 } ' | jq -r ".id"`
 
 TEST_LICENSE_3=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
 {
-  name: "Test License 003"
+  name: "Test License 003",
+  tags: [
+    "Test4"
+  ]
 } ' | jq -r ".id"`
 
 TEST_LICENSE_4=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
 {
-  name: "BMJ Journals Online 2011-2012 NESLi2"
+  name: "BMJ Journals Online 2011-2012 NESLi2",
+  tags: [
+    "Test5"
+  ]
 } ' | jq -r ".id"`
 
 TEST_LICENSE_5=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
 {
-  name: "Academic Rights Press/Test Consortium/InteLex Collections - Perpetual Purchase Agreement"
+  name: "Academic Rights Press/Test Consortium/InteLex Collections - Perpetual Purchase Agreement",
+  tags: [
+    "Test6"
+  ]
 } ' | jq -r ".id"`
 
 TEST_LICENSE_6=`curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/licenses/licenses -d '
 {
   name: "American Association for the Advancement of Science/NESLi2/Science Classic/2014-2114",
-  description: "AAA/NESLi2 consortial license. DIKU University is a signatory to this consortial license"
+  description: "AAA/NESLi2 consortial license. DIKU University is a signatory to this consortial license",
+  tags: [
+    "Test7"
+  ]
 } ' | jq -r ".id"`
 
 echo Retrieve license 1

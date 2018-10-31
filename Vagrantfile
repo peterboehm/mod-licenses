@@ -22,8 +22,7 @@ Vagrant.configure(2) do |config|
   # config.vm.box_version = "5.0.0-20180730.911"
     
   config.vm.provider "virtualbox" do |v|
-    # v.memory = 8192
-    v.memory = 6144
+    v.memory = 8192
     v.cpus = 5
   end
 
@@ -50,7 +49,7 @@ Vagrant.configure(2) do |config|
 
   # Expose the postgres instance that is installed so that apps running outside the 
   # vbox instance can use it.
-  config.vm.network "forwarded_port", guest: 5432, host: 5432
+  config.vm.network "forwarded_port", guest: 5432, host: 54321
 
 
   # Create a forwarded port mapping which allows access to a specific port
