@@ -3,7 +3,7 @@
   "name": "${info.app.name}",
   "provides": [
     {
-      "id": "${info.app.name}",
+      "id": "licenses",
       "version": "${info.app.minorVersion}",
       "handlers" : [
         {
@@ -42,5 +42,12 @@
       ],
       "visible": true
     }
-  ]
+  ],
+  "launchDescriptor": {
+    "dockerImage": "${info.app.name}:${info.app.version}",
+    "dockerArgs": {
+      "HostConfig": { "PortBindings": { "8080/tcp":  [{ "HostPort": "%p" }] } }
+    },
+    "dockerPull" : false
+  }
 }
