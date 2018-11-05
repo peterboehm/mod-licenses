@@ -1,7 +1,4 @@
 ---
-server:
-  port: 8081
----
 grails:
     profile: rest-api
     codegen:
@@ -157,8 +154,6 @@ environments:
         abandonWhenPercentageFull: 50
         jdbcInterceptors: ConnectionState
         defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
-    server:
-      port: 8080
 ---
 okapi:
   schema:
