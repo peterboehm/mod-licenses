@@ -27,6 +27,8 @@ databaseChangeLog = {
             }
 
             column(name: "lic_description", type: "VARCHAR(255)")
+
+            column(name: "lic_parent_fk", type: "VARCHAR(36)")
         }
     }
 
