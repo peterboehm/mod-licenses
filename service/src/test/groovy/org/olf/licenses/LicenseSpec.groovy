@@ -1,4 +1,4 @@
-package mod.license
+package org.olf.licenses
 
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
