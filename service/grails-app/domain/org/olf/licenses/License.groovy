@@ -11,6 +11,7 @@ class License implements MultiTenant<License> {
   String id
   String name
   String description
+  License parent
 
 // allRightsReserved 
 // applicabaleCopyrightLaw 
@@ -65,6 +66,7 @@ class License implements MultiTenant<License> {
   static constraints = {
            name(nullable:false, blank:false)
     description(nullable:true, blank:false)
+         parent(nullable:true, blank:false)
   }
 
   static mapping = {
@@ -72,6 +74,7 @@ class License implements MultiTenant<License> {
            name column: 'lic_name'
     description column: 'lic_description'
         version column: 'lic_version'
+         parent column: 'lic_parent_fk'
   }
 
 }

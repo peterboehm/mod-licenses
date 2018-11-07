@@ -27,7 +27,7 @@
     { "propname":"AlumniAccess", "type":"RDV", "category":"YNO" },
     { "propname":"TextAndDatMining", "type":"RDV", "category":"YNO" },
     { "propname":"allRightsReserved", "type":"String" },
-    { "propname":"applicabaleCopyrightLaw", "type":"String" },
+    { "propname":"applicableCopyrightLaw", "type":"String" },
     { "propname":"archivingAllowed", "type":"RDV", "category":"YNO" },
     { "propname":"archivingFormat", "type":"String" },
     { "propname":"confidentialityofAgreementRequired", "type":"RDV", "category":"YNO" },
