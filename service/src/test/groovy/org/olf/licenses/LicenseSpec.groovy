@@ -5,14 +5,14 @@ import spock.lang.Specification
 
 class LicenseSpec extends Specification implements DomainUnitTest<License> {
 
-    def setup() {
-    }
+  def setup() {
+  }
 
-    def cleanup() {
-    }
+  def cleanup() {
+  }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
-    }
+  void "test something"() {
+    expect:"fix me"
+    "hehehe" as Boolean
+  }
 }

@@ -1,8 +1,8 @@
 package org.olf.license
 
-import grails.gorm.transactions.Transactional
-import com.k_int.refdata.*;
 import com.k_int.custprops.PropertyDefinition
+import com.k_int.web.toolkit.refdata.*
+import grails.gorm.transactions.Transactional
 
 @Transactional
 class DataloadService {
@@ -49,16 +49,15 @@ class DataloadService {
   //    }
   // ],
   def upsertRefdataCategory(rdc) {
-    log.debug("upsertRefdataCategory(${rdc})");
-
-    def cat = RefdataCategory.findByDesc(rdc.catname) ?: new RefdataCategory(desc:rdc.catname, label:rdc.description).save(flush:true, failOnError:true);
+    log.debug("upsertRefdataCategory(${rdc})")
+    def cat = RefdataCategory.findByDesc(rdc.catname) ?: new RefdataCategory(desc:rdc.catname, label:rdc.description).save(flush:true, failOnError:true)
 
     rdc.values.each { rdcv ->
       def val = RefdataValue.findByOwnerAndValue(cat, rdcv.value) ?: new RefdataValue(owner:cat, 
                                                                                       value:rdcv.value, 
                                                                                       description:rdcv.description, 
                                                                                       sortKey:rdcv.sortKey, 
-                                                                                      icon:rdcv.style).save(flush:true, failOnError:true);
+                                                                                      icon:rdcv.style).save(flush:true, failOnError:true)
     }
   }
 
@@ -66,7 +65,7 @@ class DataloadService {
     log.debug("upsertPropertyDefinition(${pd})");
     PropertyDefinition dbpd = PropertyDefinition.findByName(pd.propname)
     if ( dbpd == null ) {
-      dbpd = new PropertyDefinition(name:pd.propname, descr:pd.desc, type:pd.type, refdataCategory:pd.category).save(flush:true, failOnError:true);
+      dbpd = new PropertyDefinition(name:pd.propname, descr:pd.desc, type:pd.type, refdataCategory:pd.category).save(flush:true, failOnError:true)
     }
   }
 }

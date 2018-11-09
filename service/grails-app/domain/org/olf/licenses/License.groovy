@@ -54,7 +54,6 @@ class License implements MultiTenant<License> {
 
 
   static hasMany = [
-    licenseProps:LicenseCustomProperty,
     tags: Tag
   ]
 
