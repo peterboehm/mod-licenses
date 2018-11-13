@@ -1,6 +1,5 @@
 package org.olf.licenses
 
-import org.olf.licenses.DataloadService
 
 import grails.core.GrailsApplication
 import grails.plugins.*
