@@ -1,7 +1,8 @@
-package org.olf.license
+package org.olf.licenses
 
-import com.k_int.custprops.PropertyDefinition
+import com.k_int.web.toolkit.custprops.CustomPropertyDefinition
 import com.k_int.web.toolkit.refdata.*
+
 import grails.gorm.transactions.Transactional
 
 @Transactional
@@ -63,9 +64,9 @@ class DataloadService {
 
   def upsertPropertyDefinition(pd) {
     log.debug("upsertPropertyDefinition(${pd})");
-    PropertyDefinition dbpd = PropertyDefinition.findByName(pd.propname)
+    CustomPropertyDefinition dbpd = CustomPropertyDefinition.findByName(pd.propname)
     if ( dbpd == null ) {
-      dbpd = new PropertyDefinition(name:pd.propname, descr:pd.desc, type:pd.type, refdataCategory:pd.category).save(flush:true, failOnError:true)
+      dbpd = new CustomPropertyDefinition(name:pd.propname, descr:pd.desc, type:pd.type, refdataCategory:pd.category).save(flush:true, failOnError:true)
     }
   }
 }

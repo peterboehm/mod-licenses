@@ -1,9 +1,12 @@
-package org.olf
+package org.olf.licenses
 
 import grails.gorm.multitenancy.CurrentTenant
 import groovy.util.logging.Slf4j
-import com.k_int.okapi.OkapiTenantAwareController
+
 import org.olf.licenses.License
+
+import com.k_int.okapi.OkapiTenantAwareController
+
 import grails.converters.JSON
 
 
@@ -12,7 +15,6 @@ import grails.converters.JSON
  * A subscription agreement (SA) is the connection between a set of resources (Which could be packages or individual titles) and a license. 
  * SAs have start dates, end dates and renewal dates. This controller exposes functions for interacting with the list of SAs
  */
-@Slf4j
 @CurrentTenant
 class LicenseController extends OkapiTenantAwareController<License>  {
 

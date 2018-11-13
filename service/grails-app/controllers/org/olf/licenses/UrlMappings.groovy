@@ -1,4 +1,4 @@
-package org.olf
+package org.olf.licenses
 
 class UrlMappings {
 
