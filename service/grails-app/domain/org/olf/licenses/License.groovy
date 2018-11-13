@@ -1,12 +1,11 @@
 package org.olf.licenses
 
-import grails.gorm.MultiTenant
+import com.k_int.web.toolkit.custprops.CustomProperties
 import com.k_int.web.toolkit.tags.Tag
 
+import grails.gorm.MultiTenant
 
-
-
-class License implements MultiTenant<License> {
+class License implements CustomProperties, MultiTenant<License> {
 
   String id
   String name
@@ -56,10 +55,6 @@ class License implements MultiTenant<License> {
   static hasMany = [
     tags: Tag
   ]
-
-  static mappedBy = [
-    licenseProps:'owner'
-  ] 
 
   static constraints = {
            name(nullable:false, blank:false)
