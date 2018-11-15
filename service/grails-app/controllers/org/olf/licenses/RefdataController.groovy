@@ -15,17 +15,4 @@ class RefdataController extends com.k_int.web.toolkit.RefdataController {
   RefdataController() {
     super(RefdataCategory)
   }
-  
-  def lookup (String domain, String property) {
-    DomainUtils d
-    def c = DomainUtils.resolveDomainClass(domain)?.javaClass
-    def cat = c ? GrailsDomainRefdataHelpers.getCategoryString(c, property) : null
-    
-    // Bail if no cat.
-    if (!cat) {
-      render status: 404
-    } else {
-      forward action: "index", params: [filters: ["owner.desc==${cat}"]]
-    }
-  }
 }
