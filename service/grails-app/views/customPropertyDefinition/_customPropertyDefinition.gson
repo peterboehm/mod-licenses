@@ -1,7 +1,0 @@
-import com.k_int.web.toolkit.custprops.CustomPropertyDefinition
-import groovy.transform.*
-
-@Field CustomPropertyDefinition customPropertyDefinition
-json g.render(customPropertyDefinition, [excludes: ['type']]) {
-  type customPropertyDefinition.type.class.name
-} 
