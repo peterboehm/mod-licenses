@@ -1,15 +1,7 @@
 {
-  "refdata":[
+  "yesno":[
      {
        "desc":"Yes/No/Other", 
-       "values":[
-          { "value":"Yes", "label":"Yes"},
-          { "value":"No", "label":"No"},
-          { "value":"Other", "label":"Other (see notes)"}
-       ]
-     },
-     { 
-       "desc":"Some other Test",
        "values":[
           { "value":"Yes", "label":"Yes"},
           { "value":"No", "label":"No"},
@@ -33,10 +25,10 @@
     { "name":"EnterpriseAccess", "type":"Refdata", "category":"Yes/No/Other" },
     { "name":"AlumniAccess", "type":"Refdata", "category":"Yes/No/Other" },
     { "name":"TextAndDatMining", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"allRightsReserved", "type":"String" },
-    { "name":"applicabaleCopyrightLaw", "type":"String" },
+    { "name":"allRightsReserved", "type":"Text" },
+    { "name":"applicabaleCopyrightLaw", "type":"Text" },
     { "name":"archivingAllowed", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"archivingFormat", "type":"String" },
+    { "name":"archivingFormat", "type":"Text" },
     { "name":"confidentialityofAgreementRequired", "type":"Refdata", "category":"Yes/No/Other" },
     { "name":"confidentialityofUserInformationProtected", "type":"Refdata", "category":"Yes/No/Other" },
     { "name":"copyDigital", "type":"Refdata", "category":"Yes/No/Other" },
@@ -44,17 +36,17 @@
     { "name":"coursePackElectronic", "type":"Refdata", "category":"Yes/No/Other" },
     { "name":"coursePackPrint", "type":"Refdata", "category":"Yes/No/Other" },
     { "name":"distanceEducation", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"fairUseClause", "type":"String" },
-    { "name":"governingJurisdiction", "type":"String" },
-    { "name":"governingLaw", "type":"String" },
+    { "name":"fairUseClause", "type":"Text" },
+    { "name":"governingJurisdiction", "type":"Text" },
+    { "name":"governingLaw", "type":"Text" },
     { "name":"illElectronic", "type":"Refdata", "category":"Yes/No/Other" },
     { "name":"illPrint", "type":"Refdata", "category":"Yes/No/Other" },
     { "name":"illSecureElectronic", "type":"Refdata", "category":"Yes/No/Other" },
     { "name":"indemnificationbyLicensee", "type":"Refdata", "category":"Yes/No/Other" },
     { "name":"indemnificationbyLicensor", "type":"Refdata", "category":"Yes/No/Other" },
     { "name":"licenseEndAdvanceNoticeRequired", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"licenseLocation", "type":"String" },
-    { "name":"otherRestrictions", "type":"String" },
+    { "name":"licenseLocation", "type":"Text" },
+    { "name":"otherRestrictions", "type":"Text" },
     { "name":"perpetualAccess", "type":"Refdata", "category":"Yes/No/Other" },
     { "name":"publisherAcceptsSERU", "type":"Refdata", "category":"Yes/No/Other" },
     { "name":"reservesElectronic", "type":"Refdata", "category":"Yes/No/Other" },
