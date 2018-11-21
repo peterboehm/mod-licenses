@@ -1,15 +1,34 @@
 package org.olf.licenses
 
 import com.k_int.web.toolkit.custprops.CustomProperties
+import com.k_int.web.toolkit.custprops.types.CustomPropertyContainer
 import com.k_int.web.toolkit.tags.Tag
 import com.k_int.web.toolkit.tags.Taggable
 import grails.gorm.MultiTenant
 
-class License implements CustomProperties, Taggable, MultiTenant<License> {
+class License implements MultiTenant<License> {
 
   String id
   String name
   String description
+  CustomPropertyContainer customProperties
+  
+  static hasMany = [
+    tags: Tag
+  ]
+
+  static constraints = {
+           name(nullable:false, blank:false)
+    description(nullable:true, blank:false)
+    customProperties (nullable: true)
+  }
+
+  static mapping = {
+             id column: 'lic_id', generator: 'uuid', length:36
+           name column: 'lic_name'
+    description column: 'lic_description'
+        version column: 'lic_version'
+  }
 
 // allRightsReserved 
 // applicabaleCopyrightLaw 
@@ -50,17 +69,5 @@ class License implements CustomProperties, Taggable, MultiTenant<License> {
 // reviewerNotes 
 // scholarlySharing 
 // walkIns 
-
-  static constraints = {
-           name(nullable:false, blank:false)
-    description(nullable:true, blank:false)
-  }
-
-  static mapping = {
-             id column: 'lic_id', generator: 'uuid', length:36
-           name column: 'lic_name'
-    description column: 'lic_description'
-        version column: 'lic_version'
-  }
 
 }
