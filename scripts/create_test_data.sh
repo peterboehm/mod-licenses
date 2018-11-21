@@ -17,7 +17,7 @@ echo Running
 echo "Load JSON file"
 
 # Because of the template placeholders in the file now, we load passing in empty object as substitutions.
-json_data_file=`cat license_properties.json`
+json_data_file=`cat license_properties.jq`
 json_data=`echo '{}' | jq "$json_data_file"`
 json_result="$json_data"
 IFS=$'\n'       # make newlines the only separator

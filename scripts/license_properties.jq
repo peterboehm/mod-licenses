@@ -51,14 +51,22 @@
     { "name":"reservesPrint", "type":"Refdata", "category": .yesno.id },
     { "name":"scholarlySharing", "type":"Refdata", "category": .yesno.id },
     { "name":"aIntegerProp", "type":"Integer" },
-    { "name":"aDecimalProp", "type":"Decimal" }
+    { "name":"aDecimalProp", "type":"Decimal" },
+    { "name":"testingBoolean", "type":"Boolean" }
   ],
   "licenseDefs": [
     {
       "name": "Test License 001",
       "description": "This is a test licenses",
       "customProperties": {
-        "WalkInAccess" :[{"value": .yesno.values[0].id }]
+        "WalkInAccess" :[{"value": .yesno.values[0].id }],
+        "IncludeInCoursepacks"  :[{ "value": .yesno.values[1].id }],
+        "distanceEducation"  :[{ "value": .yesno.values[2].id }],
+        "scholarlySharing"  :[{ "value": .yesno.values[0].id }],
+        "aDecimalProp"  :[{ "value": 1.2 }],
+        "aIntegerProp"  :[{ "value": 2 }],
+        "allRightsReserved"  :[{ "value": "Arbitrary text" }],
+        "testingBoolean"  :[{ "value": true }]
       }
     }
   ]
