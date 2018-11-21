@@ -1,58 +1,65 @@
 {
-  "yesno":[
-     {
-       "desc":"Yes/No/Other", 
-       "values":[
-          { "value":"Yes", "label":"Yes"},
-          { "value":"No", "label":"No"},
-          { "value":"Other", "label":"Other (see notes)"}
-       ]
-     }
-  ],
+  "yesno":{
+    "desc":"Yes/No/Other", 
+    "values":[
+      { "value":"Yes", "label":"Yes" },
+      { "value":"No", "label":"No" },
+      { "value":"Other", "label":"Other (see notes)" }
+    ]
+  },
   "propertyDefinitions":[
-    { "name":"WalkInAccess", "type":"Refdata", "category":"Yes/No/Other", "description":"Is Walk In Access Allowed" },
-    { "name":"AnnualOptOut", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"ILL", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"PartnerAccess", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"IncludeInCoursepacks", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"APCAndOffsetting", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"AuthorisedAccess", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"ConcurrentAccess", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"RemoteAccess", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"PCA", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"MultiSite", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"IncludeInVLE", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"EnterpriseAccess", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"AlumniAccess", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"TextAndDatMining", "type":"Refdata", "category":"Yes/No/Other" },
+    { "name":"WalkInAccess", "type":"Refdata", "category": .yesno.id, "description":"Is Walk In Access Allowed" },
+    { "name":"AnnualOptOut", "type":"Refdata", "category": .yesno.id },
+    { "name":"ILL", "type":"Refdata", "category": .yesno.id },
+    { "name":"PartnerAccess", "type":"Refdata", "category": .yesno.id },
+    { "name":"IncludeInCoursepacks", "type":"Refdata", "category": .yesno.id },
+    { "name":"APCAndOffsetting", "type":"Refdata", "category": .yesno.id },
+    { "name":"AuthorisedAccess", "type":"Refdata", "category": .yesno.id },
+    { "name":"ConcurrentAccess", "type":"Refdata", "category": .yesno.id },
+    { "name":"RemoteAccess", "type":"Refdata", "category": .yesno.id },
+    { "name":"PCA", "type":"Refdata", "category": .yesno.id },
+    { "name":"MultiSite", "type":"Refdata", "category": .yesno.id },
+    { "name":"IncludeInVLE", "type":"Refdata", "category": .yesno.id },
+    { "name":"EnterpriseAccess", "type":"Refdata", "category": .yesno.id },
+    { "name":"AlumniAccess", "type":"Refdata", "category": .yesno.id },
+    { "name":"TextAndDatMining", "type":"Refdata", "category": .yesno.id },
     { "name":"allRightsReserved", "type":"Text" },
     { "name":"applicabaleCopyrightLaw", "type":"Text" },
-    { "name":"archivingAllowed", "type":"Refdata", "category":"Yes/No/Other" },
+    { "name":"archivingAllowed", "type":"Refdata", "category": .yesno.id },
     { "name":"archivingFormat", "type":"Text" },
-    { "name":"confidentialityofAgreementRequired", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"confidentialityofUserInformationProtected", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"copyDigital", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"copyPrint", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"coursePackElectronic", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"coursePackPrint", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"distanceEducation", "type":"Refdata", "category":"Yes/No/Other" },
+    { "name":"confidentialityofAgreementRequired", "type":"Refdata", "category": .yesno.id },
+    { "name":"confidentialityofUserInformationProtected", "type":"Refdata", "category": .yesno.id },
+    { "name":"copyDigital", "type":"Refdata", "category": .yesno.id },
+    { "name":"copyPrint", "type":"Refdata", "category": .yesno.id },
+    { "name":"coursePackElectronic", "type":"Refdata", "category": .yesno.id },
+    { "name":"coursePackPrint", "type":"Refdata", "category": .yesno.id },
+    { "name":"distanceEducation", "type":"Refdata", "category": .yesno.id },
     { "name":"fairUseClause", "type":"Text" },
     { "name":"governingJurisdiction", "type":"Text" },
     { "name":"governingLaw", "type":"Text" },
-    { "name":"illElectronic", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"illPrint", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"illSecureElectronic", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"indemnificationbyLicensee", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"indemnificationbyLicensor", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"licenseEndAdvanceNoticeRequired", "type":"Refdata", "category":"Yes/No/Other" },
+    { "name":"illElectronic", "type":"Refdata", "category": .yesno.id },
+    { "name":"illPrint", "type":"Refdata", "category": .yesno.id },
+    { "name":"illSecureElectronic", "type":"Refdata" , "category": .yesno.id},
+    { "name":"indemnificationbyLicensee", "type":"Refdata", "category": .yesno.id },
+    { "name":"indemnificationbyLicensor", "type":"Refdata", "category": .yesno.id },
+    { "name":"licenseEndAdvanceNoticeRequired", "type":"Refdata", "category": .yesno.id },
     { "name":"licenseLocation", "type":"Text" },
     { "name":"otherRestrictions", "type":"Text" },
-    { "name":"perpetualAccess", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"publisherAcceptsSERU", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"reservesElectronic", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"reservesPrint", "type":"Refdata", "category":"Yes/No/Other" },
-    { "name":"scholarlySharing", "type":"Refdata", "category":"Yes/No/Other" },
+    { "name":"perpetualAccess", "type":"Refdata", "category": .yesno.id },
+    { "name":"publisherAcceptsSERU", "type":"Refdata", "category": .yesno.id },
+    { "name":"reservesElectronic", "type":"Refdata", "category": .yesno.id },
+    { "name":"reservesPrint", "type":"Refdata", "category": .yesno.id },
+    { "name":"scholarlySharing", "type":"Refdata", "category": .yesno.id },
     { "name":"aIntegerProp", "type":"Integer" },
     { "name":"aDecimalProp", "type":"Decimal" }
+  ],
+  "licenseDefs": [
+    {
+      "name": "Test License 001",
+      "description": "This is a test licenses",
+      "customProperties": {
+        "WalkInAccess" :[{"value": .yesno.values[0].id }]
+      }
+    }
   ]
 }
