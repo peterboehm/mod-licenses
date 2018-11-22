@@ -1,4 +1,4 @@
-package mod.license
+package org.olf.licenses
 
 class BootStrap {
 
