@@ -58,6 +58,7 @@
     {
       "name": "Test License 001",
       "description": "This is a test licenses",
+      "tags": ["New license"],
       "customProperties": {
         "WalkInAccess" :[{"value": .yesno.values[0].id }],
         "IncludeInCoursepacks"  :[{ "value": .yesno.values[1].id }],

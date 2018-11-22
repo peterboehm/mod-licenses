@@ -6,21 +6,20 @@ import com.k_int.web.toolkit.tags.Tag
 import com.k_int.web.toolkit.tags.Taggable
 import grails.gorm.MultiTenant
 
-class License implements MultiTenant<License> {
+class License implements CustomProperties,Taggable,MultiTenant<License> {
 
   String id
   String name
   String description
-  CustomPropertyContainer customProperties
-  
-  static hasMany = [
-    tags: Tag
-  ]
+//  CustomPropertyContainer customProperties
+//  
+//  static hasMany = [
+//    tags: Tag
+//  ]
 
   static constraints = {
            name(nullable:false, blank:false)
     description(nullable:true, blank:false)
-    customProperties (nullable: true)
   }
 
   static mapping = {
