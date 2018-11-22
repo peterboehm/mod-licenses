@@ -1,4 +1,4 @@
-package mod.license
+package org.olf.licenses
 
 import grails.boot.GrailsApp
 import grails.boot.config.GrailsAutoConfiguration

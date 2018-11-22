@@ -1,8 +1,8 @@
-package org.olf
+package org.olf.licenses
+
 
 import grails.core.GrailsApplication
 import grails.plugins.*
-import org.olf.license.DataloadService
 import grails.gorm.multitenancy.CurrentTenant
 import groovy.util.logging.Slf4j
 

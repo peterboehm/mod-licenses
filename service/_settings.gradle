@@ -1,0 +1,3 @@
+//include 'web-toolkit','grails-okapi'
+//project(':web-toolkit').projectDir = new File('/home/sosguthorpe/git/web-toolkit')
+//project(':grails-okapi').projectDir = new File('/home/sosguthorpe/git/grails-okapi')
