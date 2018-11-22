@@ -61,6 +61,10 @@ done
 echo "Final JSON data"
 echo "$json_data" | jq
 
+echo Run a search for licenses
+./okapi-cmd /licenses/licenses
+
+
 # curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X POST http://localhost:8080/
 
 # echo Fetch value list for YNO
