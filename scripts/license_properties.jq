@@ -61,10 +61,10 @@
       "customProperties": {
         "WalkInAccess" :[{"value": .yesno.values[0].id }],
         "IncludeInCoursepacks"  :[{ "value": .yesno.values[1].id }],
-        "distanceEducation"  :[{ "value": .yesno.values[2].id }],
-        "scholarlySharing"  :[{ "value": .yesno.values[0].id }],
-        "aDecimalProp"  :[{ "value": 1.2 }],
-        "aIntegerProp"  :[{ "value": 2 }],
+        "distanceEducation"  :["Yes"],
+        "scholarlySharing"  :[{ "value": "No" }],
+        "aDecimalProp"  :[{ "value": 1.2 },{ "value": 1.4 }],
+        "aIntegerProp"  :[2,4,6,8],
         "allRightsReserved"  :[{ "value": "Arbitrary text" }],
         "testingBoolean"  :[{ "value": true }]
       }
