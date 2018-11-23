@@ -8,21 +8,21 @@
     ]
   },
   "propertyDefinitions":[
-    { "name":"WalkInAccess", "type":"Refdata", "category": .yesno.id, "description":"Is Walk In Access Allowed" },
-    { "name":"AnnualOptOut", "type":"Refdata", "category": .yesno.id },
+    { "name":"walkInAccess", "type":"Refdata", "category": .yesno.id, "description":"Is Walk In Access Allowed" },
+    { "name":"annualOptOut", "type":"Refdata", "category": .yesno.id },
     { "name":"ILL", "type":"Refdata", "category": .yesno.id },
-    { "name":"PartnerAccess", "type":"Refdata", "category": .yesno.id },
-    { "name":"IncludeInCoursepacks", "type":"Refdata", "category": .yesno.id },
+    { "name":"partnerAccess", "type":"Refdata", "category": .yesno.id },
+    { "name":"includeInCoursepacks", "type":"Refdata", "category": .yesno.id },
     { "name":"APCAndOffsetting", "type":"Refdata", "category": .yesno.id },
-    { "name":"AuthorisedAccess", "type":"Refdata", "category": .yesno.id },
-    { "name":"ConcurrentAccess", "type":"Refdata", "category": .yesno.id },
-    { "name":"RemoteAccess", "type":"Refdata", "category": .yesno.id },
+    { "name":"authorisedAccess", "type":"Refdata", "category": .yesno.id },
+    { "name":"concurrentAccess", "type":"Refdata", "category": .yesno.id },
+    { "name":"remoteAccess", "type":"Refdata", "category": .yesno.id },
     { "name":"PCA", "type":"Refdata", "category": .yesno.id },
-    { "name":"MultiSite", "type":"Refdata", "category": .yesno.id },
-    { "name":"IncludeInVLE", "type":"Refdata", "category": .yesno.id },
-    { "name":"EnterpriseAccess", "type":"Refdata", "category": .yesno.id },
-    { "name":"AlumniAccess", "type":"Refdata", "category": .yesno.id },
-    { "name":"TextAndDatMining", "type":"Refdata", "category": .yesno.id },
+    { "name":"multiSite", "type":"Refdata", "category": .yesno.id },
+    { "name":"includeInVLE", "type":"Refdata", "category": .yesno.id },
+    { "name":"enterpriseAccess", "type":"Refdata", "category": .yesno.id },
+    { "name":"alumniAccess", "type":"Refdata", "category": .yesno.id },
+    { "name":"textAndDatMining", "type":"Refdata", "category": .yesno.id },
     { "name":"allRightsReserved", "type":"Text" },
     { "name":"applicabaleCopyrightLaw", "type":"Text" },
     { "name":"archivingAllowed", "type":"Refdata", "category": .yesno.id },
@@ -50,25 +50,54 @@
     { "name":"reservesElectronic", "type":"Refdata", "category": .yesno.id },
     { "name":"reservesPrint", "type":"Refdata", "category": .yesno.id },
     { "name":"scholarlySharing", "type":"Refdata", "category": .yesno.id },
-    { "name":"aIntegerProp", "type":"Integer" },
+    { "name":"anIntegerProp", "type":"Integer" },
     { "name":"aDecimalProp", "type":"Decimal" },
     { "name":"testingBoolean", "type":"Boolean" }
   ],
   "licenseDefs": [
     {
-      "name": "Test License 001",
-      "description": "This is a test licenses",
-      "tags": ["New license"],
-      "customProperties": {
-        "WalkInAccess" :[{"value": .yesno.values[0].id }],
-        "IncludeInCoursepacks"  :[{ "value": .yesno.values[1].id }],
-        "distanceEducation"  :["Yes"],
-        "scholarlySharing"  :[{ "value": "No" }],
-        "aDecimalProp"  :[{ "value": 1.2 },{ "value": 1.4 }],
-        "aIntegerProp"  :[2,4,6,8],
-        "allRightsReserved"  :[{ "value": "Arbitrary text" }],
-        "testingBoolean"  :[{ "value": true }]
-      }
+      name: "Test License 001",
+      description: "This is a test licenses",
+      customProperties: {
+        "walkInAccess": ["Yes"],
+        "licenseLocation": ["sent in, sent back, queried, lost, found, subjected to public inquiry, lost again, and finally buried in soft peat for three months and recycled as firelighters."],
+        "anIntegerProp": [34],
+        "aDecimalProp": [1.23]
+      },
+      tags: [
+        "legacy"
+      ]
+    },
+    {
+      name: "Test License 002",
+      tags: [
+        "legacy"
+      ]
+    },
+    {
+      name: "Test License 003",
+      tags: [
+        "Test4"
+      ]
+    },
+    {
+      name: "BMJ Journals Online 2011-2012 NESLi2",
+      tags: [
+        "Test5"
+      ]
+    },
+    {
+      name: "Academic Rights Press/Test Consortium/InteLex Collections - Perpetual Purchase Agreement",
+      tags: [
+        "Test6"
+      ]
+    },
+    {
+      name: "American Association for the Advancement of Science/NESLi2/Science Classic/2014-2114",
+      description: "AAA/NESLi2 consortial license. DIKU University is a signatory to this consortial license",
+      tags: [
+        "Test7"
+      ]
     }
   ]
 }
