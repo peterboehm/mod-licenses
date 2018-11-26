@@ -9,10 +9,12 @@
   },
   "propertyDefinitions":[
     { "name":"walkInAccess", "type":"Refdata", "category": .yesno.id, "description":"Is Walk In Access Allowed" },
+    { "name":"walkInAccess_NOTE", "type":"Text" },
     { "name":"annualOptOut", "type":"Refdata", "category": .yesno.id },
     { "name":"ILL", "type":"Refdata", "category": .yesno.id },
     { "name":"partnerAccess", "type":"Refdata", "category": .yesno.id },
     { "name":"includeInCoursepacks", "type":"Refdata", "category": .yesno.id },
+    { "name":"includeInCoursepacks_NOTE", "type":"Text" },
     { "name":"APCAndOffsetting", "type":"Refdata", "category": .yesno.id },
     { "name":"authorisedAccess", "type":"Refdata", "category": .yesno.id },
     { "name":"concurrentAccess", "type":"Refdata", "category": .yesno.id },
@@ -55,6 +57,23 @@
     { "name":"testingBoolean", "type":"Boolean" }
   ],
   "licenseDefs": [
+    {
+      name: "American Association for the Advancement of Science/NESLi2/Science Classic/2014-2114",
+      description: "License for the AAAS Science Classic Agreement",
+      customProperties: {
+        "walkInAccess": ["Yes"],
+        "walkInAccess_NOTE": [ "Walk-In Users may be given access to the Licensed Material by any wireless Secure Network. Walk-In Users are not allowed off-site access to the Licensed Material."],
+        "includeInCoursepacks": ["Yes"],
+        "includeInCoursepacks_NOTE": ["Authorised Users must specify the title and copyright owner of the Licensed Material used in the course packs. Course packs in other formats, such as Braille, may also be offered to Authorised Users. Furthermore"],
+        "ILL": ["Yes"],
+        "includeInVLE": ["Yes"],
+        "remoteAccess": ["Yes"],
+        "alumniAccess": ["Yes"],
+        "enterpriseAccess": ["No"],
+        "APCAndOffsetting": ["Yes"],
+        "concurrentAccess": ["Yes"]
+      }
+    },
     {
       name: "Test License 001",
       description: "This is a test licenses",
