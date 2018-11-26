@@ -12,6 +12,8 @@ fi
 
 echo Running
 
+export TARGET="http://localhost:8081"
+
 # echo get licenses config
 # curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X GET http://localhost:8080/licenses/kiwt/config
 echo "Load JSON file"
@@ -25,7 +27,7 @@ IFS=$'\n'       # make newlines the only separator
 echo "Load test refdata"
 yesNo=$(echo "$json_result" | jq -rc ".yesno" )
 echo "Posting ${yesNo}"
-result=$(curl -sSL -H 'Accept:application/json' -H 'Content-Type: application/json' -H 'X-OKAPI-TENANT: diku' -XPOST 'http://localhost:8080/licenses/refdata' -d "${yesNo}")
+result=$(curl -sSL -H 'Accept:application/json' -H 'Content-Type: application/json' -H 'X-OKAPI-TENANT: diku' -XPOST "$TARGET/licenses/refdata" -d "${yesNo}")
 echo $result | jq
 
 # Write the yes no value returned from the server to the json data internally for substitution, and reload from the file.
@@ -36,7 +38,7 @@ echo "Load prop defs"
 count=0
 for row in $(echo "$json_result" | jq -rc ".propertyDefinitions[]" ); do
   echo "Posting ${row}"
-  result=$(curl -sSL -H 'Accept:application/json' -H 'Content-Type: application/json' -H 'X-OKAPI-TENANT: diku' -XPOST 'http://localhost:8080/licenses/custprops' -d "${row}")
+  result=$(curl -sSL -H 'Accept:application/json' -H 'Content-Type: application/json' -H 'X-OKAPI-TENANT: diku' -XPOST "$TARGET/licenses/custprops" -d "${row}")
   echo $result | jq
   json_data=`echo "$json_data" | jq ".propertyDefinitions[$count] = $result"`
   count=$((count+1)) 
@@ -50,7 +52,7 @@ echo "Load licenses"
 count=0
 for row in $(echo "$json_result" | jq -rc ".licenseDefs[]"); do
   echo "Posting ${row}"
-  result=$(curl -sSL -H 'Accept:application/json' -H 'Content-Type: application/json' -H 'X-OKAPI-TENANT: diku' -XPOST 'http://localhost:8080/licenses/licenses' -d "${row}")
+  result=$(curl -sSL -H 'Accept:application/json' -H 'Content-Type: application/json' -H 'X-OKAPI-TENANT: diku' -XPOST "$TARGET/licenses/licenses" -d "${row}")
   echo $result | jq
   json_data=`echo "$json_data" | jq ".licenseDefs[$count] = $result"`
   count=$((count+1))
@@ -58,3 +60,6 @@ done
 
 echo "Final JSON data"
 echo "$json_data" | jq
+
+echo Run a search for licenses
+./okapi-cmd /licenses/licenses
