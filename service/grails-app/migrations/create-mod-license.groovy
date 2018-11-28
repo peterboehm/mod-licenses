@@ -1,10 +1,10 @@
 databaseChangeLog = {
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-1") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-1") {
         createSequence(sequenceName: "hibernate_sequence")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-2") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-2") {
         createTable(tableName: "custom_property") {
             column(autoIncrement: "true", name: "id", type: "BIGINT") {
                 constraints(primaryKey: "true", primaryKeyName: "custom_propertyPK")
@@ -20,7 +20,7 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-3") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-3") {
         createTable(tableName: "custom_property_boolean") {
             column(name: "id", type: "BIGINT") {
                 constraints(nullable: "false")
@@ -32,7 +32,7 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-4") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-4") {
         createTable(tableName: "custom_property_container") {
             column(name: "id", type: "BIGINT") {
                 constraints(nullable: "false")
@@ -40,7 +40,7 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-5") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-5") {
         createTable(tableName: "custom_property_decimal") {
             column(name: "id", type: "BIGINT") {
                 constraints(nullable: "false")
@@ -52,7 +52,7 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-6") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-6") {
         createTable(tableName: "custom_property_definition") {
             column(name: "pd_id", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
@@ -74,7 +74,7 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-7") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-7") {
         createTable(tableName: "custom_property_integer") {
             column(name: "id", type: "BIGINT") {
                 constraints(nullable: "false")
@@ -86,7 +86,7 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-8") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-8") {
         createTable(tableName: "custom_property_refdata") {
             column(name: "id", type: "BIGINT") {
                 constraints(nullable: "false")
@@ -98,7 +98,7 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-9") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-9") {
         createTable(tableName: "custom_property_refdata_definition") {
             column(name: "pd_id", type: "VARCHAR(255)") {
                 constraints(nullable: "false")
@@ -110,7 +110,7 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-10") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-10") {
         createTable(tableName: "custom_property_text") {
             column(name: "id", type: "BIGINT") {
                 constraints(nullable: "false")
@@ -122,7 +122,7 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-11") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-11") {
         createTable(tableName: "license") {
             column(name: "lic_id", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
@@ -140,11 +140,15 @@ databaseChangeLog = {
                 constraints(nullable: "false")
             }
 
+            column(name: "lic_type_rdv_fk", type: "VARCHAR(36)")
+
+            column(name: "lic_status_rdv_fk", type: "VARCHAR(36)")
+
             column(name: "lic_description", type: "VARCHAR(255)")
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-12") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-12") {
         createTable(tableName: "license_tag") {
             column(name: "license_tags_id", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
@@ -154,7 +158,7 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-13") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-13") {
         createTable(tableName: "refdata_category") {
             column(name: "rdc_id", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
@@ -170,7 +174,7 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-14") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-14") {
         createTable(tableName: "refdata_value") {
             column(name: "rdv_id", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
@@ -194,7 +198,7 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-15") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-15") {
         createTable(tableName: "tag") {
             column(autoIncrement: "true", name: "id", type: "BIGINT") {
                 constraints(primaryKey: "true", primaryKeyName: "tagPK")
@@ -214,55 +218,55 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-16") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-16") {
         addPrimaryKey(columnNames: "id", constraintName: "custom_property_booleanPK", tableName: "custom_property_boolean")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-17") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-17") {
         addPrimaryKey(columnNames: "id", constraintName: "custom_property_containerPK", tableName: "custom_property_container")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-18") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-18") {
         addPrimaryKey(columnNames: "id", constraintName: "custom_property_decimalPK", tableName: "custom_property_decimal")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-19") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-19") {
         addPrimaryKey(columnNames: "pd_id", constraintName: "custom_property_definitionPK", tableName: "custom_property_definition")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-20") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-20") {
         addPrimaryKey(columnNames: "id", constraintName: "custom_property_integerPK", tableName: "custom_property_integer")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-21") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-21") {
         addPrimaryKey(columnNames: "id", constraintName: "custom_property_refdataPK", tableName: "custom_property_refdata")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-22") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-22") {
         addPrimaryKey(columnNames: "pd_id", constraintName: "custom_property_refdata_definitionPK", tableName: "custom_property_refdata_definition")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-23") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-23") {
         addPrimaryKey(columnNames: "id", constraintName: "custom_property_textPK", tableName: "custom_property_text")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-24") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-24") {
         addPrimaryKey(columnNames: "lic_id", constraintName: "licensePK", tableName: "license")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-25") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-25") {
         addPrimaryKey(columnNames: "rdc_id", constraintName: "refdata_categoryPK", tableName: "refdata_category")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-26") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-26") {
         addPrimaryKey(columnNames: "rdv_id", constraintName: "refdata_valuePK", tableName: "refdata_value")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-27") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-27") {
         addUniqueConstraint(columnNames: "pd_name", constraintName: "UC_CUSTOM_PROPERTY_DEFINITIONPD_NAME_COL", tableName: "custom_property_definition")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-28") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-28") {
         createIndex(indexName: "rdv_entry_idx", tableName: "refdata_value") {
             column(name: "rdv_value")
 
@@ -270,41 +274,49 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-29") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-29") {
         createIndex(indexName: "td_type_idx", tableName: "custom_property_definition") {
             column(name: "pd_type")
         }
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-30") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-30") {
         addForeignKeyConstraint(baseColumnNames: "definition_id", baseTableName: "custom_property", constraintName: "FK36grvth72fb7wu5i5xaeqjitw", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "pd_id", referencedTableName: "custom_property_definition")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-31") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-31") {
         addForeignKeyConstraint(baseColumnNames: "value_id", baseTableName: "custom_property_refdata", constraintName: "FK5ogn0fedwxxy4fhmq9du4qej2", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "rdv_id", referencedTableName: "refdata_value")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-32") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-32") {
         addForeignKeyConstraint(baseColumnNames: "tag_id", baseTableName: "license_tag", constraintName: "FK8ityqdn37wc4tctg9d4mjxioq", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "tag")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-33") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-33") {
+        addForeignKeyConstraint(baseColumnNames: "lic_type_rdv_fk", baseTableName: "license", constraintName: "FK9ci2rl35p8asb3ntcfwh4y2to", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "rdv_id", referencedTableName: "refdata_value")
+    }
+
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-34") {
         addForeignKeyConstraint(baseColumnNames: "category_id", baseTableName: "custom_property_refdata_definition", constraintName: "FKbrh88caagajlvrpaydg4tr3qx", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "rdc_id", referencedTableName: "refdata_category")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-34") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-35") {
         addForeignKeyConstraint(baseColumnNames: "parent_id", baseTableName: "custom_property", constraintName: "FKd5u2tgpracxvk1xw8pdreuj5h", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "custom_property_container")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-35") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-36") {
+        addForeignKeyConstraint(baseColumnNames: "lic_status_rdv_fk", baseTableName: "license", constraintName: "FKfo7otg3447g3lig18jffflxhg", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "rdv_id", referencedTableName: "refdata_value")
+    }
+
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-37") {
         addForeignKeyConstraint(baseColumnNames: "rdv_owner", baseTableName: "refdata_value", constraintName: "FKh4fon2a7k4y8b2sicjm0i6oy8", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "rdc_id", referencedTableName: "refdata_category")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-36") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-38") {
         addForeignKeyConstraint(baseColumnNames: "custom_properties_id", baseTableName: "license", constraintName: "FKkf3sdhtua5h6x9l6aw5mmv6xm", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "custom_property_container")
     }
 
-    changeSet(author: "sosguthorpe (generated)", id: "1542885939016-37") {
+    changeSet(author: "ianibbo (generated)", id: "1543410625519-39") {
         addForeignKeyConstraint(baseColumnNames: "license_tags_id", baseTableName: "license_tag", constraintName: "FKrcsk9cvqiufe90gacx7gibs5u", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "lic_id", referencedTableName: "license")
     }
 }
