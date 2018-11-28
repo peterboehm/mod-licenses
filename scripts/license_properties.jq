@@ -110,13 +110,6 @@
       tags: [
         "Test6"
       ]
-    },
-    {
-      name: "American Association for the Advancement of Science/NESLi2/Science Classic/2014-2114",
-      description: "AAA/NESLi2 consortial license. DIKU University is a signatory to this consortial license",
-      tags: [
-        "Test7"
-      ]
     }
   ]
 }

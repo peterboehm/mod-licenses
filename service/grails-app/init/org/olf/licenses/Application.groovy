@@ -20,13 +20,13 @@ class Application extends GrailsAutoConfiguration {
     GrailsApp.run(Application, args)
   }
 
-  @Override
-  void doWithDynamicMethods() {
+  // @Override
+  // void doWithDynamicMethods() {
     // Bind extra methods to the class.
-    log.debug("Extending Domain classes.")
-    (grailsApplication.getArtefacts("Domain")).each {GrailsClass gc ->
-      GrailsDomainRefdataHelpers.addMethods(gc)
-    }
-  }
+  //   log.debug("Extending Domain classes.")
+  //   (grailsApplication.getArtefacts("Domain")).each {GrailsClass gc ->
+  //     GrailsDomainRefdataHelpers.addMethods(gc)
+  //   }
+  // }
 
 }
