@@ -16,3 +16,11 @@ grails -Dgrails.env=dbGen dbm-generate-gorm-changelog my-new-changelog.groovy
 
 This module runs on port 8081 when run from the run_external_reg.sh script, and this port is the assumed default for the deployment descriptor. This is so that
 module developers can run mod_erm and mod_licenses side by side in development mode.
+
+## Additional information
+
+### Issue tracker
+
+See project [MODLIC](https://issues.folio.org/browse/MODLIC)
+at the [FOLIO issue tracker](https://dev.folio.org/guidelines/issue-tracker).
+
