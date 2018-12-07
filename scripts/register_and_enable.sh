@@ -12,7 +12,7 @@ if [ ! -d "$DESCRIPTORDIR" ]; then
 fi
 
 curl -XDELETE http://localhost:9130/_/proxy/tenants/diku/modules/mod-licenses-1.1.0
-curl -XDELETE http://localhost:9130/_/discovery/modules/mod-licenses-1.1.0/localhost-mod-licenses-1.0.0
+curl -XDELETE http://localhost:9130/_/discovery/modules/mod-licenses-1.1.0/localhost-mod-licenses-1.1.0
 curl -XDELETE http://localhost:9130/_/proxy/modules/mod-licenses-1.1.0
 # ./gradlew clean generateDescriptors
 curl -XPOST http://localhost:9130/_/proxy/modules -d @"${DESCRIPTORDIR}/ModuleDescriptor.json"
