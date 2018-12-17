@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 QTEST=`echo '{  "value":"one" }' | jq -r ".value"`
 

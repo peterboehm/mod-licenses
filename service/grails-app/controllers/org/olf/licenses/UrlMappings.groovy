@@ -5,8 +5,6 @@ class UrlMappings {
   static mappings = {
 
     "/"(controller: 'application', action:'index')
-    "/_/tenant"(controller: 'okapi', action:'tenant')
-
     "/licenses/licenses"(resources:'license')
 
     '/licenses/refdata'(resources: 'refdata') {
