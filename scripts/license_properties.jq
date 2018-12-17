@@ -54,7 +54,8 @@
     { "name":"scholarlySharing", "type":"Refdata", "category": .yesno.id },
     { "name":"anIntegerProp", "type":"Integer" },
     { "name":"aDecimalProp", "type":"Decimal" },
-    { "name":"testingBoolean", "type":"Boolean" }
+    { "name":"testingBoolean", "type":"Boolean" },
+    { "name":"aBlobbyProp", "type":"Blob" }
   ],
   "licenseDefs": [
     {
