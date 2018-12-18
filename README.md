@@ -12,6 +12,10 @@ FOLIO service module - licenses
 
 grails -Dgrails.env=dbGen dbm-generate-gorm-changelog my-new-changelog.groovy
 
+## Running using grails run-app with the vagrant provided postgres
+
+grails -port 8081 -Dgrails.env=vagrant-db run-app
+
 ## Troubleshooting
 
 This module runs on port 8081 when run from the run_external_reg.sh script, and this port is the assumed default for the deployment descriptor. This is so that
