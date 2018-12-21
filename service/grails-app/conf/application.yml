@@ -117,7 +117,7 @@ dataSource:
 environments:
   test:
     dataSource:
-      url: jdbc:postgresql://localhost:5432/olftest
+      url: "jdbc:postgresql://${db.host:localhost}:${db.port:5432}/${db.database:okapi_modules_test}"
 
   dbGen:
     grails:
@@ -134,7 +134,7 @@ environments:
 
   production:
     dataSource:
-      url: jdbc:postgresql://localhost:5432/olf
+      url: "jdbc:postgresql://${db.host:localhost}:${db.port:5432}/${db.database:okapi_modules}"
       properties:
         initialSize: 5
         maxActive: 50
