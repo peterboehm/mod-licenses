@@ -61,6 +61,8 @@
     {
       name: "American Association for the Advancement of Science/NESLi2/Science Classic/2014-2114",
       description: "License for the AAAS Science Classic Agreement",
+      status: 'Current',
+      type: 'Actual',
       customProperties: {
         "walkInAccess": ["Yes"],
         "walkInAccess_NOTE": [ "Walk-In Users may be given access to the Licensed Material by any wireless Secure Network. Walk-In Users are not allowed off-site access to the Licensed Material."],
@@ -77,6 +79,8 @@
     },
     {
       name: "Test License 001",
+      status: 'Current',
+      type: 'Actual',
       description: "This is a test licenses",
       customProperties: {
         "walkInAccess": ["Yes"],
@@ -90,6 +94,8 @@
     },
     {
       name: "Test License 002",
+      status: 'Current',
+      type: 'Actual',
       tags: [
         "legacy"
       ]
@@ -102,6 +108,8 @@
     },
     {
       name: "BMJ Journals Online 2011-2012 NESLi2",
+      status: 'Deleted',
+      type: 'Consortial Template',
       tags: [
         "Test5"
       ]
