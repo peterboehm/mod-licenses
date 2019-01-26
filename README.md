@@ -24,7 +24,7 @@ Post a json document that takes properties as defined in the [license domain cla
 
 The newly created license is returned, with its id property set so you can extract and reuse the id in other calls.
 
-the status field is a refdata field, but the string is being silently converted into a lookup to make the API more usable
+the status field is a refdata field, but the string is being silently converted into a lookup to make the API more usable. This is also true, in this case, for the licenseEndAdvanceNoticeRequired refdata property "Yes".
 
     curl -sSL -H 'Accept:application/json' \
               -H "X-Okapi-Token: ${AUTH_TOKEN}" \
