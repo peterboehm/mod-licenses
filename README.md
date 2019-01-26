@@ -52,7 +52,7 @@ An example of the data returned can be found [here](docs/example_license.json)
 
 Use the Retrieve operation above, then HTTP-PUT the JSON back to /licenses/licenses/{UUID}. Simples.
 
-You can update individual fields by providing just a single property, so to update the description, PUT a JSON document containing only { name : 'value' }. Yes, you are right: this isn't proper PUT semantics.
+You can update individual fields by providing just a single property, so to update the description, PUT a JSON document containing only { name : 'value' }. Yes, you are right: this isn't proper PUT semantics. Grails is treating PUT and PATCH as synonyms - expect this to be corrected in the future.
 
 ## Delete a license
 
@@ -91,7 +91,7 @@ N.B. searching for lowercase current here as values are normalised for refdata.
 
 ### List all the licenses that apply to the package 12-334 as it is defined in eholdings
 
-   curl -sSL -H 'Accept:application/json' \
+    curl -sSL -H 'Accept:application/json' \
               -H "X-Okapi-Token: ${AUTH_TOKEN}" \
               -H 'Content-Type: application/json' \
               -H 'X-OKAPI-TENANT: diku' -XGET \
@@ -99,7 +99,7 @@ N.B. searching for lowercase current here as values are normalised for refdata.
 
 Actually, this query will just return everything that has a linkId of 12-334 we really should be more specific by saying we want links where the linkId is our FK (12-334) AND the linked record type is kb-ebsco.package:
 
-   curl -sSL -H 'Accept:application/json' \
+    curl -sSL -H 'Accept:application/json' \
               -H "X-Okapi-Token: ${AUTH_TOKEN}" \
               -H 'Content-Type: application/json' \
               -H 'X-OKAPI-TENANT: diku' -XGET \
@@ -111,7 +111,7 @@ There are 2 different restruction mechanisms supported, these are provided to mi
 exact match restrictions and used as a result of facet lists or other hard-coded reference values. In order to provide more traditional left anchored phrase search type functons,
 use term and match:
 
-   curl -sSL -H 'Accept:application/json' \
+    curl -sSL -H 'Accept:application/json' \
               -H "X-Okapi-Token: ${AUTH_TOKEN}" \
               -H 'Content-Type: application/json' \
               -H 'X-OKAPI-TENANT: diku' -XGET \
@@ -119,7 +119,7 @@ use term and match:
 
 Match can be repeated to look in multiple fields for term
 
-   curl -sSL -H 'Accept:application/json' \
+    curl -sSL -H 'Accept:application/json' \
               -H "X-Okapi-Token: ${AUTH_TOKEN}" \
               -H 'Content-Type: application/json' \
               -H 'X-OKAPI-TENANT: diku' -XGET \
@@ -127,7 +127,7 @@ Match can be repeated to look in multiple fields for term
 
 ### List all licenses with a custom property licenseEndAdvanceNoticeRequired == Yes
 
-   curl -sSL -H 'Accept:application/json' \
+    curl -sSL -H 'Accept:application/json' \
               -H "X-Okapi-Token: ${AUTH_TOKEN}" \
               -H 'Content-Type: application/json' \
               -H 'X-OKAPI-TENANT: diku' -XGET \
