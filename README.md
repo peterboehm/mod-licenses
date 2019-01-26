@@ -18,6 +18,17 @@ looking to maintain and extend mod-licenses.
 
 If you are a folio module developer looking to use mod-license services the following URL patterns may help you interact with the service:
 
+## About linking
+
+Some of the examples below talk about linking Licenses to other resources on the platform. This module provides a very open and extensible method for making these links, and it's
+largely inspired by the semantic web subject-predicate-object model and the idea that anything can be linked to anything.
+
+This freedom should be used carefully. Without careful curation of the model, this facility could easily descend into a rats nest of mismatched semantics, and it's really important
+to think through your link structure and information architecture. It's particularly strongly suggested that you think about having hierarchical link types and reference IDs. Link types might
+be made hierarchical by having a module.resource-type structure - this would allow you to find all the links to a particular module, and then more specific links to a given resource.
+
+Postel's law is the way here: Be conservative in what you do, be liberal in what you accept from others.
+
 ## Create a license
 
 Post a json document that takes properties as defined in the [license domain class](https://github.com/folio-org/mod-licenses/blob/master/service/grails-app/domain/org/olf/licenses/License.groovy) and creates a new license.
