@@ -138,7 +138,7 @@ Match can be repeated to look in multiple fields for term
               -H 'X-OKAPI-TENANT: diku' -XGET \
               "http://OKAPI_HOST:9130/licenses/licenses?stats=true&filters=customProperties.licenseEndAdvanceNoticeRequired.value%3DYes"
 
-## Listing all the custo properties
+## Listing all the custom properties
 
 List all custom property definitions with the following. The usual CRUD semantics apply
 
@@ -162,7 +162,7 @@ Get a specific refdata category as below. The usual CRUD semantics apply
 
 ## Regenerating the liquibase migrations script
 
-grails -Dgrails.env=dbGen dbm-generate-gorm-changelog my-new-changelog.groovy
+grails -Dgrails.env=vagrant-db dbm-generate-gorm-changelog my-new-changelog.groovy
 
 ## Running using grails run-app with the vagrant provided postgres
 
