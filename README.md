@@ -1,6 +1,6 @@
 # mod-licenses
 
-Copyright (C) 2018 The Open Library Foundation
+Copyright (C) 2018,2019 The Open Library Foundation
 
 This software is distributed under the terms of the Apache License,
 Version 2.0. See the file "[LICENSE](LICENSE)" for more information.
@@ -109,6 +109,33 @@ Actually, this query will just return everything that has a linkId of 12-334 we 
               -H 'Content-Type: application/json' \
               -H 'X-OKAPI-TENANT: diku' -XGET \
               "http://OKAPI_HOST:9130/licenses/licenses?stats=true&filters=links.linkId%3D12-334&filters=links.linkType%3Dkb-ebsco.package"
+
+### Form a new link with Object 5534-2343-2224-2223 as it's defined in my-new-super-module
+
+To create a new link, you can simply post an update to the license, for example
+
+    curl -sSL -H 'Accept:application/json' \
+              -H "X-Okapi-Token: ${AUTH_TOKEN}" \
+              -H 'Content-Type: application/json' \
+              -H 'X-OKAPI-TENANT: diku' -XPUT \
+              "http://OKAPI_HOST:9130/licenses/licenses/UUID-OF-LICENSE-TO-UPDATE" -d ' {
+      links:[
+        "linkType": "my-new-super-module",
+	"linkLabel": "An example link to an EKB or eholdings defined package",
+	"direction": "out",
+	"relation": "describes",
+        "linkId": "5534-2343-2224-2223"
+      ]
+    }
+    '
+
+### In my-new-super-module List all licenses attached to my resource 5534-2343-2224-2223
+
+    curl -sSL -H 'Accept:application/json' \
+              -H "X-Okapi-Token: ${AUTH_TOKEN}" \
+              -H 'Content-Type: application/json' \
+              -H 'X-OKAPI-TENANT: diku' -XGET \
+              "http://OKAPI_HOST:9130/licenses/licenses?stats=true&filters=links.linkId%3D5534-2343-2224-2223&filters=links.linkType%3Dmy-new-super-module"
 
 ### List all licenses with a name that starts "ASC"
 
