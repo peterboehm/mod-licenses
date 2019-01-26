@@ -14,9 +14,9 @@ is minimal, but mod-licenses then provides a user-extensible set of custom prope
 is split into two sections: The first gives information for developers wanting to use the services that mod-licenses exposes to the FOLIO LSP. The latter sections are intended for developers
 looking to maintain and extend mod-licenses.
 
-# For FOLIO service users
+# For developers wanting to use mod-license resources
 
-If you are a folio module developer looking to use mod-license services the following URL patterns may help you. If you are a developer of mod-licenses, see lower.
+If you are a folio module developer looking to use mod-license services the following URL patterns may help you interact with the service:
 
 ## Create a license
 
@@ -137,6 +137,28 @@ Match can be repeated to look in multiple fields for term
               -H 'Content-Type: application/json' \
               -H 'X-OKAPI-TENANT: diku' -XGET \
               "http://OKAPI_HOST:9130/licenses/licenses?stats=true&filters=customProperties.licenseEndAdvanceNoticeRequired.value%3DYes"
+
+## Listing all the custo properties
+
+List all custom property definitions with the following. The usual CRUD semantics apply
+
+    curl -sSL -H 'Accept:application/json' \
+              -H "X-Okapi-Token: ${AUTH_TOKEN}" \
+              -H 'Content-Type: application/json' \
+              -H 'X-OKAPI-TENANT: diku' -XGET \
+              "http://OKAPI_HOST:9130/licenses/custprops?stats=true"
+
+## List all values for a refdata category License.Type
+
+Get a specific refdata category as below. The usual CRUD semantics apply
+
+    curl -sSL -H 'Accept:application/json' \
+              -H "X-Okapi-Token: ${AUTH_TOKEN}" \
+              -H 'Content-Type: application/json' \
+              -H 'X-OKAPI-TENANT: diku' -XGET \
+              "http://OKAPI_HOST:9130/licenses/refdata?filter=desc%3dLicense.Type"
+
+# For developers wanting to maintain and extend mod-licenses
 
 ## Regenerating the liquibase migrations script
 
