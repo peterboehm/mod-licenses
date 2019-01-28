@@ -29,6 +29,10 @@ be made hierarchical by having a module.resource-type structure - this would all
 
 Postel's law is the way here: Be conservative in what you do, be liberal in what you accept from others.
 
+As of Monday 2019-01-28, we no longer include an expanded list of licenseLinks in the returned license object. There may be 10s of 000s of license links and this would be a 
+heavy payload to drop on an unsuspecting client. Clients will therefore need to query the /licenses/licenseLinks endpoint and filter by owner==UUID_OF_LICENSE in order to enumerate
+the list of things a license might be linked to. This will give you full control over pagination, but prevent you from easily getting hold of the linked items in a default call.
+
 ## Create a license
 
 Post a json document that takes properties as defined in the [license domain class](https://github.com/folio-org/mod-licenses/blob/master/service/grails-app/domain/org/olf/licenses/License.groovy) and creates a new license.

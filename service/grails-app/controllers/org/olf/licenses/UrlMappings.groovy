@@ -6,6 +6,7 @@ class UrlMappings {
 
     "/"(controller: 'application', action:'index')
     "/licenses/licenses"(resources:'license')
+    "/licenses/licenseLinks"(resources:'licenseLink')
 
     '/licenses/refdata'(resources: 'refdata') {
       collection {
