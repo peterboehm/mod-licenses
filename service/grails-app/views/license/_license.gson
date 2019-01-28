@@ -3,4 +3,4 @@ import org.olf.licenses.License
 import groovy.transform.*
 
 @Field License license
-json g.render(license, [expand: ['licenseProps','tags', 'customProperties', 'links', 'status', 'type' ]])
+json g.render(license, [expand: ['licenseProps','tags', 'customProperties', 'status', 'type' ]])
