@@ -1,4 +1,6 @@
-# mod-licenses /licenses resource
+# mod-licenses::/licenses/licenses URL path
+
+mod-licenses exposes a license resource on this path.
 
 ## Create a license
 
