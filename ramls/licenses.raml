@@ -1,7 +1,7 @@
 #%RAML 1.0
 
 title: Licenses API
-baseUri: https://github.com/folio-org/mod-licenses
+baseUri: http://localhost:9130/licenses/
 version: v1
 
 documentation:
@@ -21,7 +21,7 @@ types:
           description: "OK"
     post:
       description: Create a new license
-      body: 
+      body:
         application/json:
           type: License
     /{licenseId}:

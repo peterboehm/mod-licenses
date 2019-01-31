@@ -14,12 +14,14 @@ class License implements CustomProperties,MultiTenant<License> {
   String description
   Date dateCreated
   Date lastUpdated
+  Date startDate
+  Date endDate
 
 
-  @Defaults(['Actual','Consortial Template'])
+  @Defaults(['Local', 'Consortial', 'National', 'Alliance' ])
   RefdataValue type
 
-  @Defaults(['Current','Deleted'])
+  @Defaults(['In Negotiation','Not Yet Active', 'Active', 'Rejected', 'Expired'])
   RefdataValue status
 
   static hasMany = [
@@ -38,6 +40,8 @@ class License implements CustomProperties,MultiTenant<License> {
          status(nullable:true, blank:false)
     dateCreated(nullable:true, blank: true)
     lastUpdated(nullable:true, blank: true)
+      startDate(nullable:true, blank: true)
+        endDate(nullable:true, blank: true)
   }
 
   static mapping = {
@@ -49,6 +53,8 @@ class License implements CustomProperties,MultiTenant<License> {
         version column: 'lic_version'
     dateCreated column: 'lic_date_created'
     lastUpdated column: 'lic_last_updated'
+      startDate column: 'lic_start_date'
+        endDate column: 'lic_end_date'
            tags cascade: 'all-delete-orphan'
           links cascade: 'all-delete-orphan'
   }
