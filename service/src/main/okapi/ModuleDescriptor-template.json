@@ -7,7 +7,7 @@
       "version": "${info.app.minorVersion}",
       "handlers" : [
         {
-          "methods": ["GET", "POST"],
+          "methods": ["GET", "DELETE", "POST", "PUT"],
           "pathPattern": "/licenses/*"
         }
       ]
