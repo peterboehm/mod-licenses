@@ -29,16 +29,16 @@ pipeline {
             def gradleVersion = foliociLib.gradleProperty('appVersion')
 
             env.name = env.ORG_GRADLE_PROJECT_appName
-        
-            // if release 
+
+            // if release
             if ( foliociLib.isRelease() ) {
               // make sure git tag and version match
               if ( foliociLib.tagMatch(gradleVersion) ) {
-                env.isRelease = true 
+                env.isRelease = true
                 env.dockerRepo = 'folioorg'
                 env.version = gradleVersion
               }
-              else { 
+              else {
                 error('Git release tag and Maven version mismatch')
               }
             }
@@ -48,18 +48,24 @@ pipeline {
             }
           }
         }
-        sendNotifications 'STARTED'  
+        sendNotifications 'STARTED'
       }
     }
 
-    stage('Gradle Build') { 
+    stage('Lint raml-cop') {
+      steps {
+        runLintRamlCop()
+      }
+    }
+
+    stage('Gradle Build') {
       steps {
         dir(env.BUILD_DIR) {
           sh "./gradlew $env.GRADLEW_OPTS -PappVersion=${env.version} assemble"
         }
       }
     }
-   
+
     stage('Build Docker') {
       steps {
         dir(env.BUILD_DIR) {
@@ -67,11 +73,11 @@ pipeline {
         }
         // debug
         sh "cat $env.MD"
-      } 
+      }
     }
 
-    stage('Publish Docker Image') { 
-      when { 
+    stage('Publish Docker Image') {
+      when {
         anyOf {
           branch 'master'
           expression { return env.isRelease }
@@ -90,7 +96,7 @@ pipeline {
 
     stage('Publish Module Descriptor') {
       when {
-        anyOf { 
+        anyOf {
           branch 'master'
           expression { return env.isRelease }
         }
@@ -98,9 +104,30 @@ pipeline {
       steps {
         script {
           def foliociLib = new org.folio.foliociCommands()
-          foliociLib.updateModDescriptor(env.MD) 
+          foliociLib.updateModDescriptor(env.MD)
         }
         postModuleDescriptor(env.MD)
+      }
+    }
+
+    stage('Lint raml schema') {
+      steps {
+        runLintRamlSchema()
+      }
+    }
+
+    stage('Publish API Docs') {
+      when {
+        branch 'master'
+      }
+      steps {
+        sh 'python3 /usr/local/bin/generate_api_docs.py -r raml -l info -o folio-api-docs'
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',
+                          accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                          credentialsId: 'jenkins-aws',
+                          secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+          sh 'aws s3 sync folio-api-docs s3://foliodocs/api'
+        }
       }
     }
 
@@ -109,9 +136,9 @@ pipeline {
   post {
     always {
       dockerCleanup()
-      sendNotifications currentBuild.result 
+      sendNotifications currentBuild.result
     }
   }
 }
-         
+
 
