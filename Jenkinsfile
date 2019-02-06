@@ -52,6 +52,12 @@ pipeline {
       }
     }
 
+    stage('Lint raml-cop') {
+      steps {
+        runLintRamlCop()
+      }
+    }
+
     stage('Gradle Build') {
       steps {
         dir(env.BUILD_DIR) {
@@ -101,6 +107,27 @@ pipeline {
           foliociLib.updateModDescriptor(env.MD)
         }
         postModuleDescriptor(env.MD)
+      }
+    }
+
+    stage('Lint raml schema') {
+      steps {
+        runLintRamlSchema()
+      }
+    }
+
+    stage('Publish API Docs') {
+      when {
+        branch 'master'
+      }
+      steps {
+        sh 'python3 /usr/local/bin/generate_api_docs.py -r raml -l info -o folio-api-docs'
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',
+                          accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                          credentialsId: 'jenkins-aws',
+                          secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+          sh 'aws s3 sync folio-api-docs s3://foliodocs/api'
+        }
       }
     }
 
