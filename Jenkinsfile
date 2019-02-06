@@ -121,7 +121,7 @@ pipeline {
         branch 'master'
       }
       steps {
-        sh 'python3 /usr/local/bin/generate_api_docs.py -r raml -l info -o folio-api-docs'
+        sh "python3 /usr/local/bin/generate_api_docs.py -r ${env.name} -l info -o folio-api-docs"
         withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',
                           accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                           credentialsId: 'jenkins-aws',
