@@ -10,10 +10,17 @@
     "tags":{
       "type": "string"
     },
+    "name":{
+      "type": "string"
+    },
+    "description":{
+      "type": "string"
+    },
     "customProperties":{
       "type": "string"
     }
   },
   "required": [
+    "name"
   ]
 }
