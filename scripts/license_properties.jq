@@ -63,6 +63,8 @@
       description: "License for the AAAS Science Classic Agreement",
       status: "Current",
       type: "Actual",
+      startDate:"2019-01-01",
+      endDateSemantics:"Open Ended",
       customProperties: {
         "walkInAccess": ["Yes"],
         "walkInAccess_NOTE": [ "Walk-In Users may be given access to the Licensed Material by any wireless Secure Network. Walk-In Users are not allowed off-site access to the Licensed Material."],
@@ -82,6 +84,9 @@
       status: "Current",
       type: "Actual",
       description: "This is a test licenses",
+      startDate:"2019-01-1",
+      endDate:"2020-01-01",
+      endDateSemantics:"Explicit",
       customProperties: {
         "walkInAccess": ["Yes"],
         "licenseLocation": ["sent in, sent back, queried, lost, found, subjected to public inquiry, lost again, and finally buried in soft peat for three months and recycled as firelighters."],
