@@ -5,19 +5,24 @@
   "additionalProperties": true,
   "properties": {
     "id": {
-      "type": "string"
+      "type": "string",
+      "description": "The ID of the license"
     },
     "tags":{
-      "type": "string"
+      "type": "string",
+      "description":"Tags are not a string"
     },
     "name":{
-      "type": "string"
+      "type": "string",
+      "description": "Name of license"
     },
     "description":{
-      "type": "string"
+      "type": "string",
+      "description": "Description of license"
     },
     "customProperties":{
-      "type": "string"
+      "type": "string",
+      "description": "Custom properties"
     }
   },
   "required": [
