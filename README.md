@@ -51,6 +51,20 @@ grails -Dgrails.env=vagrant-db dbm-generate-gorm-changelog my-new-changelog.groo
 
 grails -port 8081 -Dgrails.env=vagrant-db run-app
 
+## Integration Tests
+
+You will need to manually set up a postgres database user to hold the different test schemas and tenants. If using the vagrant backend box, use the following
+
+    vagrant ssh
+    sudo su - root
+    sudo su - postgres
+    psql
+    CREATE DATABASE okapi_modules_test;
+    GRANT ALL PRIVILEGES ON DATABASE okapi_modules_test to folio_admin;
+
+This will configure an okapi_modules_test database and grant access to the folio_admin user. If you're using a local postgres setup, you will need the
+emulate the above in your local config.
+
 ## Troubleshooting
 
 This module runs on port 8081 when run from the run_external_reg.sh script, and this port is the assumed default for the deployment descriptor. This is so that
