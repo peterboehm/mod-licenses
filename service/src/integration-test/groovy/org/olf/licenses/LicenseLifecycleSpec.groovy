@@ -75,6 +75,71 @@ class LicenseLifecycleSpec extends GebSpec {
       'LicTestTenantA' | 'LicTestTenantA'
   }
 
+  void "Set up new licenses"(tenant, name, description) {
+
+      when:
+        Map license_to_add =  [
+          'name' : name,
+          'description' : description,
+        ]
+
+        def resp = restBuilder().post("$baseUrl/licenses/licenses") {
+          header 'X-Okapi-Tenant', tenant
+          authHeaders.rehydrate(delegate, owner, thisObject)()
+          contentType 'application/json'
+          accept 'application/json'
+          json license_to_add
+        }
+
+      then:
+       resp.status == CREATED.value()
+
+
+      // Use a GEB Data Table to load each record
+      where:
+        tenant | name | description
+        'LicTestTenantA' | 'My first license'  | 'One'
+        'LicTestTenantA' | 'My second license' | 'Two'
+        'LicTestTenantA' | 'My third license'  | 'Three'
+
+  }
+
+
+  /**
+   * Clear down any tenants created in this run.
+   * If you're having problems with your tests, you might want to disable this test so that your database
+   * is left intact - that will let you dig into the data. However, deleted tenants are not cleanly removed
+   * so you will need to manually clear down your test database before re-running the test in this case. 
+   * for the vagrant provisioned postgres, use
+   *
+   * vagrant ssh
+   * sudo su - root
+   * sudo su - postgres
+   * psql
+   * DROP DATABASE okapi_modules_test;
+   * CREATE DATABASE okapi_modules_test;
+   * GRANT ALL PRIVILEGES ON DATABASE okapi_modules_test to folio_admin;
+   */
+  void destroyTestTenants(tenantid, name) {
+    when:"We delete a tenant"
+      def delete_resp = restBuilder().delete("$baseUrl/_/tenant") {
+        header 'X-Okapi-Tenant', tenantid
+        authHeaders.rehydrate(delegate, owner, thisObject)()
+      }
+
+    then:"The response is OK"
+      delete_resp.status == OK.value()
+
+    // Important NOTE:: hibernateDatastore does not currently provide mirror method to addTenantForSchema. Hence when we delete
+    // a tenant in the TenantTest we remove the schema, but are unable to remove it from the pool. Re-Adding a tenant added in a
+    // previous test will find the old tenant name in the cache, but find the actual schema gone. Until a method is provided in 
+    // hibernateDatastore, we will just use a new tenantId in each separate test.
+    where:
+      tenantid | name
+      'LicTestTenantA' | 'LicTestTenantA'
+  }
+
+
   private RestBuilder restBuilder() {
     new RestBuilder()
   }
