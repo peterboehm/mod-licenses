@@ -1,61 +1,155 @@
 {
-  "yesno":{
-    "desc":"Yes/No/Other", 
-    "values":[
-      { "value":"Yes", "label":"Yes" },
-      { "value":"No", "label":"No" },
-      { "value":"Other", "label":"Other (see notes)" }
-    ]
+  refdataCategories": {
+    "yesno":{
+      "desc":"Yes/No/Other", 
+      "values":[
+        { "value":"Yes", "label":"Yes" },
+        { "value":"No", "label":"No" },
+        { "value":"Other", "label":"Other (see notes)" }
+      ]
+    },
+    .refdataCategories.permittedprohibited": {
+      "desc": "Permitted/Prohibited",
+      "values": [
+        { "value": "Permitted (explicit)" },
+        { "value": "Permitted (explicit) under conditions" },
+        { "value": "Permitted (interpreted)" },
+        { "value": "Prohibited (explicit)" },
+        { "value": "Prohibited (interpreted)" },
+        { "value": "Unmentioned" },
+        { "value": "Not applicable" }
+      ]
+    }
   },
-  "propertyDefinitions":[
-    { "name":"walkInAccess", "type":"Refdata", "category": .yesno.id, "description":"Is Walk In Access Allowed" },
-    { "name":"walkInAccess_NOTE", "type":"Text" },
-    { "name":"annualOptOut", "type":"Refdata", "category": .yesno.id },
-    { "name":"ILL", "type":"Refdata", "category": .yesno.id },
-    { "name":"partnerAccess", "type":"Refdata", "category": .yesno.id },
-    { "name":"includeInCoursepacks", "type":"Refdata", "category": .yesno.id },
-    { "name":"includeInCoursepacks_NOTE", "type":"Text" },
-    { "name":"APCAndOffsetting", "type":"Refdata", "category": .yesno.id },
-    { "name":"authorisedAccess", "type":"Refdata", "category": .yesno.id },
-    { "name":"concurrentAccess", "type":"Refdata", "category": .yesno.id },
-    { "name":"remoteAccess", "type":"Refdata", "category": .yesno.id },
-    { "name":"PCA", "type":"Refdata", "category": .yesno.id },
-    { "name":"multiSite", "type":"Refdata", "category": .yesno.id },
-    { "name":"includeInVLE", "type":"Refdata", "category": .yesno.id },
-    { "name":"enterpriseAccess", "type":"Refdata", "category": .yesno.id },
-    { "name":"alumniAccess", "type":"Refdata", "category": .yesno.id },
-    { "name":"textAndDatMining", "type":"Refdata", "category": .yesno.id },
-    { "name":"allRightsReserved", "type":"Text" },
-    { "name":"applicabaleCopyrightLaw", "type":"Text" },
-    { "name":"archivingAllowed", "type":"Refdata", "category": .yesno.id },
-    { "name":"archivingFormat", "type":"Text" },
-    { "name":"confidentialityofAgreementRequired", "type":"Refdata", "category": .yesno.id },
-    { "name":"confidentialityofUserInformationProtected", "type":"Refdata", "category": .yesno.id },
-    { "name":"copyDigital", "type":"Refdata", "category": .yesno.id },
-    { "name":"copyPrint", "type":"Refdata", "category": .yesno.id },
-    { "name":"coursePackElectronic", "type":"Refdata", "category": .yesno.id },
-    { "name":"coursePackPrint", "type":"Refdata", "category": .yesno.id },
-    { "name":"distanceEducation", "type":"Refdata", "category": .yesno.id },
-    { "name":"fairUseClause", "type":"Text" },
-    { "name":"governingJurisdiction", "type":"Text" },
-    { "name":"governingLaw", "type":"Text" },
-    { "name":"illElectronic", "type":"Refdata", "category": .yesno.id },
-    { "name":"illPrint", "type":"Refdata", "category": .yesno.id },
-    { "name":"illSecureElectronic", "type":"Refdata" , "category": .yesno.id},
-    { "name":"indemnificationbyLicensee", "type":"Refdata", "category": .yesno.id },
-    { "name":"indemnificationbyLicensor", "type":"Refdata", "category": .yesno.id },
-    { "name":"licenseEndAdvanceNoticeRequired", "type":"Refdata", "category": .yesno.id },
-    { "name":"licenseLocation", "type":"Text" },
-    { "name":"otherRestrictions", "type":"Text" },
-    { "name":"perpetualAccess", "type":"Refdata", "category": .yesno.id },
-    { "name":"publisherAcceptsSERU", "type":"Refdata", "category": .yesno.id },
-    { "name":"reservesElectronic", "type":"Refdata", "category": .yesno.id },
-    { "name":"reservesPrint", "type":"Refdata", "category": .yesno.id },
-    { "name":"scholarlySharing", "type":"Refdata", "category": .yesno.id },
-    { "name":"anIntegerProp", "type":"Integer" },
-    { "name":"aDecimalProp", "type":"Decimal" },
-    { "name":"testingBoolean", "type":"Boolean" },
-    { "name":"aBlobbyProp", "type":"Blob" }
+  "propertyDefinitions" : [
+    {
+      "name" : "authorisedUsers",
+      "type" : "Text",
+      "label" : "Definition of authorised user",
+      "description" : "The definition of an authorised user for a resource"
+    },{
+      "name" : "concurrentAccess",
+      "type" : "Integer",
+      "label" : "Number of concurrent users allowed",
+      "description" : "The number of concurrent users allowed by the resource"
+    },{
+      "name" : "walkInAccess",
+      "category" : .refdataCategories.yesno.id,
+      "type" : "Refdata",
+      "label" : "Walk-in access permitted?",
+      "description" : "Can non-members of the library/instittuion use the resource when in the library"
+    },{
+      "name" : "remoteAccess",
+      "category" : .refdataCategories.yesno.id,
+      "type" : "Refdata",
+      "label" : "Access restricted to on-campus/campus network?",
+      "description" : "Can access to the resource be provided from outside the library or institutional location / network"
+    },{
+      "name" : "illElectronic",
+      "category" : .refdataCategories.permittedprohibited.id,
+      "type" : "Refdata",
+      "label" : "Electronic ILL",
+      "description" : "The right to provide the licensed materials via interlibrary loan by way of electronic copies"
+    },{
+      "name" : "illSecureElectronic",
+      "category" : .refdataCategories.permittedprohibited.id,
+      "type" : "Refdata",
+      "label" : "Secure Electronic ILL",
+      "description" : "The right to provide the licensed materials via interlibrary loan by way of secure electronic transmission"
+    },{
+      "name" : "illPrint",
+      "category" : .refdataCategories.permittedprohibited.id,
+      "type" : "Refdata",
+      "label" : "Print ILL",
+      "description" : "The right to provide the licensed materials via interlibrary loan by way of print copies or facsimile transmission"
+    },{
+      "name" : "reservesElectronic",
+      "category" : .refdataCategories.permittedprohibited.id,
+      "type" : "Refdata",
+      "label" : "Storage of electronic copies on secure network",
+      "description" : "The right to make electronic copies of the licensed materials and store them on a secure network"
+    },{
+      "name" : "coursePackElectronic",
+      "category" : .refdataCategories.permittedprohibited.id,
+      "type" : "Refdata",
+      "label" : "Use in electronic coursepacks",
+      "description" : "The right to use licensed materials in collections or compilations of materials assembled in an electronic format by faculty members for use by students in a class for purposes of instruction"
+    },{
+      "name" : "coursePackPrint",
+      "category" : .refdataCategories.permittedprohibited.id,
+      "type" : "Refdata",
+      "label" : "Use in print course packs",
+      "description" : "The right to use licensed materials in collections or compilations of materials assembled in a print format by faculty members for use by students in a class for purposes of instruction"
+    },{
+      "name" : "copyDigital",
+      "category" : .refdataCategories.permittedprohibited.id,
+      "type" : "Refdata",
+      "label" : "Making digital copies",
+      "description" : "The right of the licensee and authorized users to download and digitally copy a reasonable portion of the licensed materials"
+    },{
+      "name" : "copyPrint",
+      "category" : .refdataCategories.permittedprohibited.id,
+      "type" : "Refdata",
+      "label" : "Making print copies",
+      "description" : "The right of the licensee and authorized users to print a reasonable portion of the licensed materials"
+    },{
+      "name" : "scholarlySharing",
+      "category" : .refdataCategories.permittedprohibited.id,
+      "type" : "Refdata",
+      "label" : "Sharing for scholarly use",
+      "description" : "The right of authorized users and/or licensee to transmit hard copy or electronic copy of reasonable amounts of licensed materials to a third party for personal, scholarly, educational, scientific or professional use"
+    },{
+      "name" : "otherRestrictions",
+      "type" : "Text",
+      "label" : "Other restrictions",
+      "description" : "Other restrictions expressed in the license"
+    },{
+      "name" : "textAndDataMining",
+      "category" : .refdataCategories.permittedprohibited.id,
+      "type" : "Refdata",
+      "label" : "Text and Data mining",
+      "description" : "Whether it is permitted to use text and data mining processes on the content of the resource"
+    },{
+      "name" : "metadataUsage",
+      "type" : "Text",
+      "label" : "Metadata usage",
+      "description" : "Any restrictions expressed related to the use of metadata in the platforms"
+    },{
+      "name" : "authIP",
+      "category" : .refdataCategories.yesno.id,
+      "type" : "Refdata",
+      "label" : "IP authentication supported?",
+      "description" : "Whether authentication via IP range is supported"
+    },{
+      "name" : "authProxy",
+      "category" : .refdataCategories.yesno.id,
+      "type" : "Refdata",
+      "label" : "Access via a proxy supported?",
+      "description" : "Whether authentication via a reverse proxy is supported"
+    },{
+      "name" : "authSAML",
+      "category" : .refdataCategories.yesno.id,
+      "type" : "Refdata",
+      "label" : "SAML compliant authentication supported?",
+      "description" : "Whether authentication via SAML compliant method is supported"
+    },{
+      "name" : "annualOptOut",
+      "category" : .refdataCategories.yesno.id,
+      "type" : "Refdata",
+      "label" : "Annual opt-out clause included?",
+      "description" : "Whether the license includes an 'annual opt-out' clause within a multi-year agreement"
+    },{
+      "name" : "APCAndOffsetting",
+      "type" : "Text",
+      "label" : "Whether the resource is subject to an APC discount or subscription cost offsetting agreement",
+      "description" : "Whether the resource is subject to an APC discount or subscription cost offsetting agreement"
+    },{
+      "name" : "postCancellationAccess",
+      "category" : .refdataCategories.yesno.id,
+      "type" : "Refdata",
+      "label" : "Post-cancellation terms included?",
+      "description" : "Does the license include post-cancellation terms?"
+    }
   ],
   "licenseDefs": [
     {
