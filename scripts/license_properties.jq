@@ -26,7 +26,8 @@
       "name" : "authorisedUsers",
       "type" : "Text",
       "label" : "Definition of authorised user",
-      "description" : "The definition of an authorised user for a resource"
+      "description" : "The definition of an authorised user for a resource",
+      "weight": 1
     },{
       "name" : "concurrentAccess",
       "type" : "Integer",
@@ -108,7 +109,8 @@
       "category" : .refdataCategories.permittedprohibited.id,
       "type" : "Refdata",
       "label" : "Text and Data mining",
-      "description" : "Whether it is permitted to use text and data mining processes on the content of the resource"
+      "description" : "Whether it is permitted to use text and data mining processes on the content of the resource",
+      "weight": -1
     },{
       "name" : "metadataUsage",
       "type" : "Text",
