@@ -9,4 +9,5 @@ json g.render(license, [expand: ['licenseProps','tags', 'customProperties', 'sta
       href "/licenses/licenseLinks?filter=owner.id%3d${license.id}"
     }
   }
+  isOpenEnded license.openEnded
 }
