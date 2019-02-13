@@ -33,14 +33,20 @@ grails:
                 - 'permitAll'
         filterChain:
           chainMap:
-            - 
+            -
               pattern: '/**'
               filters: 'JOINED_FILTERS,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter,-basicAuthenticationFilter'
     databinding:
         dateFormats:
-          - 'yyyy-MM-dd HH:mm:ss.S'
+#          - 'yyyy-MM-dd HH:mm:ss.S'
           - "yyyy-MM-dd'T'hh:mm:ss'Z'"
-          - 'yyyy-mm-dd'
+          - 'yyyy-MM-dd'
+
+    views:
+        json:
+            generator:
+                timeZone: "UTC"
+                dateFormat: "yyyy-MM-dd'T'HH:mm:ss'Z'"
 
 info:
     app:
@@ -74,20 +80,20 @@ grails:
         types:
             json:
               - application/json
-              - text/json   
+              - text/json
             hal:
               - application/hal+json
-              - application/hal+xml  
+              - application/hal+xml
             xml:
               - text/xml
-              - application/xml                                 
+              - application/xml
             atom: application/atom+xml
             css: text/css
             csv: text/csv
             js: text/javascript
             rss: application/rss+xml
             text: text/plain
-            all: '*/*'            
+            all: '*/*'
     urlmapping:
         cache:
             maxsize: 1000
@@ -124,7 +130,7 @@ environments:
       gorm:
         multiTenancy:
           mode: SCHEMA
-          tenantResolverClass: org.grails.datastore.mapping.multitenancy.resolvers.SystemPropertyTenantResolver # System prop of gorm.tenantId 
+          tenantResolverClass: org.grails.datastore.mapping.multitenancy.resolvers.SystemPropertyTenantResolver # System prop of gorm.tenantId
       plugin:
         databasemigration:
           updateOnStart: true
@@ -154,7 +160,7 @@ environments:
         abandonWhenPercentageFull: 50
         jdbcInterceptors: ConnectionState
         defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
-        
+
   development:
     # This is only used when the there is no request from okapi coming to the module or a none-okapi request.
     # OKAPI supplies information about how to reach it to the modules. These options are used for self reg and other calls
