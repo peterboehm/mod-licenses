@@ -11,10 +11,18 @@ class UrlMappings {
     '/licenses/refdata'(resources: 'refdata') {
       collection {
         "/$domain/$property" (controller: 'refdata', action: 'lookup')
+        
       }
     }
 
-    '/licenses/custprops'(resources: 'customPropertyDefinition')
+    '/licenses/custprops'(resources: 'customPropertyDefinition') {
+      collection {
+        "/" (controller: 'customPropertyDefinition', action: 'index') {
+          perPage = { params.perPage ?: 100 }
+          sort = ['weight;asc', 'id;asc']
+        }
+      }
+    }
 
     "500"(view: '/error')
     "404"(view: '/notFound')
