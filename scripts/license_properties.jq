@@ -11,13 +11,13 @@
     "permittedprohibited": {
       "desc": "Permitted/Prohibited",
       "values": [
-        { "value": "Permitted (explicit)" },
-        { "value": "Permitted (explicit) under conditions" },
-        { "value": "Permitted (interpreted)" },
-        { "value": "Prohibited (explicit)" },
-        { "value": "Prohibited (interpreted)" },
-        { "value": "Unmentioned" },
-        { "value": "Not applicable" }
+        { "label": "Permitted (explicit)" },
+        { "label": "Permitted (explicit) under conditions" },
+        { "label": "Permitted (interpreted)" },
+        { "label": "Prohibited (explicit)" },
+        { "label": "Prohibited (interpreted)" },
+        { "label": "Unmentioned" },
+        { "label": "Not applicable" }
       ]
     }
   },
