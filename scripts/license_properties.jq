@@ -8,7 +8,7 @@
         { "value":"Other", "label":"Other (see notes)" }
       ]
     },
-    .refdataCategories.permittedprohibited": {
+    "permittedprohibited": {
       "desc": "Permitted/Prohibited",
       "values": [
         { "value": "Permitted (explicit)" },
