@@ -1,5 +1,5 @@
 {
-  refdataCategories": {
+  "refdataCategories": {
     "yesno":{
       "desc":"Yes/No/Other", 
       "values":[
