@@ -64,7 +64,7 @@
       status: "Active",
       type: "Actual",
       startDate:"2019-01-01",
-      isOpenEnded:true,
+      openEnded:true,
       customProperties: {
         "walkInAccess": ["Yes"],
         "walkInAccess_NOTE": [ "Walk-In Users may be given access to the Licensed Material by any wireless Secure Network. Walk-In Users are not allowed off-site access to the Licensed Material."],
@@ -124,7 +124,7 @@
       name: "BMJ Journals Online 2011-2012 NESLi2",
       status: "Deleted",
       type: "Consortial Template",
-      isOpenEnded: false,
+      openEnded: false,
       endDate: "2019-12-31",
       tags: [
         "Test5"
