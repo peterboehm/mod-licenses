@@ -6,7 +6,7 @@ for DEP in $DEPS; do
   if [ ! -z "$(which $DEP)" ]; then
     echo "Found $DEP"
   else
-    echo "Could not find $DEP, please ensure you have it installed."
+    echo "Could not find $DEP, please ensure you have it installed." 1>&2
     exit 1
   fi
 done
