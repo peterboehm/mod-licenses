@@ -161,16 +161,13 @@
       endDateSemantics:"Open Ended",
       customProperties: {
         "walkInAccess": ["Yes"],
-        "walkInAccess_NOTE": [ "Walk-In Users may be given access to the Licensed Material by any wireless Secure Network. Walk-In Users are not allowed off-site access to the Licensed Material."],
-        "includeInCoursepacks": ["Yes"],
-        "includeInCoursepacks_NOTE": ["Authorised Users must specify the title and copyright owner of the Licensed Material used in the course packs. Course packs in other formats, such as Braille, may also be offered to Authorised Users. Furthermore"],
-        "ILL": ["Yes"],
-        "includeInVLE": ["Yes"],
+        "concurrentAccess": [10],
+        "scholarlySharing": ["Prohibited (explicit)"],
+        "textAndDataMining": ["Permitted (explicit)"],
         "remoteAccess": ["Yes"],
-        "alumniAccess": ["Yes"],
-        "enterpriseAccess": ["No"],
+        "illElectronic": ["Prohibited (interpreted)"],
         "APCAndOffsetting": ["Yes"],
-        "concurrentAccess": ["Yes"]
+        postCancellationAccess: ["Not applicable"]
       }
     },
     {
@@ -182,10 +179,14 @@
       endDate:"2020-01-01",
       endDateSemantics:"Explicit",
       customProperties: {
-        "walkInAccess": ["Yes"],
-        "licenseLocation": ["sent in, sent back, queried, lost, found, subjected to public inquiry, lost again, and finally buried in soft peat for three months and recycled as firelighters."],
-        "anIntegerProp": [34],
-        "aDecimalProp": [1.23]
+        "walkInAccess": "Yes",
+        "concurrentAccess": 10,
+        "scholarlySharing": "Permitted (explicit)",
+        "textAndDataMining": "Permitted (explicit) under conditions",
+        "remoteAccess": "Yes",
+        "illElectronic": "Unmentioned",
+        "APCAndOffsetting": "Yes",
+        "postCancellationAccess": "Not applicable"
       },
       "tags": [
         "legacy"
