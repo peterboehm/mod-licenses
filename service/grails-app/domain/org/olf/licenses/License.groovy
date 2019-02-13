@@ -64,4 +64,20 @@ class License implements CustomProperties,MultiTenant<License> {
                links cascade: 'all-delete-orphan'
   }
 
+  public boolean isOpenEnded() {
+    boolean result = false;
+    if ( endDateSemantics?.value.equalsIgnoreCase('Open Ended') ) 
+      result == true;
+ 
+    return result;
+  }
+
+  public void setIsOpenEnded(boolean value) {
+    if ( value ) {
+      setEndDateSemanticsFromString('Open Ended')
+    }
+    else {
+      setEndDateSemanticsFromString('Explicit')
+    }
+  }
 }
