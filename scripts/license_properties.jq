@@ -219,8 +219,8 @@
     },
     {
       name: "BMJ Journals Online 2011-2012 NESLi2",
-      status: "Deleted",
-      type: "Consortial Template",
+      status: "Expired",
+      type: "Consortial",
       openEnded: false,
       endDate: "2019-12-31",
       tags: [
