@@ -155,8 +155,8 @@
     {
       name: "American Association for the Advancement of Science/NESLi2/Science Classic/2014-2114",
       description: "License for the AAAS Science Classic Agreement",
-      status: "Current",
-      type: "Actual",
+      status: "Active",
+      type: "Local",
       startDate:"2019-01-01",
       endDateSemantics:"Open Ended",
       customProperties: {
@@ -175,8 +175,8 @@
     },
     {
       name: "Test License 001",
-      status: "Current",
-      type: "Actual",
+      status: "Active",
+      type: "Local",
       description: "This is a test licenses",
       startDate:"2019-01-1",
       endDate:"2020-01-01",
@@ -202,8 +202,8 @@
     },
     {
       name: "Test License 002",
-      status: "Current",
-      type: "Actual",
+      status: "Active",
+      type: "Local",
       tags: [
         "legacy"
       ]
@@ -216,8 +216,8 @@
     },
     {
       name: "BMJ Journals Online 2011-2012 NESLi2",
-      status: "Deleted",
-      type: "Consortial Template",
+      status: "Expired",
+      type: "Consortial",
       tags: [
         "Test5"
       ]
