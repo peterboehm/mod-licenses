@@ -66,7 +66,7 @@ class License implements CustomProperties,MultiTenant<License> {
 
   public boolean isOpenEnded() {
     boolean result = false;
-    if ( endDateSemantics?.label?.equalsIgnoreCase('Open Ended') ) 
+    if ( endDateSemantics?.value?.equalsIgnoreCase('open_ended') ) 
       result = true;
  
     return result;
