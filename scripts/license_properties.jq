@@ -165,11 +165,11 @@
         "walkInAccess": ["Yes"],
         "concurrentAccess": [10],
         "scholarlySharing": ["Prohibited (explicit)"],
-        "textAndDataMining": ["Permitted (explicit)"],
+        "textAndDataMining": ["Not applicable"],
         "remoteAccess": ["Yes"],
         "illElectronic": ["Prohibited (interpreted)"],
         "APCAndOffsetting": ["Yes"],
-        postCancellationAccess: ["Not applicable"]
+        postCancellationAccess: ["Yes"]
       }
     },
     {
@@ -188,7 +188,7 @@
         "remoteAccess": "Yes",
         "illElectronic": "Unmentioned",
         "APCAndOffsetting": "Yes",
-        "postCancellationAccess": "Not applicable"
+        "postCancellationAccess": "No"
       },
       "tags": [
         "legacy"
