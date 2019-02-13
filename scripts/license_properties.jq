@@ -156,7 +156,7 @@
       name: "American Association for the Advancement of Science/NESLi2/Science Classic/2014-2114",
       description: "License for the AAAS Science Classic Agreement",
       status: "Active",
-      type: "Actual",
+      type: "Local",
       startDate:"2019-01-01",
       openEnded:true,
       customProperties: {
@@ -176,7 +176,7 @@
     {
       name: "Test License 001",
       status: "Active",
-      type: "Actual",
+      type: "Local",
       description: "This is a test licenses",
       startDate:"2019-01-1",
       endDate:"2020-01-01",
@@ -203,7 +203,7 @@
     {
       name: "Test License 002",
       status: "Active",
-      type: "Actual",
+      type: "Local",
       tags: [
         "legacy"
       ]
