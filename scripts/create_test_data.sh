@@ -1,37 +1,58 @@
 #!/bin/bash -e
 
-QTEST=`echo '{  "value":"one" }' | jq -r ".value"`
-
-if [ $JQREST="one" ]
-then
-  echo JQ installed and working
-else
-  echo Please install JQ
-  exit 1
-fi
-
-echo Running
+# Add the deps.
+DEPS='curl jq'
+for DEP in $DEPS; do
+  if [ ! -z "$(which $DEP)" ]; then
+    echo "Found $DEP"
+  else
+    echo "Could not find $DEP, please ensure you have it installed." 1>&2
+    exit 1
+  fi
+done
 
 export TARGET="http://localhost:8081"
 
 # echo get licenses config
 # curl --header "X-Okapi-Tenant: diku" -H "Content-Type: application/json" -X GET http://localhost:8080/licenses/kiwt/config
-echo "Load JSON file"
 
+echo "Load file 'license_properties.jq'"
 # Because of the template placeholders in the file now, we load passing in empty object as substitutions.
 json_data_file=`cat license_properties.jq`
 json_data=`echo '{}' | jq "$json_data_file"`
 json_result="$json_data"
-IFS=$'\n'       # make newlines the only separator
 
-echo "Load test refdata"
-yesNo=$(echo "$json_result" | jq -rc ".yesno" )
-echo "Posting ${yesNo}"
-result=$(curl -sSL -H 'Accept:application/json' -H 'Content-Type: application/json' -H 'X-OKAPI-TENANT: diku' -XPOST "$TARGET/licenses/refdata" -d "${yesNo}")
-echo $result | jq
 
-# Write the yes no value returned from the server to the json data internally for substitution, and reload from the file.
-json_data=`echo "$json_data" | jq ".yesno=$result"`
+IFS=$'\n'       # make newlines the only separator from this point onwards.
+echo "Ensure refdata categories exist for the properties, and enrich the data."
+
+categories=$(echo $json_data | jq -rc '.refdataCategories | to_entries[]')
+# categoriesis now new-line separated list of values with {"key": key, "value": value} 
+for cat in $categories; do
+  entry_key=$(echo $cat | jq -rc '.key')
+  entry_value=$(echo $cat | jq -rc '.value')
+  entry_desc=$(echo $entry_value | jq -rc '.desc')
+  
+  result=$(curl -sSLG -H 'Accept:application/json' -H 'Content-Type: application/json' -H 'X-OKAPI-TENANT: diku' "$TARGET/licenses/refdata" \
+    --data-urlencode "filters=desc==${entry_desc}")
+    
+  if [ "$( echo $result | jq 'length')" = 0 ]; then
+    # We need to add the data.
+    echo "Adding the refdata category ${entry_desc}."
+    result=$(curl -sSLf -H 'Accept:application/json' -H 'Content-Type: application/json' -H 'X-OKAPI-TENANT: diku' -XPOST "$TARGET/licenses/refdata" -d "${entry_value}") 
+  else
+    echo "Refdata category ${entry_desc} already exists."
+    # Grab the first value.
+    result=$(echo $result | jq '.[0]')
+  fi
+  
+  echo $result | jq
+
+  # Write the value returned from the server to the json data internally for substitution.
+  json_data=`echo "$json_data" | jq ".refdataCategories.${entry_key}=${result}"`
+done
+
+# Reload from the file, enriching with the added/looked up refdata objects.
 json_result=`echo "$json_data" | jq "$json_data_file"`
 
 echo "Load prop defs"
@@ -61,5 +82,5 @@ done
 echo "Final JSON data"
 echo "$json_data" | jq
 
-echo Run a search for licenses
-./okapi-cmd /licenses/licenses
+# echo Run a search for licenses
+# ./okapi-cmd /licenses/licenses
