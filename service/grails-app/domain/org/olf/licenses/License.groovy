@@ -77,6 +77,9 @@ class License implements CustomProperties,MultiTenant<License> {
   public void setOpenEnded(boolean value) {
     if ( value ) {
       setEndDateSemanticsFromString('Open Ended')
+      if ( endDate != null ) {
+        endDate=null;
+      }
     }
     else {
       setEndDateSemanticsFromString('Explicit')
