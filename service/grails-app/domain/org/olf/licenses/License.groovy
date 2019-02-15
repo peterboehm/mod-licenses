@@ -4,6 +4,7 @@ import com.k_int.web.toolkit.custprops.CustomProperties
 import com.k_int.web.toolkit.custprops.types.CustomPropertyContainer
 import com.k_int.web.toolkit.tags.Tag
 import grails.gorm.MultiTenant
+import org.olf.general.Org
 import com.k_int.web.toolkit.refdata.RefdataValue;
 import com.k_int.web.toolkit.refdata.Defaults;
 
@@ -29,11 +30,13 @@ class License implements CustomProperties,MultiTenant<License> {
 
   static hasMany = [
     links:LicenseLink,
-    tags:Tag
+    tags:Tag,
+    orgs:LicenseOrg
   ]
 
   static mappedBy = [
-    links:'owner'
+    links:'owner',
+    orgs: 'owner'
   ]
 
   static constraints = {

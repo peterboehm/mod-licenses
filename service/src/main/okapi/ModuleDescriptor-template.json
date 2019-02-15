@@ -12,6 +12,20 @@
         }
       ]
     },{
+      "id": "erm-org",
+      "version": "1.0",
+      "handlers": [
+        {
+          "methods": ["GET", "POST"],
+          "pathPattern": "/erm-org/content",
+          "modulePermissions": [ "vendor.collection.get" ]
+        },{
+          "methods": ["GET"],
+          "pathPattern": "/erm-org/find/{name}",
+          "modulePermissions": [ "vendor.collection.get" ]
+        }
+      ]
+    },{
       "id": "_tenant",
       "version": "1.0",
       "interfaceType" : "system",
