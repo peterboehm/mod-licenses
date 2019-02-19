@@ -49,6 +49,12 @@ class License implements CustomProperties,MultiTenant<License> {
            startDate(nullable:true, blank: true)
              endDate(nullable:true, blank: true)
     endDateSemantics(nullable:true, blank: true)
+
+    orgs (validator: { orgs ->
+      int num_licensor_orgs = orgs.findAll { it.role?.value?.equalsIgnoreCase('Licensor') }.size()
+      // If there is more than one licensor, return an error message relating to the i18n message validation.onlyOneLicensor
+      if ( num_licensor_orgs > 1 ) return [ 'validation.onlyOneLicensor' ]
+    })
   }
 
   static mapping = {
