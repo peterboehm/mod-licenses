@@ -201,6 +201,24 @@
           "relation": "describes",
           "direction": "out"
         }
+      ],
+      "orgs": [
+        { 
+          "role": "Licensor", 
+          "org": { 
+            "name": "EBSCO", 
+            "vendorsUuid": "1234-5678-9102-3356", 
+            "reference": "EBSCO" 
+          } 
+        },
+        { 
+          "role": "Content Provider", 
+          "org": { 
+            "name": "Some Content Provider", 
+            "vendorsUuid": "1234-5678-9102-3355", 
+            "reference": "Some CP" 
+          } 
+        }
       ]
     },
     {
