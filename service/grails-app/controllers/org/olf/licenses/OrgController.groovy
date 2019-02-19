@@ -1,6 +1,6 @@
 package org.olf.licenses
 
-import org.olf.DependentServiceProxyService
+import org.olf.DependentModuleProxyService
 import org.olf.general.Org
 
 import com.k_int.okapi.OkapiTenantAwareController
@@ -12,14 +12,14 @@ import groovy.util.logging.Slf4j
 @CurrentTenant
 class OrgController extends OkapiTenantAwareController<Org>  {
 
-  DependentServiceProxyService dependentServiceProxyService
+  DependentModuleProxyService dependentModuleProxyService
   
   OrgController() {
     super(Org)
   }
   
   public find(String id) {
-    respond dependentServiceProxyService.coordinateOrg(id)
+    respond dependentModuleProxyService.coordinateOrg(id)
   }
 }
 
