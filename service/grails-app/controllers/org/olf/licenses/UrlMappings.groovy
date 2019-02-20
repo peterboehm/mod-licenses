@@ -24,6 +24,12 @@ class UrlMappings {
       }
     }
 
+    '/licenses/org'(resources: 'org') {
+      collection {
+        "/find/$id"(controller:'org', action:'find')
+      }
+    }
+
     "500"(view: '/error')
     "404"(view: '/notFound')
   }
