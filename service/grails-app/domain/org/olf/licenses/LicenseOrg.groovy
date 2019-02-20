@@ -11,13 +11,13 @@ import grails.gorm.MultiTenant
  * Link a subscription agreement with an org and attach a role
  */
 public class LicenseOrg implements MultiTenant<LicenseOrg>{
-  
+
   String id
   Org org
 
-  @Defaults(['Licensor', 'Licensee', 'Content Provider', 'Licensing Consortium', 'Negotiator', 'Subscriber', 'Provider', 'Subscription Agent', 'Subscription Consortia', 'Package Consortia'])
+  @Defaults(['Licensor', 'Licensee', 'Consortium', 'Consortium Administrator'])
   RefdataValue role
-  
+
   static belongsTo = [
     owner: License
   ]
