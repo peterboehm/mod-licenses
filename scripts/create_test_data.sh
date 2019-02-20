@@ -84,3 +84,7 @@ echo "$json_data" | jq
 
 # echo Run a search for licenses
 # ./okapi-cmd /licenses/licenses
+# ./okapi-cmd /licenses/refdata/License/type
+# ./okapi-cmd /licenses/org
+# ./okapi-cmd /licenses/refdata/LicenseOrg/role
+
