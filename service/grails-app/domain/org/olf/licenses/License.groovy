@@ -22,10 +22,10 @@ class License implements CustomProperties,MultiTenant<License> {
   @Defaults(['Local', 'Consortial', 'National', 'Alliance' ])
   RefdataValue type
 
-  @Defaults(['In Negotiation','Not Yet Active', 'Active', 'Rejected', 'Expired'])
+  @Defaults(['In negotiation','Not yet active', 'Active', 'Rejected', 'Expired'])
   RefdataValue status
 
-  @Defaults(['Explicit', 'Open Ended'])
+  @Defaults(['Explicit', 'Open ended'])
   RefdataValue endDateSemantics
 
   static hasMany = [
