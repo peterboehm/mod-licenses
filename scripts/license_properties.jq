@@ -223,7 +223,7 @@
           } 
         },
         { 
-          "role": "Content Provider", 
+          "role": "Licensee", 
           "org": { 
             "name": "Some Content Provider", 
             "vendorsUuid": "1234-5678-9102-3355", 
