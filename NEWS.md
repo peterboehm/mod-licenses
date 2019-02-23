@@ -1,3 +1,5 @@
+## 1.1.2 Opened
+
 ## 1.1.1 2019-02-23
 
  * ERM-1 eResource Managers can manually create licenses
