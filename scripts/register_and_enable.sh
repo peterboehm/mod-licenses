@@ -11,11 +11,16 @@ if [ ! -d "$DESCRIPTORDIR" ]; then
     ./gradlew generateDescriptors
 fi
 
-curl -XDELETE http://localhost:9130/_/proxy/tenants/diku/modules/mod-licenses-1.1.0
-curl -XDELETE http://localhost:9130/_/discovery/modules/mod-licenses-1.1.0/localhost-mod-licenses-1.1.0
-curl -XDELETE http://localhost:9130/_/proxy/modules/mod-licenses-1.1.0
+DEP_DESC=`cat ${DESCRIPTORDIR}/DeploymentDescriptor.json`
+SVC_ID=`echo $DEP_DESC | jq -rc '.srvcId'`
+INS_ID=`echo $DEP_DESC | jq -rc '.instId'`
+
+curl -XDELETE "http://localhost:9130/_/proxy/tenants/diku/modules/${SVC_ID}"
+curl -XDELETE "http://localhost:9130/_/discovery/modules/${SVC_ID}/${INS_ID}"
+curl -XDELETE "http://localhost:9130/_/proxy/modules/${SVC_ID}"
 # ./gradlew clean generateDescriptors
 curl -XPOST http://localhost:9130/_/proxy/modules -d @"${DESCRIPTORDIR}/ModuleDescriptor.json"
-curl -XPOST http://localhost:9130/_/discovery/modules -d @"${DESCRIPTORDIR}/DeploymentDescriptor.json"
-curl -XPOST http://localhost:9130/_/proxy/tenants/diku/modules -d '{"id": "mod-licenses-1.1.0"}'
+curl -XPOST http://localhost:9130/_/discovery/modules -d "$DEP_DESC"
+curl -XPOST http://localhost:9130/_/proxy/tenants/diku/modules -d `echo $DEP_DESC | jq -rc '{id: .srvcId}'`
 popd
+

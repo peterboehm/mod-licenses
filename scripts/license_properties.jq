@@ -181,7 +181,11 @@
         "illElectronic": ["Prohibited (interpreted)"],
         "APCAndOffsetting": ["Yes"],
         postCancellationAccess: ["Yes"]
-      }
+      },
+      docs:[
+        { "name": "A test document attachment", "location":"http://a.b.c/d/e/f.doc", "note":"This is a document attachment",  "atType":"License" },
+        { "name": "A test document attachment", "location":"http://a.b.c/d/e/g.doc", "note":"This is a second document attachment",  "atType":"Misc" }
+      ]
     },
     {
       name: "Test License 001",

@@ -3,4 +3,5 @@ databaseChangeLog = {
   include file: 'create-mod-license.groovy'
   include file: 'add-lisense-dates.groovy'
   include file: 'update-mod-license-1-1-0.groovy'
+  include file: 'docs.groovy'
 }
