@@ -33,7 +33,8 @@ class License implements CustomProperties,MultiTenant<License> {
     links:LicenseLink,
     tags:Tag,
     orgs:LicenseOrg,
-    docs: DocumentAttachment
+    docs: DocumentAttachment,
+    supplementaryDocs: DocumentAttachment
   ]
 
   static mappedBy = [
@@ -60,19 +61,22 @@ class License implements CustomProperties,MultiTenant<License> {
   }
 
   static mapping = {
-                  id column: 'lic_id', generator: 'uuid', length:36
-                name column: 'lic_name'
-         description column: 'lic_description', type:'text'
-                type column: 'lic_type_rdv_fk'
-              status column: 'lic_status_rdv_fk'
-             version column: 'lic_version'
-         dateCreated column: 'lic_date_created'
-         lastUpdated column: 'lic_last_updated'
-           startDate column: 'lic_start_date'
-             endDate column: 'lic_end_date'
-    endDateSemantics column: 'lic_end_date_semantics_fk'
-                tags cascade: 'all-delete-orphan'
-               links cascade: 'all-delete-orphan'
+                   id column: 'lic_id', generator: 'uuid', length:36
+                 name column: 'lic_name'
+          description column: 'lic_description', type:'text'
+                 type column: 'lic_type_rdv_fk'
+               status column: 'lic_status_rdv_fk'
+              version column: 'lic_version'
+          dateCreated column: 'lic_date_created'
+          lastUpdated column: 'lic_last_updated'
+            startDate column: 'lic_start_date'
+              endDate column: 'lic_end_date'
+     endDateSemantics column: 'lic_end_date_semantics_fk'
+                 tags cascade: 'all-delete-orphan'
+                links cascade: 'all-delete-orphan'
+                 orgs cascade: 'all-delete-orphan'
+                 docs cascade: 'all-delete-orphan'
+    supplementaryDocs cascade: 'all-delete-orphan', joinTable: [name: 'license_supp_doc', key: 'licsd_lic_fk', column: 'licsd_da_fk']
   }
 
   static transients = ['openEnded']

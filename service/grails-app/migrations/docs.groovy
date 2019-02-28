@@ -38,4 +38,32 @@ databaseChangeLog = {
     addForeignKeyConstraint(baseColumnNames: "license_docs_id", baseTableName: "license_document_attachment", constraintName: "FKfmy3990cbja9nn4n0wvo5owrj", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "lic_id", referencedTableName: "license")
   }
 
+  changeSet(author: "ibbo (manual)", id: "2019-02-28-00001") {
+    createTable(tableName: "license_supp_doc") {
+      column(name: "licsd_lic_fk", type: "VARCHAR(36)") {
+        constraints(nullable: "false")
+      }
+      column(name: "licsd_da_fk", type: "VARCHAR(36)")
+    }
+  }
+
+  // Foreign key constraints for external license documents
+  changeSet(author: "ibbo (manual)", id: "2019-02-28-00002") {
+    addForeignKeyConstraint(baseColumnNames: "licsd_lic_fk",
+                            baseTableName: "license_supp_doc",
+                            constraintName: "licsd_to_sa_fk",
+                            deferrable: "false", initiallyDeferred: "false",
+                            referencedColumnNames: "lic_id",
+                            referencedTableName: "license")
+  }
+
+  changeSet(author: "ibbo (manual)", id: "2019-02-28-00003") {
+    addForeignKeyConstraint(baseColumnNames: "licsd_da_fk",
+                            baseTableName: "license_supp_doc",
+                            constraintName: "licsd_to_da_fk",
+                            deferrable: "false", initiallyDeferred: "false",
+                            referencedColumnNames: "da_id",
+                            referencedTableName: "document_attachment")
+  }
+
 }

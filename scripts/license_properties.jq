@@ -185,6 +185,10 @@
       docs:[
         { "name": "A test document attachment", "location":"http://a.b.c/d/e/f.doc", "note":"This is a document attachment",  "atType":"License" },
         { "name": "A test document attachment", "location":"http://a.b.c/d/e/g.doc", "note":"This is a second document attachment",  "atType":"Misc" }
+      ],
+      supplementaryDocs:[
+        { "name": "A test SD document attachment 1", "location":"http://a.b.c/d/e/f.doc", "note":"This is a document attachment",  "atType":"License" },
+        { "name": "A test SD document attachment 2", "location":"http://a.b.c/d/e/g.doc", "note":"This is a second document attachment",  "atType":"Misc" }
       ]
     },
     {
