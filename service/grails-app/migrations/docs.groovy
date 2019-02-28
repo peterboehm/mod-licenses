@@ -66,4 +66,10 @@ databaseChangeLog = {
                             referencedTableName: "document_attachment")
   }
 
+  changeSet(author: "ibbo (manual)", id: "20190226-002") {
+    addColumn (tableName: "document_attachment" ) {
+      column(name: "da_url", type: "varchar(255)")
+    }
+  }
+
 }
