@@ -183,12 +183,12 @@
         postCancellationAccess: ["Yes"]
       },
       docs:[
-        { "name": "A test document attachment", 
-          "location":"sent in, sent back, queried, lost, found, subjected to public inquiry, lost again, and finally buried in soft peat for three months and recycled as firelighters", 
-          "url":"http://a.b.c/d/e/f.doc", 
-          "note":"This is a document attachment",  
-          "atType":"License" },
-        { "name": "A test document attachment", "location":"File Cabinet 23, Office A, Some Building.", "url":"https://a.b.c/d/e/f.doc", "note":"This is a second document attachment",  "atType":"Misc" }
+        { "name": "A test document attachment", "location":"http://a.b.c/d/e/f.doc", "url":"http://a.b.c/d", "note":"This is a document attachment",  "atType":"License" },
+        { "name": "A test document attachment", "location":"http://a.b.c/d/e/g.doc", "url":"http://a.b.c/e", "note":"This is a second document attachment",  "atType":"Misc" }
+      ],
+      supplementaryDocs:[
+        { "name": "A test SD document attachment 1", "location":"http://a.b.c/d/e/f.doc", "note":"This is a document attachment",  "atType":"License" },
+        { "name": "A test SD document attachment 2", "location":"http://a.b.c/d/e/g.doc", "note":"This is a second document attachment",  "atType":"Misc" }
       ]
     },
     {
