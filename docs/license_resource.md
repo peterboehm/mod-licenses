@@ -104,11 +104,13 @@ To create a new link, you can simply post an update to the license, for example
               -H 'X-OKAPI-TENANT: diku' -XPUT \
               "http://OKAPI_HOST:9130/licenses/licenses/UUID-OF-LICENSE-TO-UPDATE" -d ' {
       links:[
-        "linkType": "my-new-super-module",
-	"linkLabel": "An example link to item 5534-2343-2224-2223 in my-new-super-module",
-	"direction": "out",
-	"relation": "describes",
-        "linkId": "5534-2343-2224-2223"
+        {
+          "linkType": "my-new-super-module",
+  	  "linkLabel": "An example link to item 5534-2343-2224-2223 in my-new-super-module",
+	  "direction": "out",
+	  "relation": "describes",
+          "linkId": "5534-2343-2224-2223"
+	}
       ]
     }
     '
