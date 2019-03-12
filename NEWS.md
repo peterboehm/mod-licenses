@@ -1,3 +1,5 @@
+## 1.3.0 Opened
+
 ## 1.2.0 2019-03-12
  * ERM-71 Add Model for JSON resource
  
