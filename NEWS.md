@@ -1,4 +1,22 @@
-## 1.1.2 Opened
+## 1.3.0 Opened
+
+## 1.2.0 2019-03-12
+ * ERM-71 Add Model for JSON resource
+ 
+ * ERM-37 Manage core documents for a license
+   * ERM-69 Add DocumentAttachment Domain model
+   * ERM-40 Remove a core document from a license
+   * ERM-39 Edit license core document details
+   * ERM-38 Add core documents to a License
+   
+ * ERM-7 Add an Organisation to a License 
+   * ERM-32 Add organization role validation to license to enforce no more than one Org per license with role:Licensor
+   * ERM-25 Copy Organization structure from Agreements to Licenses
+   
+ * ERM-10 	Remove an Organisation from a License
+   * ERM-48 Make sure organizations can be removed from licenses in the backend
+   
+ * ERM-9 	Change a license organisation's role
 
 ## 1.1.1 2019-02-23
 
