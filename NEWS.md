@@ -1,4 +1,5 @@
-## 1.3.0 Opened
+## 1.3.0 2019-03-22
+ * ERM-63 View linked agreement details in a license
 
 ## 1.2.0 2019-03-12
  * ERM-71 Add Model for JSON resource
