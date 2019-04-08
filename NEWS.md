@@ -1,3 +1,5 @@
+## 1.5.0 Open
+
 ## 1.4.0 2019-04-08 
 
  * ERM-115 Provide correct data for agreement line
