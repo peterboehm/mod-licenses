@@ -34,12 +34,14 @@ class License implements CustomProperties,MultiTenant<License> {
     tags:Tag,
     orgs:LicenseOrg,
     docs: DocumentAttachment,
+    contacts: InternalContact, 
     supplementaryDocs: DocumentAttachment
   ]
 
   static mappedBy = [
     links:'owner',
-    orgs: 'owner'
+    orgs: 'owner',
+	contacts: 'owner'
   ]
 
   static constraints = {
@@ -61,7 +63,7 @@ class License implements CustomProperties,MultiTenant<License> {
   }
 
   static mapping = {
-                   id column: 'lic_id', generator: 'uuid', length:36
+                   id column: 'lic_id', generator: 'uuid2', length:36
                  name column: 'lic_name'
           description column: 'lic_description', type:'text'
                  type column: 'lic_type_rdv_fk'
@@ -74,6 +76,7 @@ class License implements CustomProperties,MultiTenant<License> {
      endDateSemantics column: 'lic_end_date_semantics_fk'
                  tags cascade: 'all-delete-orphan'
                 links cascade: 'all-delete-orphan'
+			 contacts cascade: 'all-delete-orphan'
                  orgs cascade: 'all-delete-orphan'
                  docs cascade: 'all-delete-orphan'
     supplementaryDocs cascade: 'all-delete-orphan', joinTable: [name: 'license_supp_doc', key: 'licsd_lic_fk', column: 'licsd_da_fk']
