@@ -5,8 +5,11 @@ import org.springframework.web.multipart.MultipartFile
 
 class LicenseFileCommand implements Validateable {
   MultipartFile licenseFile
+  String id
+  Integer version
 
   static constraints = {
+    id nullable: false
     licenseFile validator : { val, obj ->
       if ( val == null ) {
         return false
