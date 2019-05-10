@@ -44,6 +44,8 @@ class UrlMappings {
       }
     }
 
+    '/licenses/files'(resources: 'licensefile')
+
     "500"(view: '/error')
     "404"(view: '/notFound')
   }
