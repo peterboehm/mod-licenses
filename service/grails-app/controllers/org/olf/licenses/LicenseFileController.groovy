@@ -14,17 +14,8 @@ import groovy.util.logging.Slf4j
 @Slf4j
 @CurrentTenant
 class LicenseFileController {
-   static allowedMethods = [
-    uploadLicenseFile: 'POST',
-    delete: 'DELETE'
-  ]
 
   LicenseFileDataService licenseFileDataService
-
-  public LicenseFileController() {
-
-   
-  }
 
   def postLicenseFileRaw() {
     log.debug("Called postLicenseFileRaw")
@@ -51,11 +42,8 @@ class LicenseFileController {
       return
     }
 
-    log.debug("Returning responseMap")
-    log.debug("id is " + licenseFile.id)
-    def responseMap = [ id: licenseFile.id, contentType: licenseFile.fileContentType ]
     response.status = 201
-    respond responseMap
+    respond licenseFile
   }
 
   def getLicenseFileList() {
