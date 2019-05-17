@@ -58,7 +58,18 @@ class LicenseFileController {
       notFound()
       return
     }
+    respond licenseFile
+  }
+
+  def getLicenseFileRaw() {
+    log.debug("Called getLicenseFileRaw")
+    LicenseFile licenseFile = licenseFileDataService.get(params.id)
+    if(!licenseFile || licenseFile.fileContentBytes == null) {
+      notFound()
+      return
+    }
     render file: licenseFile.fileContentBytes, contentType: licenseFile.fileContentType
+
   }
 
   def deleteLicenseFile() {
@@ -71,6 +82,10 @@ class LicenseFileController {
     licenseFileDataService.delete(params.id)
     response.status = 204
     render ""
+  }
+
+  def protected void notFound(String message="Resource not found") {
+    render(status:404,text:message,contentType: 'application/json')
   }
 
 }
