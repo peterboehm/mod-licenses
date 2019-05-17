@@ -45,10 +45,11 @@ class UrlMappings {
     }
 
     
-    get '/licenses/files/$id'(controller: "licenseFile", action: "getLicenseFile")
+    get "/licenses/files/$id/raw"(controller: "licenseFile", action: "getLicenseFileRaw")
+    get "/licenses/files/$id"(controller: "licenseFile", action: "getLicenseFile")
     get '/licenses/files'(controller: "licenseFile", action: "getLicenseFileList")
     post '/licenses/files'(controller: "licenseFile", action: "postLicenseFileRaw")
-    delete '/licenses/files/$id'(controller: "licenseFile", action: "deleteLicenseFile")
+    delete "/licenses/files/$id"(controller: "licenseFile", action: "deleteLicenseFile")
 
     "500"(view: '/error')
     "404"(view: '/notFound')
