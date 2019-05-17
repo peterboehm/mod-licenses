@@ -2,6 +2,7 @@ package org.olf.licenses
 import grails.gorm.MultiTenant
 
 class LicenseFile implements MultiTenant<LicenseFile> {
+
   String id
   byte[] fileContentBytes
   String fileContentType
