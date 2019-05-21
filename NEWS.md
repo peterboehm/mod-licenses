@@ -1,4 +1,13 @@
-## 1.6.0 Open
+## 1.6.0 2019-05-21
+ * ERM-219 Support Organizations app as source of Organizations in Licenses
+ * ERM-163 View internal contacts for a license
+ * ERM-162 Manage internal contacts for a license
+   * ERM-178 Save contact records to licenses
+   * ERM-177 Add gson templates
+   * ERM-176 Clone internal contact from agreements to licenses
+ * ERM-92 	Require UUIDs that are RFC 4122 compliant
+   * ERM-136 Dump all existing data on test environment
+   * ERM-135 Change UUID generator from UUID to UUID-2
 
 ## 1.5.0 2019-05-07
 
