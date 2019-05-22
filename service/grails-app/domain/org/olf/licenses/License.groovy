@@ -18,7 +18,6 @@ class License implements CustomProperties,MultiTenant<License> {
   Date lastUpdated
   Date startDate
   Date endDate
-  String licenseFileId
 
   @Defaults(['Local', 'Consortial', 'National', 'Alliance' ])
   RefdataValue type
@@ -52,7 +51,6 @@ class License implements CustomProperties,MultiTenant<License> {
            startDate(nullable:true, blank: true)
              endDate(nullable:true, blank: true)
     endDateSemantics(nullable:true, blank: true)
-         licenseFileId(nullable:true, blank: true)
     orgs (validator: { orgs ->
       int num_licensor_orgs = orgs.findAll { it.role?.value?.equalsIgnoreCase('Licensor') }.size()
       // If there is more than one licensor, return an error message relating to the i18n message validation.onlyOneLicensor
@@ -77,7 +75,6 @@ class License implements CustomProperties,MultiTenant<License> {
                  orgs cascade: 'all-delete-orphan'
                  docs cascade: 'all-delete-orphan'
     supplementaryDocs cascade: 'all-delete-orphan', joinTable: [name: 'license_supp_doc', key: 'licsd_lic_fk', column: 'licsd_da_fk']
-         licenseFileId column: 'lic_license_file_id'
   }
 
   static transients = ['openEnded']
