@@ -6,6 +6,9 @@ class LicenseFile implements MultiTenant<LicenseFile> {
   String id
   byte[] fileContentBytes
   String fileContentType
+  String fileName
+  Long fileSize
+
   Date lastModified
 
   static constraints = {
@@ -17,6 +20,8 @@ class LicenseFile implements MultiTenant<LicenseFile> {
   static mapping = {
                   id column: 'lf_id', generator: 'uuid2', length: 36
     fileContentBytes column: 'lf_bytes', sqlType: 'longblob'
+            fileName column: 'lf_filename'
+            fileSize column: 'lf_filesize'
         lastModified column: 'lf_last_mod' 
   }
 }
