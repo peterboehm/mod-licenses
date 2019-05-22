@@ -8,5 +8,5 @@ interface LicenseFileDataService {
   List<LicenseFile> list(Map args)
   Number count()
   void delete(Serializable id)
-  LicenseFile save(String fileContentType, byte[] fileContentBytes)
+  LicenseFile save(String fileContentType, String fileName, Long fileSize, Date lastModified,  byte[] fileContentBytes)
 }

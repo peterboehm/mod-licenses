@@ -27,6 +27,9 @@ class LicenseFileController {
     }
     LicenseFile licenseFile = licenseFileDataService.save(
       f.contentType,
+      f.originalFilename,
+      f.size,
+      new Date(),
       f.inputStream.bytes
     )
 

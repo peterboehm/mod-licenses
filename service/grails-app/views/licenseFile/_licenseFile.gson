@@ -6,4 +6,7 @@ import org.olf.licenses.LicenseFile
 json {
   id licenseFile.id
   contentType licenseFile.fileContentType
+  size licenseFile.fileSize
+  modified licenseFile.lastModified
+  name licenseFile.fileName
 }
