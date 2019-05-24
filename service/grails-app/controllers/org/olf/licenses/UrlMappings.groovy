@@ -1,5 +1,7 @@
 package org.olf.licenses
 
+import org.olf.general.FileUpload
+
 class UrlMappings {
 
   static mappings = {
@@ -47,11 +49,11 @@ class UrlMappings {
     }
 
     
-    get "/licenses/files/$id/raw"(controller: "licenseFile", action: "getLicenseFileRaw")
-    get "/licenses/files/$id"(controller: "licenseFile", action: "getLicenseFile")
-    get '/licenses/files'(controller: "licenseFile", action: "getLicenseFileList")
-    post '/licenses/files'(controller: "licenseFile", action: "postLicenseFileRaw")
-    delete "/licenses/files/$id"(controller: "licenseFile", action: "deleteLicenseFile")
+    get "/licenses/files/$id/raw"(controller: "fileUpload", action: "getFileUploadRaw")
+    get "/licenses/files/$id"(controller: "fileUpload", action: "getFileUpload")
+    get '/licenses/files'(controller: "fileUpload", action: "getFileUploadList")
+    post '/licenses/files'(controller: "fileUpload", action: "postFileUploadRaw")
+    delete "/licenses/files/$id"(controller: "fileUpload", action: "deleteFileUpload")
 
     "500"(view: '/error')
     "404"(view: '/notFound')
