@@ -7,8 +7,8 @@ databaseChangeLog = {
   }
 
   changeSet(author: "Kurt Nordstrom", id: "2019-05-14-0002") {
-      createTable(tableName: "license_file") {
-            column(name: "lf_id", type: "VARCHAR(36)") {
+        createTable(tableName: "file_upload") {
+            column(name: "fu_id", type: "VARCHAR(36)") {
                 constraints(nullable: "false")
             }
 
@@ -16,19 +16,19 @@ databaseChangeLog = {
                 constraints(nullable: "false")
             }
 
-            column(name: "lf_filesize", type: "BIGINT") {
+            column(name: "fu_filesize", type: "BIGINT") {
                 constraints(nullable: "false")
             }
 
-            column(name: "lf_last_mod", type: "timestamp")
+            column(name: "fu_last_mod", type: "timestamp")
 
             column(name: "file_content_type", type: "VARCHAR(255)")
 
-            column(name: "lf_filename", type: "VARCHAR(255)") {
+            column(name: "fu_filename", type: "VARCHAR(255)") {
                 constraints(nullable: "false")
             }
 
-            column(name: "lf_bytes", type: "bytea")
+            column(name: "fu_bytes", type: "bytea")
         }
 
     }
