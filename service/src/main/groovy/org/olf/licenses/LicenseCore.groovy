@@ -33,7 +33,6 @@ abstract class LicenseCore implements CustomProperties,MultiTenant<LicenseCore> 
   static hasMany = [
     links:LicenseLink,
     tags:Tag,
-    orgs:LicenseOrg,
     docs: DocumentAttachment,
     contacts: InternalContact,
     supplementaryDocs: DocumentAttachment
@@ -41,7 +40,6 @@ abstract class LicenseCore implements CustomProperties,MultiTenant<LicenseCore> 
 
   static mappedBy = [
     links:'owner',
-    orgs: 'owner',
     contacts: 'owner'
   ]
 
