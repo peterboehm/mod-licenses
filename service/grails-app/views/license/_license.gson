@@ -1,8 +1,11 @@
 import org.olf.licenses.License
 import org.olf.licenses.LicenseOrg
+
 import groovy.transform.*
 
 @Field License license
+
+inherits template: '/licenseCore/licenseCore'
 
 // We can start the pre-fetching of things we are going to need.
 final String objectProperty = 'orgsUuid_object'
@@ -16,11 +19,8 @@ if ( controllerName == 'license' && actionName.toLowerCase() == 'show' ) {
   }
 }
 
-json g.render(license, [expand: ['licenseProps', 'tags', 'customProperties', 'status', 'type', 'orgs', 'contacts', 'docs', 'supplementaryDocs' ]]) {
-  _links {
-    linkedResources {
-      href "/licenses/licenseLinks?filter=owner.id%3d${license.id}"
-    }
-  }
-  openEnded license.openEnded
+// The majority of this template is inherited from the parent template. Just add the extensions.
+json {
+  type g.render(license.type)
+  orgs g.render(license.orgs)
 }
