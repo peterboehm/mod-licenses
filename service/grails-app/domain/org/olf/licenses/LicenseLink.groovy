@@ -33,7 +33,7 @@ class LicenseLink implements MultiTenant<LicenseLink> {
   
   // The licenes the relationshiop relates to - the "Subject" of our triple.
   static belongsTo = [
-    owner:LicenseAmendment
+    owner: LicenseCore
   ]
 
   static constraints = {

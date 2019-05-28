@@ -19,7 +19,7 @@ public class LicenseOrg implements MultiTenant<LicenseOrg>{
   RefdataValue role
 
   static belongsTo = [
-    owner: LicenseAmendment
+    owner: LicenseCore
   ]
 
     static mapping = {
