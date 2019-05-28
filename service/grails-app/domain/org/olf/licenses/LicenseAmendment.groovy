@@ -12,6 +12,10 @@ import com.k_int.web.toolkit.refdata.Defaults;
 class LicenseAmendment extends LicenseCore implements CustomProperties,MultiTenant<LicenseAmendment> {  
   License owner
 
+  static belongsTo = [
+    owner: License
+  ]
+  
   static constraints = {
     owner (nullable:false, blank:false)
   }
