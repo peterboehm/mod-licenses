@@ -17,12 +17,12 @@ class DocumentAttachment implements MultiTenant<DocumentAttachment> {
   FileUpload fileUpload
 
   //	@Defaults(['License', 'Misc', 'Consortium Negotiation Document'])
-  @Defaults(['Consortium authorisation statement', 'Product data sheet', 'Vendor terms and conditions'])
+  @Defaults(['Consortium authorization statement', 'Product data sheet', 'Vendor terms and conditions'])
   
   RefdataValue atType
 
   static mapping = {
-             id column: 'da_id', generator: 'uuid', length:36
+             id column: 'da_id', generator: 'uuid2', length:36
         version column: 'da_version'
            name column: 'da_name'
        location column: 'da_location'
