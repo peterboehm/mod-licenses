@@ -9,17 +9,19 @@ import org.olf.general.DocumentAttachment
 import com.k_int.web.toolkit.refdata.RefdataValue;
 import com.k_int.web.toolkit.refdata.Defaults;
 
-class License extends LicenseAmendment implements CustomProperties,MultiTenant<License> {
+class License extends LicenseCore implements CustomProperties,MultiTenant<License> {
 
   @Defaults(['Local', 'Consortial', 'National', 'Alliance' ])
   RefdataValue type
 
-   static hasMany = [
-    orgs:LicenseOrg
+  static hasMany = [
+    orgs:LicenseOrg,
+    amendments:LicenseAmendment
   ]
 
   static mappedBy = [
-    orgs: 'owner'
+    orgs: 'owner',
+    amendments: 'owner'
   ]
 
   static constraints = {

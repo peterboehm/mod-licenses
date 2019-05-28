@@ -45,4 +45,15 @@ databaseChangeLog = {
   changeSet(author: "sosguthorpe (generated)", id: "1559059317478-7") {
     addForeignKeyConstraint(baseColumnNames: "da_type_rdv_fk", baseTableName: "document_attachment", constraintName: "FKrggvdxk0jingkcnidb4hfwpi4", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "rdv_id", referencedTableName: "refdata_value")
   }
+  
+  changeSet(author: "sosguthorpe (generated)", id: "1559062607653-1") {
+    addColumn(tableName: "license") {
+      column(name: "am_owning_license_fk", type: "varchar(36)")
+    }
+  }
+
+  changeSet(author: "sosguthorpe (generated)", id: "1559062607653-2") {
+    addForeignKeyConstraint(baseColumnNames: "am_owning_license_fk", baseTableName: "license", constraintName: "FKr38irciosrq34y3n3myk6caqe", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "lic_id", referencedTableName: "license")
+  }
+
 }
