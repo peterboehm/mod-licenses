@@ -127,6 +127,12 @@ environments:
   test:
     dataSource:
       url: "jdbc:postgresql://${db.host:localhost}:${db.port:54321}/${db.database:okapi_modules_test}"
+    okapi:
+      service:
+        host: localhost
+        port: 9130
+        register: false
+        deploy: false
 
   dbGen:
     grails:
