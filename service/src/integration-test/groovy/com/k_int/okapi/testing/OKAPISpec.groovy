@@ -19,29 +19,27 @@ import spock.lang.Shared
 abstract class OKAPISpec extends GebSpec {
   
   @Shared
-  private Map<String,String> loginDetails = [
+  private final Map<String,String> loginDetails = [
     username:'diku_admin',
     password: 'admin'
   ]
   
   @Shared
-  protected Map<String,String> headers = [
+  private final Map<String,String> headers = [
     (OkapiHeaders.TENANT):      'diku',
     (HttpHeaders.CONTENT_TYPE): 'application/json',
     (HttpHeaders.ACCEPT):       'application/json'
   ]
   
   protected void setLoginDetails(final String username, final String password) {
-    loginDetails += [
+    loginDetails.putAll (
       username: username,
       password: password
-    ]
+    )
   }
   
   protected void setTenant(final String tenant) {
-    headers += [
-      (OkapiHeaders.TENANT): tenant
-    ]
+    headers[(OkapiHeaders.TENANT)] = tenant
   }
 
   @Autowired
@@ -68,7 +66,7 @@ abstract class OKAPISpec extends GebSpec {
   /**
    * The below methods handle all the OKAPI interaction. You should use these inside your spec to communicate with OKAPI. 
    */
-  protected def okapiDoGet (final String uri, final Map params = null, final Closure expand = null) {
+  protected def doOkapiGet (final String uri, final Map params = null, final Closure expand = null) {
     okapiClient.getSync(uri, params) {
       request.headers = headers
       if (expand) {
@@ -77,7 +75,7 @@ abstract class OKAPISpec extends GebSpec {
     }
   }
   
-  protected def okapiDoPost (final String uri, final def jsonData, final Map params = null, final Closure expand = null) {
+  protected def doOkapiPost (final String uri, final def jsonData, final Map params = null, final Closure expand = null) {
     okapiClient.post(uri, jsonData, params) {
       request.headers = headers
       if (expand) {
@@ -86,7 +84,7 @@ abstract class OKAPISpec extends GebSpec {
     }
   }
   
-  protected def okapiDoPut (final String uri, final def jsonData, final Map params = null, final Closure expand = null) {
+  protected def doOkapiPut (final String uri, final def jsonData, final Map params = null, final Closure expand = null) {
     okapiClient.put(uri, jsonData, params) {
       request.headers = headers
       if (expand) {
@@ -95,7 +93,7 @@ abstract class OKAPISpec extends GebSpec {
     }
   }
   
-  protected def okapiDoDelete (final String uri, final Map params = null, final Closure expand = null) {
+  protected def doOkapiDelete (final String uri, final Map params = null, final Closure expand = null) {
     okapiClient.delete(uri, params) {
       request.headers = headers
       if (expand) {
