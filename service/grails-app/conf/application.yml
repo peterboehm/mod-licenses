@@ -127,19 +127,24 @@ environments:
   test:
     dataSource:
       url: "jdbc:postgresql://${db.host:localhost}:${db.port:54321}/${db.database:okapi_modules_test}"
+    okapi:
+      service:
+        host: localhost
+        port: 9130
+        register: false
+        deploy: false
 
   dbGen:
     grails:
       gorm:
         multiTenancy:
           mode: SCHEMA
-          tenantResolverClass: org.grails.datastore.mapping.multitenancy.resolvers.SystemPropertyTenantResolver # System prop of gorm.tenantId
+          tenantResolverClass: org.grails.datastore.mapping.multitenancy.resolvers.SystemPropertyTenantResolver # System prop of gorm.tenantId 
       plugin:
         databasemigration:
-          updateOnStart: true
-          updateOnStartFileName: module-tenant-changelog.groovy
+          changelogFileName: module-tenant-changelog.groovy
     gorm:
-      tenantId: public # Used by SystemPropertyTenantResolver
+      tenantId: database_test # Used by SystemPropertyTenantResolver
 
   production:
     dataSource:

@@ -12,7 +12,7 @@ public class InternalContact implements MultiTenant<InternalContact>{
   RefdataValue role
   
   static belongsTo = [
-    owner: License
+    owner: LicenseCore
   ]
 
     static mapping = {

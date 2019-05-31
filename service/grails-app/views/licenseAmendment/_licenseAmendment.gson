@@ -1,0 +1,7 @@
+package licenseAmendment;
+import org.olf.licenses.LicenseAmendment
+
+import groovy.transform.*
+
+// Just include the parent template.
+inherits template: '/licenseCore/licenseCore'
