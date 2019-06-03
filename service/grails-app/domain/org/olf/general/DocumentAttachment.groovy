@@ -14,7 +14,9 @@ class DocumentAttachment implements MultiTenant<DocumentAttachment> {
   String note
   Date dateCreated
   Date lastUpdated
-  FileUpload fileUpload
+  static belongsTo = [ 
+    fileUpload:FileUpload 
+  ]
 
   //	@Defaults(['License', 'Misc', 'Consortium Negotiation Document'])
   @Defaults(['Consortium authorization statement', 'Product data sheet', 'Vendor terms and conditions'])
