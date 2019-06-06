@@ -1,5 +1,5 @@
 databaseChangeLog = {
-  changeSet(author: "sosguthorpe (generated)", id: "1559723235562-1") {
+  changeSet(author: "sosguthorpe (generated)", id: "1559842739182-1") {
     createTable(tableName: "file_upload") {
       column(name: "fu_id", type: "VARCHAR(36)") {
         constraints(nullable: "false")
@@ -29,8 +29,31 @@ databaseChangeLog = {
     }
   }
 
-  changeSet(author: "sosguthorpe (generated)", id: "1559723235562-2") {
+  changeSet(author: "sosguthorpe (generated)", id: "1559842739182-2") {
+    createTable(tableName: "single_file_attachment") {
+      column(name: "id", type: "VARCHAR(36)") {
+        constraints(nullable: "false")
+      }
+
+      column(name: "version", type: "BIGINT") {
+        constraints(nullable: "false")
+      }
+    }
+  }
+
+  changeSet(author: "sosguthorpe (generated)", id: "1559842739182-3") {
     addPrimaryKey(columnNames: "fu_id", constraintName: "file_uploadPK", tableName: "file_upload")
   }
 
+  changeSet(author: "sosguthorpe (generated)", id: "1559842739182-4") {
+    addPrimaryKey(columnNames: "id", constraintName: "single_file_attachmentPK", tableName: "single_file_attachment")
+  }
+
+  changeSet(author: "sosguthorpe (generated)", id: "1559842739182-5") {
+    addForeignKeyConstraint(baseColumnNames: "fu_owner", baseTableName: "file_upload", constraintName: "FK2kjo91mrq9mt35oo8a94c0p5o", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "single_file_attachment")
+  }
+
+  changeSet(author: "sosguthorpe (generated)", id: "1559842739182-6") {
+    dropColumn(columnName: "da_version", tableName: "document_attachment")
+  }
 }

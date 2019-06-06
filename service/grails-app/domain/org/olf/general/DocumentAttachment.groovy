@@ -4,7 +4,6 @@ import grails.gorm.MultiTenant
 import com.k_int.web.toolkit.refdata.RefdataValue
 import com.k_int.web.toolkit.refdata.Defaults
 import org.olf.general.FileUpload
-import org.olf.licenses.SingleFileAttachment
 
 class DocumentAttachment extends SingleFileAttachment implements MultiTenant<DocumentAttachment> {
 
@@ -20,7 +19,7 @@ class DocumentAttachment extends SingleFileAttachment implements MultiTenant<Doc
   RefdataValue atType
 
   static mapping = {
-             id column: 'da_id', generator: 'uuid2', length:36
+             id column: 'da_id'
         version column: 'da_version'
            name column: 'da_name'
        location column: 'da_location'

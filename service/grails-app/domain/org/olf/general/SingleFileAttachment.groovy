@@ -1,12 +1,8 @@
-package org.olf.licenses
+package org.olf.general
 
 import grails.gorm.MultiTenant
-import grails.gorm.annotation.Entity
-import javax.persistence.MappedSuperclass
-import org.olf.general.FileUpload
 
-@MappedSuperclass
-abstract class SingleFileAttachment {
+class SingleFileAttachment implements MultiTenant<SingleFileAttachment>{
   
   String id
   FileUpload fileUpload
@@ -14,6 +10,8 @@ abstract class SingleFileAttachment {
   static hasOne = [fileUpload: FileUpload]
   
   static mapping = {
+    tablePerHierarchy false
+    id generator: 'uuid2', length:36
     fileUpload  column: 'file_upload', cascade: 'all'
   }
 

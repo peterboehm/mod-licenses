@@ -1,6 +1,5 @@
 package org.olf.general
 import grails.gorm.MultiTenant
-import org.olf.licenses.SingleFileAttachment
 
 class FileUpload implements MultiTenant<FileUpload> {
 
@@ -16,7 +15,7 @@ class FileUpload implements MultiTenant<FileUpload> {
     fileContentBytes nullable: true
     fileContentType nullable: true, blank: false
     lastModified nullable: true
-    owner nullable: false
+    owner nullable: true
   }
 
   static mapping = {
