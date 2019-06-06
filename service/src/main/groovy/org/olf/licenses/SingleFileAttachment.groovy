@@ -16,6 +16,8 @@ abstract class SingleFileAttachment {
   static mapping = {
     fileUpload  column: 'file_upload', cascade: 'all'
   }
+  
+  static mappedBy = [fileUpload: 'owner']
 
   static constraints = {
      fileUpload(nullable:true, blank:false)
