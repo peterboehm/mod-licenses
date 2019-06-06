@@ -16,7 +16,7 @@ class FileUpload implements MultiTenant<FileUpload> {
     fileContentBytes nullable: true
     fileContentType nullable: true, blank: false
     lastModified nullable: true
-    owner nullable: false
+    owner nullable: true
   }
 
   static mapping = {

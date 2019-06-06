@@ -17,9 +17,7 @@ databaseChangeLog = {
 
       column(name: "file_content_type", type: "VARCHAR(255)")
 
-      column(name: "fu_owner", type: "VARCHAR(36)") {
-        constraints(nullable: "false")
-      }
+      column(name: "fu_owner", type: "VARCHAR(36)") 
 
       column(name: "fu_filename", type: "VARCHAR(255)") {
         constraints(nullable: "false")
