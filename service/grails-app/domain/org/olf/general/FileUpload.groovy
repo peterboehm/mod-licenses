@@ -10,12 +10,14 @@ class FileUpload implements MultiTenant<FileUpload> {
   Long fileSize
   Date lastModified
   SingleFileAttachment owner
+  
+  static belongsTo = [owner: SingleFileAttachment]
 
   static constraints = {
     fileContentBytes nullable: true
     fileContentType nullable: true, blank: false
     lastModified nullable: true
-    owner nullable: true
+    'owner' nullable: true
   }
 
   static mapping = {
@@ -24,6 +26,6 @@ class FileUpload implements MultiTenant<FileUpload> {
             fileName column: 'fu_filename'
             fileSize column: 'fu_filesize'
         lastModified column: 'fu_last_mod' 
-               owner column: 'fu_owner', type: 'string', length: 36
+               owner column: 'fu_owner'
   }
 }
