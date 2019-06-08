@@ -280,12 +280,12 @@ List licenseDefs = [
 propertyDefinitions.each { Map definition ->
   final String type = definition.remove('type')
   CustomPropertyDefinition cpd = CustomPropertyDefinition.forType(type, definition)
-  cpd.save(failOnError:true)
+  cpd.save(failOnError:true, flush: true)
 }
 
 licenseDefs.each { Map definition ->
   License l = new License()
   bindData(l, definition)
-  l.save(failOnError: true)
+  l.save(failOnError: true, flush: true)
 }
 
