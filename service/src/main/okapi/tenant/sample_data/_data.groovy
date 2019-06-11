@@ -4,8 +4,9 @@ import com.k_int.web.toolkit.custprops.CustomPropertyDefinition
 import com.k_int.web.toolkit.refdata.RefdataCategory
 import com.k_int.web.toolkit.refdata.RefdataValue
 
+log.info 'Importing sample data'
 if (existing_tenant) {
-  log.info 'Skippping exisiting tenant'
+  log.info 'Skipping exisiting tenant'
   return
 }
 

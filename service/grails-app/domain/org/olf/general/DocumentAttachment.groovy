@@ -5,25 +5,21 @@ import com.k_int.web.toolkit.refdata.RefdataValue
 import com.k_int.web.toolkit.refdata.Defaults
 import org.olf.general.FileUpload
 
-class DocumentAttachment implements MultiTenant<DocumentAttachment> {
+class DocumentAttachment extends SingleFileAttachment implements MultiTenant<DocumentAttachment> {
 
-  String id
   String name
   String location
   String url
   String note
   Date dateCreated
   Date lastUpdated
-  FileUpload fileUpload
 
   //	@Defaults(['License', 'Misc', 'Consortium Negotiation Document'])
   @Defaults(['Consortium authorization statement', 'Product data sheet', 'Vendor terms and conditions'])
-  
   RefdataValue atType
 
   static mapping = {
-             id column: 'da_id', generator: 'uuid2', length:36
-        version column: 'da_version'
+             id column: 'da_id'
            name column: 'da_name'
        location column: 'da_location'
             url column: 'da_url'
@@ -31,7 +27,6 @@ class DocumentAttachment implements MultiTenant<DocumentAttachment> {
          atType column: 'da_type_rdv_fk'
     dateCreated column: 'da_date_created'
     lastUpdated column: 'da_last_updated'
-    fileUpload  column: 'da_file_upload'
   }
 
   static constraints = {
@@ -42,8 +37,6 @@ class DocumentAttachment implements MultiTenant<DocumentAttachment> {
          atType(nullable:true, blank:false)
     dateCreated(nullable:true, blank:false)
     lastUpdated(nullable:true, blank:false)
-     fileUpload(nullable:true, blank:false)
-
   }
 
 }
