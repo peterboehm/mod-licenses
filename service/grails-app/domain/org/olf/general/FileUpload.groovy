@@ -26,6 +26,6 @@ class FileUpload implements MultiTenant<FileUpload> {
             fileName column: 'fu_filename'
             fileSize column: 'fu_filesize'
         lastModified column: 'fu_last_mod' 
-               owner column: 'fu_owner'
+               owner column: 'fu_owner', cascade: 'none'
   }
 }

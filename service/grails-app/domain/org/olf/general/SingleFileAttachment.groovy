@@ -1,31 +1,17 @@
 package org.olf.general
 
 import grails.gorm.MultiTenant
+import grails.gorm.multitenancy.Tenants
 
 class SingleFileAttachment implements MultiTenant<SingleFileAttachment> {
   
   // Add transient peroperty for flagging file removal. Transients are ignored by the persistence
   // layer.
-  static transients = ['fileUploadRemoved']
-  FileUpload fileUploadRemoved = null
   
   String id
   FileUpload fileUpload
   static hasOne = [fileUpload: FileUpload]
-  
-  // Simply flag if the file was updated to null
-  void setFileUpload(FileUpload fileUpload) {
-    
-    fileUploadRemoved = (fileUpload == null && this.fileUpload) ? this.fileUpload : null
-    
-    this.fileUpload = fileUpload
-  }
-  
-  def afterUpdate() {
-    if (fileUploadRemoved) {
-      fileUploadRemoved.delete()
-    }
-  }
+  static mappedBy = [fileUpload: 'owner']
   
   static mapping = {
     tablePerHierarchy false
