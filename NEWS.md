@@ -1,3 +1,20 @@
+## 1.6.0 2019-06-11
+* ERM-245 Tenant bootstrap improvements
+  * ERM-247 Change descriptors to reflect new interface version
+  * ERM-249 Create bootstrap data
+* ERM-154 Set supplementary information for a licence amendment
+* ERM-153 Manage core documents for an amendment
+* ERM-144 Add note option to license custom properties
+* ERM-147 Manage amendments for a license
+  * ERM-93 Display amendment to a License
+  * ERM-87 Remove amendment from a License
+  * ERM-86 Edit amendment to a License
+  * ERM-85 Add amendment to a License
+* ERM-82 Support amendments for a license
+  * ERM-138 Create amendment class
+  * ERM-137 Create license abstraction
+  * ERM-88 Add Amendment Domain model
+
 ## 1.6.0 2019-05-21
  * ERM-219 Support Organizations app as source of Organizations in Licenses
  * ERM-163 View internal contacts for a license
