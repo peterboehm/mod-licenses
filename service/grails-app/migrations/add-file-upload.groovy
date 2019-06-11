@@ -1,5 +1,6 @@
 databaseChangeLog = {
-  changeSet(author: "sosguthorpe (generated)", id: "1559847051011-1") {
+
+  changeSet(author: "sosguthorpe (generated)", id: "1560252507752-1") {
     createTable(tableName: "file_upload") {
       column(name: "fu_id", type: "VARCHAR(36)") {
         constraints(nullable: "false")
@@ -27,7 +28,7 @@ databaseChangeLog = {
     }
   }
 
-  changeSet(author: "sosguthorpe (generated)", id: "1559847051011-2") {
+  changeSet(author: "sosguthorpe (generated)", id: "1560252507752-2") {
     createTable(tableName: "single_file_attachment") {
       column(name: "id", type: "VARCHAR(36)") {
         constraints(nullable: "false")
@@ -39,19 +40,20 @@ databaseChangeLog = {
     }
   }
 
-  changeSet(author: "sosguthorpe (generated)", id: "1559847051011-3") {
+  changeSet(author: "sosguthorpe (generated)", id: "1560252507752-3") {
     addPrimaryKey(columnNames: "fu_id", constraintName: "file_uploadPK", tableName: "file_upload")
   }
 
-  changeSet(author: "sosguthorpe (generated)", id: "1559847051011-4") {
+  changeSet(author: "sosguthorpe (generated)", id: "1560252507752-4") {
     addPrimaryKey(columnNames: "id", constraintName: "single_file_attachmentPK", tableName: "single_file_attachment")
   }
 
-  changeSet(author: "sosguthorpe (generated)", id: "1559847051011-5") {
+  changeSet(author: "sosguthorpe (generated)", id: "1560252507752-5") {
     addForeignKeyConstraint(baseColumnNames: "fu_owner", baseTableName: "file_upload", constraintName: "FK2kjo91mrq9mt35oo8a94c0p5o", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "single_file_attachment")
   }
 
-  changeSet(author: "sosguthorpe (generated)", id: "1559847051011-6") {
+  changeSet(author: "sosguthorpe (generated)", id: "1560252507752-6") {
     dropColumn(columnName: "da_version", tableName: "document_attachment")
   }
+  
 }

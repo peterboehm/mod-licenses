@@ -20,7 +20,6 @@ class DocumentAttachment extends SingleFileAttachment implements MultiTenant<Doc
 
   static mapping = {
              id column: 'da_id'
-        version column: 'da_version'
            name column: 'da_name'
        location column: 'da_location'
             url column: 'da_url'

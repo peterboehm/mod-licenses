@@ -10,8 +10,6 @@ class FileUpload implements MultiTenant<FileUpload> {
   Long fileSize
   Date lastModified
   SingleFileAttachment owner
-  
-  static belongsTo = [owner: SingleFileAttachment]
 
   static constraints = {
     fileContentBytes nullable: true
@@ -25,7 +23,7 @@ class FileUpload implements MultiTenant<FileUpload> {
     fileContentBytes column: 'fu_bytes', sqlType: 'longblob'
             fileName column: 'fu_filename'
             fileSize column: 'fu_filesize'
-        lastModified column: 'fu_last_mod' 
-               owner column: 'fu_owner', cascade: 'none'
+        lastModified column: 'fu_last_mod'
+               owner column: 'fu_owner', cascade: 'save-update'
   }
 }
