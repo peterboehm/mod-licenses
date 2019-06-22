@@ -1,0 +1,14 @@
+import org.olf.licenses.LicenseCore
+
+import groovy.transform.*
+
+@Field LicenseCore licenseCore
+
+json g.render(licenseCore, [expand: ['tags', 'customProperties', 'status', 'contacts', 'docs', 'supplementaryDocs' ]]) {
+  _links {
+    linkedResources {
+      href "/licenses/licenseLinks?filter=owner.id%3d${licenseCore.id}"
+    }
+  }
+  openEnded licenseCore.openEnded
+}

@@ -99,6 +99,9 @@ grails:
             maxsize: 1000
     controllers:
         defaultScope: singleton
+        upload:
+            maxFileSize: 10485760
+            maxRequestSize: 10485760
     converters:
         encoding: UTF-8
 
@@ -124,19 +127,24 @@ environments:
   test:
     dataSource:
       url: "jdbc:postgresql://${db.host:localhost}:${db.port:54321}/${db.database:okapi_modules_test}"
+    okapi:
+      service:
+        host: localhost
+        port: 9130
+        register: false
+        deploy: false
 
   dbGen:
     grails:
       gorm:
         multiTenancy:
           mode: SCHEMA
-          tenantResolverClass: org.grails.datastore.mapping.multitenancy.resolvers.SystemPropertyTenantResolver # System prop of gorm.tenantId
+          tenantResolverClass: org.grails.datastore.mapping.multitenancy.resolvers.SystemPropertyTenantResolver # System prop of gorm.tenantId 
       plugin:
         databasemigration:
-          updateOnStart: true
-          updateOnStartFileName: module-tenant-changelog.groovy
+          changelogFileName: module-tenant-changelog.groovy
     gorm:
-      tenantId: public # Used by SystemPropertyTenantResolver
+      tenantId: database_test # Used by SystemPropertyTenantResolver
 
   production:
     dataSource:
@@ -170,8 +178,8 @@ environments:
         host: localhost
         port: 9130
 
-        register: true
-        deploy: true
+        register: false
+        deploy: false
         
     server:
       port: 8081

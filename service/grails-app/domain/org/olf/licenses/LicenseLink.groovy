@@ -30,10 +30,10 @@ class LicenseLink implements MultiTenant<LicenseLink> {
   // using this resource to describe an inbound link. This is a slight bastardisation of the directed graph, but it will have to do.
   // Having a direction allows this class to store assertions where the subject is an object in a remote system.
   String direction
-
+  
   // The licenes the relationshiop relates to - the "Subject" of our triple.
   static belongsTo = [
-    owner:License
+    owner: LicenseCore
   ]
 
   static constraints = {
