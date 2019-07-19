@@ -47,7 +47,7 @@ abstract class LicenseLifecycleSpec extends HttpSpec {
 
   void 'Ensure test tenant' () {
     given:
-    Map resp = doPost('/_/tenant', null)
+    def resp = doPost('/_/tenant', null)
 
     expect:
     resp != null
