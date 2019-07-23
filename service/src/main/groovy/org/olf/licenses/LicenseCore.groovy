@@ -10,6 +10,7 @@ import com.k_int.web.toolkit.tags.Tag
 
 import grails.gorm.MultiTenant
 import grails.gorm.annotation.Entity
+import java.time.LocalDate
 
 @Entity
 abstract class LicenseCore implements CustomProperties,MultiTenant<LicenseCore> {
