@@ -4,11 +4,19 @@ import groovy.transform.*
 
 @Field LicenseCore licenseCore
 
-json g.render(licenseCore, [expand: ['tags', 'customProperties', 'status', 'contacts', 'docs', 'supplementaryDocs' ]]) {
+json {
+  'id' licenseCore.id
+  'tags' g.render (licenseCore.tags ?: [])
+  if (licenseCore.customProperties) 'customProperties' (g.render (licenseCore.customProperties))
+  if (licenseCore.status) 'status' (g.render (licenseCore.status))
+  'contacts' g.render (licenseCore.contacts ?: [])
+  'docs' g.render (licenseCore.docs ?: [])
+  'supplementaryDocs' g.render (licenseCore.supplementaryDocs ?: [])
+  'openEnded' licenseCore.openEnded
+  
   _links {
     linkedResources {
       href "/licenses/licenseLinks?filter=owner.id%3d${licenseCore.id}"
     }
   }
-  openEnded licenseCore.openEnded
 }
