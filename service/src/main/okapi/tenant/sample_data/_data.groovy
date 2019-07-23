@@ -203,7 +203,7 @@ List licenseDefs = [
     status: "Active",
     type: "Local",
     description: "This is a test licenses",
-    startDate:"2019-01-1",
+    startDate:"2019-01-01",
     endDate:"2020-01-01",
     endDateSemantics:"Explicit",
     customProperties: [
