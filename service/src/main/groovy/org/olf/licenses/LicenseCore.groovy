@@ -19,8 +19,8 @@ abstract class LicenseCore implements CustomProperties,MultiTenant<LicenseCore> 
   String description
   Date dateCreated
   Date lastUpdated
-  Date startDate
-  Date endDate
+  LocalDate startDate
+  LocalDate endDate
 
   @CategoryId('License.Status')
   @Defaults(['In negotiation','Not yet active', 'Active', 'Rejected', 'Expired'])
