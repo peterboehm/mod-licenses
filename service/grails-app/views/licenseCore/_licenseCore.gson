@@ -7,8 +7,8 @@ import groovy.transform.Field
 
 // The new date formats seem to be causing issues when included here. So Exclude them from g.render and explicitly include them below.
 json g.render(licenseCore, [excludes: ['startDate','endDate'], expand: ['tags', 'customProperties', 'status', 'contacts', 'docs', 'supplementaryDocs' ]]) {
-  startDate g.render(licenseCore.startDate)
-  startDate g.render(licenseCore.endDate)
+  if (licenseCore.startDate) startDate (g.render(licenseCore.startDate))
+  if (licenseCore.endDate) endDate (g.render(licenseCore.endDate))
 
   _links {
     linkedResources {
