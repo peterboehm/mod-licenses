@@ -1,4 +1,8 @@
-## 1.6.0 2019-06-11
+## 1.8.0 2019-07-24
+ * ERM-276 Investigate cause and impact of date/timezone issues
+   * ERM-294 Echo date fixes within mod-licenses.
+
+## 1.7.0 2019-06-11
 * ERM-245 Tenant bootstrap improvements
   * ERM-247 Change descriptors to reflect new interface version
   * ERM-249 Create bootstrap data
