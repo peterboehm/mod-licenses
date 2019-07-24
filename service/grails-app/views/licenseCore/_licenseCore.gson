@@ -1,22 +1,19 @@
-import org.olf.licenses.LicenseCore
+import java.time.LocalDate
 
-import groovy.transform.*
+import org.olf.licenses.LicenseCore
+import groovy.transform.Field
 
 @Field LicenseCore licenseCore
 
-json {
-  'id' licenseCore.id
-  'tags' g.render (licenseCore.tags ?: [])
-  if (licenseCore.customProperties) 'customProperties' (g.render (licenseCore.customProperties))
-  if (licenseCore.status) 'status' (g.render (licenseCore.status))
-  'contacts' g.render (licenseCore.contacts ?: [])
-  'docs' g.render (licenseCore.docs ?: [])
-  'supplementaryDocs' g.render (licenseCore.supplementaryDocs ?: [])
-  'openEnded' licenseCore.openEnded
-  
+// The new date formats seem to be causing issues when included here. So Exclude them from g.render and explicitly include them below.
+json g.render(licenseCore, [excludes: ['startDate','endDate'], expand: ['tags', 'customProperties', 'status', 'contacts', 'docs', 'supplementaryDocs' ]]) {
+  startDate g.render(licenseCore.startDate)
+  startDate g.render(licenseCore.endDate)
+
   _links {
     linkedResources {
       href "/licenses/licenseLinks?filter=owner.id%3d${licenseCore.id}"
     }
   }
+  openEnded licenseCore.openEnded
 }
