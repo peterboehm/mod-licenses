@@ -30,14 +30,14 @@ import spock.lang.Unroll
 @Integration
 @Stepwise
 abstract class LicenseLifecycleSpec extends HttpSpec {
-  
+
   def setupSpec() {
     addDefaultHeaders(
       (OkapiHeaders.TENANT): 'http_tests',
       (OkapiHeaders.USER_ID): 'http_test_user'
     )
   }
-  
+
   @Shared
   Map<String, String> data = [
     'refdata' : [:],
@@ -214,6 +214,39 @@ abstract class LicenseLifecycleSpec extends HttpSpec {
           }
         ])
       }]
+  }
+
+  void 'Set end-date' (licenseId) {
+    given: 'Read license'
+      Map httpResult = doGet("/licenses/licenses/${licenseId}")
+
+    and: 'Set End-date'
+      httpResult = doPut("/licenses/licenses/${licenseId}") {
+        endDate "2019-12-31"
+    }
+
+    expect: 'End-date should not be null'
+      assert httpResult.endDate != null
+
+    where:
+      licenseId << data['licenses'].collect { name, val -> val.id }
+  }
+
+
+  void 'Set start-date' (licenseId) {
+    given: 'Read license'
+    Map httpResult = doGet("/licenses/licenses/${licenseId}")
+
+    and: 'Set Start-date'
+    httpResult = doPut("/licenses/licenses/${licenseId}") {
+      startDate "2019-01-01"
+    }
+
+    expect: 'Start-date should not be null'
+    assert httpResult.startDate != null
+
+    where:
+    licenseId << data['licenses'].collect { name, val -> val.id }
   }
 
 
