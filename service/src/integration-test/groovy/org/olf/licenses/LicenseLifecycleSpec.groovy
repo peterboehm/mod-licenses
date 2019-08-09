@@ -216,13 +216,13 @@ abstract class LicenseLifecycleSpec extends HttpSpec {
       }]
   }
 
-  void 'Set end-date' (licenseId) {
+  void 'Set end-date' (licenseId, end_date) {
     given: 'Read license'
       Map httpResult = doGet("/licenses/licenses/${licenseId}")
 
     and: 'Set End-date'
       httpResult = doPut("/licenses/licenses/${licenseId}") {
-        endDate "2019-12-31"
+        endDate end_date
     }
 
     expect: 'End-date should not be null'
@@ -230,16 +230,16 @@ abstract class LicenseLifecycleSpec extends HttpSpec {
 
     where:
       licenseId << data['licenses'].collect { name, val -> val.id }
+      end_date << ["2025-12-31", "2019-12-31"]
   }
 
-
-  void 'Set start-date' (licenseId) {
+  void 'Set start-date' (licenseId, start_date) {
     given: 'Read license'
     Map httpResult = doGet("/licenses/licenses/${licenseId}")
 
     and: 'Set Start-date'
     httpResult = doPut("/licenses/licenses/${licenseId}") {
-      startDate "2019-01-01"
+      startDate start_date
     }
 
     expect: 'Start-date should not be null'
@@ -247,8 +247,44 @@ abstract class LicenseLifecycleSpec extends HttpSpec {
 
     where:
     licenseId << data['licenses'].collect { name, val -> val.id }
+    start_date << ["2025-01-01", "2019-01-01"]
   }
 
+  void 'Set status' (licenseId, statusdata) {
+    given: 'Read license'
+    Map httpResult = doGet("/licenses/licenses/${licenseId}")
+
+    and: 'Set Status'
+    httpResult = doPut("/licenses/licenses/${licenseId}") {
+      status statusdata
+    }
+
+    expect: 'Status should be within list'
+      assert httpResult.status in ['In negotiation','Not yet active', 'Active', 'Rejected', 'Expired']
+
+    where:
+    licenseId << data['licenses'].collect { name, val -> val.id }
+    statusdata << ["Active", "Expired"]
+  }
+
+  void 'Set type' (licenseId, typedata) {
+    given: 'Read license'
+    Map httpResult = doGet("/licenses/licenses/${licenseId}")
+
+    and: 'Set type'
+    httpResult = doPut("/licenses/licenses/${licenseId}") {
+      type typedata
+    }
+
+    expect: 'Type should within list'
+//      def jsonRoot = new JsonSlurper().parse(httpResult)
+      assert httpResult.get('type') in ['Local', 'Consortial', 'National', 'Alliance' ]
+
+    where:
+    licenseId << data['licenses'].collect { name, val -> val.id }
+//    https://folio-testing-okapi.aws.indexdata.com/licenses/refdata/License/type
+    typedata << ["Local", "Alliance"]
+  }
 
   def cleanupSpecWithSpring() {
     Map resp = doDelete('/_/tenant', null)
