@@ -10,6 +10,7 @@ import com.k_int.web.toolkit.tags.Tag
 
 import grails.gorm.MultiTenant
 import grails.gorm.annotation.Entity
+import java.time.LocalDate
 
 @Entity
 abstract class LicenseCore implements CustomProperties,MultiTenant<LicenseCore> {
@@ -19,8 +20,8 @@ abstract class LicenseCore implements CustomProperties,MultiTenant<LicenseCore> 
   String description
   Date dateCreated
   Date lastUpdated
-  Date startDate
-  Date endDate
+  LocalDate startDate
+  LocalDate endDate
 
   @CategoryId('License.Status')
   @Defaults(['In negotiation','Not yet active', 'Active', 'Rejected', 'Expired'])
