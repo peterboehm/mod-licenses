@@ -1,3 +1,8 @@
+## 1.9.0 2019-08-12
+ * ERM-357 Public and internal license term values
+ * ERM-355 Manage public notes on license term values
+ * ERM-274 Add cleanup task for orphan file uploads 
+   
 ## 1.8.0 2019-07-24
  * ERM-276 Investigate cause and impact of date/timezone issues
    * ERM-294 Echo date fixes within mod-licenses.
