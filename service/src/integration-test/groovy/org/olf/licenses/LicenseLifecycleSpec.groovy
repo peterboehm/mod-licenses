@@ -47,24 +47,24 @@ abstract class LicenseLifecycleSpec extends HttpSpec {
   ]
 
   void 'Ensure test tenant' () {
-    
+
     // Max time to wait is 10 seconds
     def conditions = new PollingConditions(timeout: 10)
     when: 'Create the tenant'
-      def resp = doPost('/_/tenant', {
-        parameters ([["key": "loadReference", "value": true]])
-      })
+    def resp = doPost('/_/tenant', {
+      parameters ([["key": "loadReference", "value": true]])
+    })
 
     then: 'Response obtained'
-      resp != null
-      
+    resp != null
+
     and: 'License terms added'
-    
-      List list
-      // Wait for the refdata to be loaded. 
-      conditions.eventually {
-        (list = doGet('/licenses/refdata')).size() > 0
-      }
+
+    List list
+    // Wait for the refdata to be loaded.
+    conditions.eventually {
+      (list = doGet('/licenses/refdata')).size() > 0
+    }
   }
 
   @Unroll
@@ -86,14 +86,14 @@ abstract class LicenseLifecycleSpec extends HttpSpec {
     [description, vals] << [
       ['Yes/No/Other', ['Yes', 'No', 'Other']],
       ['Permitted/Prohibited', [
-          'Permitted (explicit)',
-          'Permitted (explicit) under conditions',
-          'Permitted (interpreted)',
-          'Prohibited (explicit)',
-          'Prohibited (interpreted)',
-          'Unmentioned',
-          'Not applicable'
-        ]]
+        'Permitted (explicit)',
+        'Permitted (explicit) under conditions',
+        'Permitted (interpreted)',
+        'Prohibited (explicit)',
+        'Prohibited (interpreted)',
+        'Unmentioned',
+        'Not applicable'
+      ]]
     ]
   }
 
@@ -109,166 +109,166 @@ abstract class LicenseLifecycleSpec extends HttpSpec {
 
     where:
     payload << [{
-        name "concurrentAccess"
-        type "Integer"
-        label "Number of concurrent users allowed"
-        description "The number of concurrent users allowed by the resource"
-        primary true
-      },{
-        name "authorisedUsers"
-        type "Text"
-        label "Definition of authorised user"
-        description "The definition of an authorised user for a resource"
-        weight (-1)
-        primary true
-        defaultInternal false
-      },{
-        name "remoteAccess"
-        category data['refdata']['Yes/No/Other']
-        type "Refdata"
-        label "Access restricted to on-campus/campus network?"
-        description "Can access to the resource be provided from outside the library or institutional location / network"
-        primary true
-        defaultInternal false
-      },{
-        name "illElectronic"
-        category data['refdata']['Permitted/Prohibited']
-        type "Refdata"
-        label "Electronic ILL"
-        description "The right to provide the licensed materials via interlibrary loan by way of electronic copies"
-        primary true
-      }]
+                  name "concurrentAccess"
+                  type "Integer"
+                  label "Number of concurrent users allowed"
+                  description "The number of concurrent users allowed by the resource"
+                  primary true
+                },{
+                  name "authorisedUsers"
+                  type "Text"
+                  label "Definition of authorised user"
+                  description "The definition of an authorised user for a resource"
+                  weight (-1)
+                  primary true
+                  defaultInternal false
+                },{
+                  name "remoteAccess"
+                  category data['refdata']['Yes/No/Other']
+                  type "Refdata"
+                  label "Access restricted to on-campus/campus network?"
+                  description "Can access to the resource be provided from outside the library or institutional location / network"
+                  primary true
+                  defaultInternal false
+                },{
+                  name "illElectronic"
+                  category data['refdata']['Permitted/Prohibited']
+                  type "Refdata"
+                  label "Electronic ILL"
+                  description "The right to provide the licensed materials via interlibrary loan by way of electronic copies"
+                  primary true
+                }]
   }
 
   void 'Add Licenses' (payload, Map termData) {
 
     given: 'Create new License'
-      Map httpResult = doPost('/licenses/licenses', payload)
+    Map httpResult = doPost('/licenses/licenses', payload)
 
     and:
-      data['licenses'][httpResult.name] = httpResult
+    data['licenses'][httpResult.name] = httpResult
 
     expect: 'License created'
-      httpResult.id != null
-      
+    httpResult.id != null
+
     and: 'Correct term data'
-      termData.every { Map.Entry it ->
-        final prop = httpResult.customProperties[it.key][0]
-        return prop.internal == it.value.internal &&
-          (it.value.note == null || prop.note == it.value.note) &&
-          (it.value.publicNote == null || prop.publicNote == it.value.publicNote)
-      }
+    termData.every { Map.Entry it ->
+      final prop = httpResult.customProperties[it.key][0]
+      return prop.internal == it.value.internal &&
+        (it.value.note == null || prop.note == it.value.note) &&
+        (it.value.publicNote == null || prop.publicNote == it.value.publicNote)
+    }
 
     where:
-    
-      payload << [{
-        name "License 1"
-        description "License for the AAAS Science Classic Agreement"
-        status "Active"
-        type "Local"
-        startDate "2019-01-01"
-        openEnded true
-        customProperties {
-          concurrentAccess ([[value:10, note: 'Note for concurrentAccess', publicNote: 'Public note for concurrentAccess']])
-          authorisedUsers ([[value:"Anyone with campus login", note: 'Note for authorisedUsers', publicNote: 'Public note for authorisedUsers']])
-          remoteAccess ([[value:"Yes"]])
-          illElectronic ([[value:"Prohibited (interpreted)"]])
-        }
-        docs ([
-          {
-            name "A test document attachment"
-            location "http://a.b.c/d/e/f.doc"
-            url "http://a.b.c/d"
-            note "This is a document attachment"
-            atType "License"
-          },
-          {
-            name "A test document attachment"
-            location "http://a.b.c/d/e/g.doc"
-            url "http://a.b.c/e"
-            note "This is a second document attachment"
-            atType "Misc"
-          }
-        ])
-        supplementaryDocs ([
-          {
-            name "A test SD document attachment 1"
-            location "http://a.b.c/d/e/f.doc"
-            note "This is a document attachment"
-            atType "License"
-          },
-          {
-            name "A test SD document attachment 2"
-            location "http://a.b.c/d/e/g.doc"
-            note "This is a second document attachment"
-            atType "Misc"
-          }
-        ])
-      },
-      {
-        name "Test License 2"
-        status "Active"
-        type "Local"
-        description "This is a test licenses"
-        startDate "2019-01-01"
-        endDate "2020-01-01"
-        endDateSemantics "Explicit"
-        customProperties {
-          concurrentAccess ([[value:20, internal: false]])
-          authorisedUsers ([[value:"Open access", internal: true]])
-          remoteAccess ([[value:"No", internal: true]])
-          illElectronic ([[value:"Unmentioned", internal: false]])
-        }
-        tags ([
-          "legacy"
-        ])
-        orgs ([
-          {
-            role "Licensor"
-            org {
-              name "EBSCO"
-              orgsUuid "1234-5678-9102-3356"
-            }
-          },
-          {
-            role "Licensee"
-            org {
-              name "Some Content Provider"
-              orgsUuid "1234-5678-9102-3355"
-            }
-          }
-        ])
-      }]
-      
-      // First set should use defaults, second should be overridden
-      termData << [[
-        'concurrentAccess': [internal: true, note: 'Note for concurrentAccess', publicNote: 'Public note for concurrentAccess'],
-        'authorisedUsers': [internal: false, note: 'Note for authorisedUsers', publicNote: 'Public note for authorisedUsers'],
-        'remoteAccess': [internal: false],
-        'illElectronic': [internal: true]
-      ],[
-        'concurrentAccess': [internal: false],
-        'authorisedUsers': [internal: true],
-        'remoteAccess': [internal: true],
-        'illElectronic': [internal: false]
-      ]]
+
+    payload << [{
+                  name "License 1"
+                  description "License for the AAAS Science Classic Agreement"
+                  status "Active"
+                  type "Local"
+                  startDate "2019-01-01"
+                  openEnded true
+                  customProperties {
+                    concurrentAccess ([[value:10, note: 'Note for concurrentAccess', publicNote: 'Public note for concurrentAccess']])
+                    authorisedUsers ([[value:"Anyone with campus login", note: 'Note for authorisedUsers', publicNote: 'Public note for authorisedUsers']])
+                    remoteAccess ([[value:"Yes"]])
+                    illElectronic ([[value:"Prohibited (interpreted)"]])
+                  }
+                  docs ([
+                    {
+                      name "A test document attachment"
+                      location "http://a.b.c/d/e/f.doc"
+                      url "http://a.b.c/d"
+                      note "This is a document attachment"
+                      atType "License"
+                    },
+                    {
+                      name "A test document attachment"
+                      location "http://a.b.c/d/e/g.doc"
+                      url "http://a.b.c/e"
+                      note "This is a second document attachment"
+                      atType "Misc"
+                    }
+                  ])
+                  supplementaryDocs ([
+                    {
+                      name "A test SD document attachment 1"
+                      location "http://a.b.c/d/e/f.doc"
+                      note "This is a document attachment"
+                      atType "License"
+                    },
+                    {
+                      name "A test SD document attachment 2"
+                      location "http://a.b.c/d/e/g.doc"
+                      note "This is a second document attachment"
+                      atType "Misc"
+                    }
+                  ])
+                },
+                {
+                  name "Test License 2"
+                  status "Active"
+                  type "Local"
+                  description "This is a test licenses"
+                  startDate "2019-01-01"
+                  endDate "2020-01-01"
+                  endDateSemantics "Explicit"
+                  customProperties {
+                    concurrentAccess ([[value:20, internal: false]])
+                    authorisedUsers ([[value:"Open access", internal: true]])
+                    remoteAccess ([[value:"No", internal: true]])
+                    illElectronic ([[value:"Unmentioned", internal: false]])
+                  }
+                  tags ([
+                    "legacy"
+                  ])
+                  orgs ([
+                    {
+                      role "Licensor"
+                      org {
+                        name "EBSCO"
+                        orgsUuid "1234-5678-9102-3356"
+                      }
+                    },
+                    {
+                      role "Licensee"
+                      org {
+                        name "Some Content Provider"
+                        orgsUuid "1234-5678-9102-3355"
+                      }
+                    }
+                  ])
+                }]
+
+    // First set should use defaults, second should be overridden
+    termData << [[
+                   'concurrentAccess': [internal: true, note: 'Note for concurrentAccess', publicNote: 'Public note for concurrentAccess'],
+                   'authorisedUsers': [internal: false, note: 'Note for authorisedUsers', publicNote: 'Public note for authorisedUsers'],
+                   'remoteAccess': [internal: false],
+                   'illElectronic': [internal: true]
+                 ],[
+                   'concurrentAccess': [internal: false],
+                   'authorisedUsers': [internal: true],
+                   'remoteAccess': [internal: true],
+                   'illElectronic': [internal: false]
+                 ]]
   }
 
   void 'Set end-date' (licenseId, end_date) {
     given: 'Read license'
-      Map httpResult = doGet("/licenses/licenses/${licenseId}")
+    Map httpResult = doGet("/licenses/licenses/${licenseId}")
 
     and: 'Set End-date'
-      httpResult = doPut("/licenses/licenses/${licenseId}") {
-        endDate end_date
+    httpResult = doPut("/licenses/licenses/${licenseId}") {
+      endDate end_date
     }
 
     expect: 'End-date should not be null'
-      assert httpResult.endDate != null
+    assert httpResult.endDate != null
 
     where:
-      licenseId << data['licenses'].collect { name, val -> val.id }
-      end_date << ["2025-12-31", "2019-12-31"]
+    licenseId << data['licenses'].collect { name, val -> val.id }
+    end_date << ["2025-12-31", "2019-12-31"]
   }
 
   void 'Set start-date' (licenseId, start_date) {
@@ -298,11 +298,11 @@ abstract class LicenseLifecycleSpec extends HttpSpec {
     }
 
     expect: 'Status should be within list'
-      assert httpResult.status in ['In negotiation','Not yet active', 'Active', 'Rejected', 'Expired']
+    assert httpResult.status.value in ['in negotiation','not yet active', 'active', 'rejected', 'expired']
 
     where:
     licenseId << data['licenses'].collect { name, val -> val.id }
-    statusdata << ["Active", "Expired"]
+    statusdata << ['Active', 'Expired']
   }
 
   void 'Set type' (licenseId, typedata) {
@@ -314,18 +314,81 @@ abstract class LicenseLifecycleSpec extends HttpSpec {
       type typedata
     }
 
-    expect: 'Type should within list'
-//      def jsonRoot = new JsonSlurper().parse(httpResult)
-      assert httpResult.get('type') in ['Local', 'Consortial', 'National', 'Alliance' ]
+    expect: 'Type should be within list'
+    assert httpResult.type.value in ['local', 'consortial', 'national', 'alliance' ]
 
     where:
     licenseId << data['licenses'].collect { name, val -> val.id }
-//    https://folio-testing-okapi.aws.indexdata.com/licenses/refdata/License/type
-    typedata << ["Local", "Alliance"]
+    typedata << ['Local', 'Alliance']
   }
+
+  void 'Set endDateSemantics' (licenseId, semanticsdata) {
+    given: 'Read license'
+    Map httpResult = doGet("/licenses/licenses/${licenseId}")
+
+    and: 'Set endDateSemantics'
+    httpResult = doPut("/licenses/licenses/${licenseId}") {
+      endDateSemantics semanticsdata
+    }
+
+    expect: 'endDateSemantics should be within list'
+    assert httpResult.openEnded == true
+
+    where:
+    licenseId << data['licenses'].collect { name, val -> val.id }
+    semanticsdata << ['Open ended', 'Open ended']
+  }
+
+  void 'Set license links' (licenseId) {
+    given: 'Read license'
+    Map httpResult = doGet("/licenses/licenses/${licenseId}")
+
+    and: 'Add two tags to licenses'
+    httpResult = doPut("/licenses/licenses/${licenseId}") {
+      links  ([{
+                value 'http://google.com'
+              },
+              {
+                value 'http://folio.org'
+              }
+      ])
+    }
+
+    expect: 'links should be in link value list'
+    'http://google.com' in httpResult.links.value
+    and:
+    'http://folio.org' in httpResult.links.value
+
+    where:
+    licenseId << data['licenses'].collect { name, val -> val.id }
+  }
+
+  void 'Set tags' (licenseId) {
+    given: 'Read license'
+    Map httpResult = doGet("/licenses/licenses/${licenseId}")
+
+    and: 'Add two tags to licenses'
+    httpResult = doPut("/licenses/licenses/${licenseId}") {
+      tags  ([{
+        value 'tag1'
+              },
+              {
+        value 'tag2'
+              }
+        ])
+    }
+
+    expect: 'tags should be tag value list'
+    'tag1' in httpResult.tags.value
+    and:
+    'tag2' in httpResult.tags.value
+
+    where:
+    licenseId << data['licenses'].collect { name, val -> val.id }
+  }
+
 
   def cleanupSpecWithSpring() {
     Map resp = doDelete('/_/tenant', null)
   }
 }
-
