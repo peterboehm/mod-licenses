@@ -1,4 +1,16 @@
-## 1.6.0 2019-06-11
+## 1.10.0 2019-08-21
+ * Re-release of 1.9.0 with updated module version
+
+## 1.9.0 2019-08-12
+ * ERM-357 Public and internal license term values
+ * ERM-355 Manage public notes on license term values
+ * ERM-274 Add cleanup task for orphan file uploads
+
+## 1.8.0 2019-07-24
+ * ERM-276 Investigate cause and impact of date/timezone issues
+   * ERM-294 Echo date fixes within mod-licenses.
+
+## 1.7.0 2019-06-11
 * ERM-245 Tenant bootstrap improvements
   * ERM-247 Change descriptors to reflect new interface version
   * ERM-249 Create bootstrap data
@@ -39,7 +51,7 @@
  * ERM-194 BUGFIX: Opening edit/create license with only one page does not work
 
 
-## 1.4.0 2019-04-08 
+## 1.4.0 2019-04-08
 
  * ERM-115 Provide correct data for agreement line
  * ERM-111 Build Settings Page
@@ -58,14 +70,14 @@
 
 ## 1.2.0 2019-03-12
  * ERM-71 Add Model for JSON resource
- 
+
  * ERM-37 Manage core documents for a license
  * ERM-69 Add DocumentAttachment Domain model
  * ERM-40 Remove a core document from a license
  * ERM-39 Edit license core document details
  * ERM-38 Add core documents to a License
-   
- * ERM-7 Add an Organisation to a License 
+
+ * ERM-7 Add an Organisation to a License
  * ERM-32 Add organization role validation to license to enforce no more than one Org per license with role:Licensor
  * ERM-25 Copy Organization structure from Agreements to Licenses
  * ERM-10 Remove an Organisation from a License
@@ -94,6 +106,6 @@
 
  * Jenkinsfile bugfix
 
-## mod-licenses v1.0.0 released 2018-12-04 
+## mod-licenses v1.0.0 released 2018-12-04
 
  * First release allowing licenese titles, custom properties / license terms and tags.
