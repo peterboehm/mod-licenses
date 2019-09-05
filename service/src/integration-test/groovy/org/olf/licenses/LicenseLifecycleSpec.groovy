@@ -339,30 +339,6 @@ abstract class LicenseLifecycleSpec extends HttpSpec {
     semanticsdata << ['Open ended', 'Open ended']
   }
 
-  void 'Set license links' (licenseId) {
-    given: 'Read license'
-    Map httpResult = doGet("/licenses/licenses/${licenseId}")
-
-    and: 'Add two tags to licenses'
-    httpResult = doPut("/licenses/licenses/${licenseId}") {
-      links  ([{
-                value 'http://google.com'
-              },
-              {
-                value 'http://folio.org'
-              }
-      ])
-    }
-
-    expect: 'links should be in link value list'
-    'http://google.com' in httpResult.links.value
-    and:
-    'http://folio.org' in httpResult.links.value
-
-    where:
-    licenseId << data['licenses'].collect { name, val -> val.id }
-  }
-
   void 'Set tags' (licenseId) {
     given: 'Read license'
     Map httpResult = doGet("/licenses/licenses/${licenseId}")
