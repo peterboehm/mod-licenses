@@ -1,3 +1,13 @@
+## 1.11.0 2019-09-11
+ * ERM-279 Provide integration tests for license creation covering start date, end date, status, type and end date semantics
+   * ERM-369 Integration tests for license tags
+   * ERM-368 Integration tests for license link
+   * ERM-367 Integration tests for license endDateSemantics
+   * ERM-366 Integration tests for license type
+   * ERM-365 Integration tests for license status
+   * ERM-364 Integration tests for license start-date
+   * ERM-363 Integration tests for license end-date 
+
 ## 1.10.0 2019-08-21
  * Re-release of 1.9.0 with updated module version
 
