@@ -1,13 +1,10 @@
 package org.olf.licenses
 
-import grails.gorm.multitenancy.CurrentTenant
-import groovy.util.logging.Slf4j
-
-import org.olf.licenses.License
-
 import com.k_int.okapi.OkapiTenantAwareController
+import com.k_int.web.toolkit.refdata.RefdataValue
 
-import grails.converters.JSON
+import grails.gorm.multitenancy.CurrentTenant
+import grails.gorm.transactions.Transactional
 
 
 /**
@@ -21,5 +18,39 @@ class LicenseController extends OkapiTenantAwareController<License>  {
   LicenseController() {
     super(License)
   }
+  
+  // Override the show method
+  @Transactional(readOnly=true)
+  def show() {
+    // Applicable amendments might be present.
+    final List<Serializable> am = params.list('applyAmendment')
+    if (!am) {
+      // Just follow the super implementation
+      return super.show()
+    }
+    
+    // Otherwise let's mutate the original license and only supply the applicable terms.
+    final License license = params.id ? License.read(params.id) : null
+    
+    if (license) {
+      // Lookup the active status first.
+      RefdataValue active = LicenseAmendment.lookupStatus('active')
+      
+      // We found a license. Lets append the active amendments by startdate
+      List<LicenseAmendment> applicableAmendments = LicenseAmendment.createCriteria().list {
+        'in' 'id', am
+        eq 'owner', license
+        eq 'status', active
+        order 'startDate', 'asc'
+      }
+      
+      if (applicableAmendments) {
+        license += applicableAmendments.sum()
+      }
+    }
+    
+    respond license
+  }
+  
 }
 

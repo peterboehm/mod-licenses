@@ -3,6 +3,8 @@ package org.olf.licenses
 import org.olf.general.DocumentAttachment
 
 import com.k_int.web.toolkit.custprops.CustomProperties
+import com.k_int.web.toolkit.custprops.CustomProperty
+import com.k_int.web.toolkit.custprops.types.CustomPropertyContainer
 import com.k_int.web.toolkit.refdata.CategoryId
 import com.k_int.web.toolkit.refdata.Defaults
 import com.k_int.web.toolkit.refdata.RefdataValue
@@ -94,5 +96,35 @@ abstract class LicenseCore implements CustomProperties,MultiTenant<LicenseCore> 
     else {
       setEndDateSemanticsFromString('Explicit')
     }
+  }
+  
+  /**
+   * @param la LicenseCore
+   * @return this license but with the custom properties (Terms) aggregated.
+   */
+  public LicenseCore plus (LicenseCore la) {
+    
+    final Set<String> seen = []
+    final List<CustomProperties> newList = la.customProperties.value.findResults { CustomProperty v -> 
+      if (seen.contains(v.definition.name)) {
+        return null
+      }
+      
+      seen << v.definition.name
+      v
+    }
+    
+    newList += this.customProperties.value.findResults { CustomProperty v ->
+      if (seen.contains(v.definition.name)) {
+        return null 
+      }
+      
+      seen << v.definition.name
+      v
+    }
+    
+    this.customProperties = new CustomPropertyContainer()
+    this.customProperties.value = newList as Set
+    this
   }
 }
