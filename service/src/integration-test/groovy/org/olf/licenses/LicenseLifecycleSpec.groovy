@@ -1,43 +1,18 @@
 package org.olf.licenses
 
-import static groovyx.net.http.ContentTypes.*
-import static groovyx.net.http.HttpBuilder.configure
-import static org.springframework.http.HttpStatus.*
-
-import com.k_int.okapi.OkapiHeaders
-import com.k_int.web.toolkit.testing.HttpSpec
-import geb.spock.GebSpec
-import grails.gorm.multitenancy.Tenants
-import grails.plugins.rest.client.RestBuilder
 import grails.testing.mixin.integration.Integration
-import groovy.json.JsonSlurper
-import groovy.util.logging.Slf4j
-import groovyx.net.http.ChainedHttpConfig
-import groovyx.net.http.FromServer
-import groovyx.net.http.HttpBuilder
-import groovyx.net.http.HttpVerb
-import spock.lang.IgnoreRest
 import spock.lang.Shared
 import spock.lang.Stepwise
 import spock.lang.Unroll
-import spock.util.concurrent.PollingConditions
 
 
 
 /**
  * Create licenses
  */
-@Slf4j
-@Integration
 @Stepwise
-abstract class LicenseLifecycleSpec extends HttpSpec {
-
-  def setupSpec() {
-    addDefaultHeaders(
-      (OkapiHeaders.TENANT): 'http_tests',
-      (OkapiHeaders.USER_ID): 'http_test_user'
-    )
-  }
+@Integration
+class LicenseLifecycleSpec extends BaseSpec {
 
   @Shared
   Map<String, String> data = [
@@ -45,27 +20,6 @@ abstract class LicenseLifecycleSpec extends HttpSpec {
     'licenses' : [:],
     'license_properties' : [:]
   ]
-
-  void 'Ensure test tenant' () {
-
-    // Max time to wait is 10 seconds
-    def conditions = new PollingConditions(timeout: 10)
-    when: 'Create the tenant'
-    def resp = doPost('/_/tenant', {
-      parameters ([["key": "loadReference", "value": true]])
-    })
-
-    then: 'Response obtained'
-    resp != null
-
-    and: 'License terms added'
-
-    List list
-    // Wait for the refdata to be loaded.
-    conditions.eventually {
-      (list = doGet('/licenses/refdata')).size() > 0
-    }
-  }
 
   @Unroll
   void 'Add #description Refdata' (String description, List vals) {
@@ -361,10 +315,5 @@ abstract class LicenseLifecycleSpec extends HttpSpec {
 
     where:
     licenseId << data['licenses'].collect { name, val -> val.id }
-  }
-
-
-  def cleanupSpecWithSpring() {
-    Map resp = doDelete('/_/tenant', null)
   }
 }

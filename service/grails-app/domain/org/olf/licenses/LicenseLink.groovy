@@ -25,13 +25,16 @@ class LicenseLink implements MultiTenant<LicenseLink> {
   // The relationship - an optional field that defines the predicate we are using for this triple. The predicate for our triple
   String relation
 
-  // The direction - sometimes it might be neccessary to have directionality in relationships ("In" or "Out"bound).
+  // The direction - sometimes it might be necessary to have directionality in relationships ("In" or "Out"bound).
   // This is necessary because some remote objects might not allow Subject-Predicate-Object FROM their local datastore, so we will be
   // using this resource to describe an inbound link. This is a slight bastardisation of the directed graph, but it will have to do.
   // Having a direction allows this class to store assertions where the subject is an object in a remote system.
   String direction
   
-  // The licenes the relationshiop relates to - the "Subject" of our triple.
+  
+  LicenseCore owner
+  
+  // The license the relationship relates to - the "Subject" of our triple.
   static belongsTo = [
     owner: LicenseCore
   ]
