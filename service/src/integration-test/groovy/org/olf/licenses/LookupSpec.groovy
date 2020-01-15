@@ -6,6 +6,7 @@ import spock.lang.Stepwise
 import spock.lang.Unroll
 
 @Stepwise
+@Integration
 class LookupSpec extends BaseSpec {
   
   @Shared
@@ -232,5 +233,34 @@ class LookupSpec extends BaseSpec {
       'concurrentAccess.value'        | 32          || 0
       'remoteAccess'                  | 'no'        || data.total
       'concurrentAccess'              | 32          || data.total
+  }
+  
+  
+  
+  @Unroll
+  void 'Lookup refdata by id #propertyName = #value from category #rdc' (final String propertyName, final String rdc, final def value, final int expect) {
+    
+    when: 'Lookup rdv id from category_id=#rdc and value #value'
+      def cat = doGet("/licenses/refdata/${rdc}")
+      
+      def val = cat.values.find { it.value == value }
+      
+    then: 'Value found'
+      val?.id != null
+      
+    when: 'Lookup licence'
+      Map httpResult = doGet('/licenses/licenses', [
+        stats: true, // Returns object with metadata instead of list
+        filters: [
+          "customProperties.${propertyName}==${val.id}"
+        ]
+      ])
+    then:
+      httpResult.totalRecords == expect
+      
+    where:
+      propertyName              | rdc                               | value       || expect
+      'remoteAccess.value'      | data['refdata']['Yes/No/Other']   | 'yes'       || 1
+      'remoteAccess.value'      | data['refdata']['Yes/No/Other']   | 'no'        || 1
   }
 }
