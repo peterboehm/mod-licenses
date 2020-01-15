@@ -2,6 +2,8 @@ package org.olf.licenses
 
 import com.k_int.okapi.OkapiHeaders
 import com.k_int.web.toolkit.testing.HttpSpec
+
+import groovyx.net.http.HttpException
 import spock.lang.Stepwise
 import spock.util.concurrent.PollingConditions
 
@@ -15,9 +17,9 @@ abstract class BaseSpec extends HttpSpec {
       }
     }
     addDefaultHeaders(
-      (OkapiHeaders.TENANT): 'http_tests',
-      (OkapiHeaders.USER_ID): 'http_test_user'
-    )
+      (OkapiHeaders.TENANT): "${this.class.simpleName}",
+      (OkapiHeaders.USER_ID): "${this.class.simpleName}_user"
+    ) 
   }
   
   Map<String, String> getAllHeaders() {
@@ -28,12 +30,22 @@ abstract class BaseSpec extends HttpSpec {
     allHeaders?.get(OkapiHeaders.TENANT)
   }
   
+  void 'Pre purge tenant' () {
+    boolean resp = false
+    when: 'Purge the tenant'
+      try {
+        resp = doDelete('/_/tenant', null)
+        resp = true
+      } catch (HttpException ex) { resp = true }
+      
+    then: 'Response obtained'
+      resp == true
+  }
+  
   void 'Ensure test tenant' () {
     
-    // Max time to wait is 10 seconds
-    def conditions = new PollingConditions(timeout: 10)
     when: 'Create the tenant'
-    def resp = doPost('/_/tenant', {
+      def resp = doPost('/_/tenant', {
       parameters ([["key": "loadReference", "value": true]])
     })
 
@@ -44,12 +56,11 @@ abstract class BaseSpec extends HttpSpec {
 
     List list
     // Wait for the customProperties to be loaded.
+    
+    // Max time to wait is 10 seconds
+    def conditions = new PollingConditions(timeout: 10)
     conditions.eventually {
       (list = doGet('/licenses/custprops')).size() > 0
     }
-  }
-  
-  def cleanupSpecWithSpring() {
-    Map resp = doDelete('/_/tenant', null)
   }
 }
