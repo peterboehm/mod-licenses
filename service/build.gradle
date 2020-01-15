@@ -88,8 +88,8 @@ dependencies {
 
 // Changed this to enable inline development of the includes listed below.
 def includes = [
-  'web-toolkit-ce'   : 'com.k_int.grails:web-toolkit-ce:3.6.0',
-  'grails-okapi'  : 'com.k_int.okapi:grails-okapi:3.6.11'
+  'web-toolkit-ce'   : 'com.k_int.grails:web-toolkit-ce:3.9.0',
+  'grails-okapi'  : 'com.k_int.okapi:grails-okapi:3.6.17'
 ]
 
 bootRun {
@@ -260,7 +260,7 @@ task createDockerfile(type: Dockerfile, dependsOn: prepareDocker) {
 
   destFile = project.file("${dockerBuildDir}/Dockerfile")
 
-  from 'folioci/openjdk8-jre-alpine:latest'
+  from 'folioci/alpine-jre-openjdk8:latest'
   maintainer 'Knowledge Integration'
 
   exposePort 8080
