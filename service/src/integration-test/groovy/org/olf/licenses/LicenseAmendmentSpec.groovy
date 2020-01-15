@@ -11,6 +11,7 @@ import spock.lang.Unroll
  * Test the new amendment abstraction model.
  */
 @Stepwise
+@Integration
 class LicenseAmendmentSpec extends BaseSpec {
   
   @Shared

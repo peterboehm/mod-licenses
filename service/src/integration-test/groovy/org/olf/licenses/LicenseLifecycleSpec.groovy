@@ -11,6 +11,7 @@ import spock.lang.Unroll
  * Create licenses
  */
 @Stepwise
+@Integration
 class LicenseLifecycleSpec extends BaseSpec {
 
   @Shared
