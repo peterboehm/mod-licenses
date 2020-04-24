@@ -1,10 +1,13 @@
 package org.olf.licenses
 
+import java.time.LocalDate
+
 import org.olf.general.DocumentAttachment
 
 import com.k_int.web.toolkit.custprops.CustomProperties
 import com.k_int.web.toolkit.custprops.CustomProperty
 import com.k_int.web.toolkit.custprops.types.CustomPropertyContainer
+import com.k_int.web.toolkit.domain.traits.Clonable
 import com.k_int.web.toolkit.refdata.CategoryId
 import com.k_int.web.toolkit.refdata.Defaults
 import com.k_int.web.toolkit.refdata.RefdataValue
@@ -12,7 +15,6 @@ import com.k_int.web.toolkit.tags.Tag
 
 import grails.gorm.MultiTenant
 import grails.gorm.annotation.Entity
-import java.time.LocalDate
 
 @Entity
 abstract class LicenseCore implements CustomProperties,MultiTenant<LicenseCore> {
@@ -77,11 +79,12 @@ abstract class LicenseCore implements CustomProperties,MultiTenant<LicenseCore> 
             startDate column: 'lic_start_date'
               endDate column: 'lic_end_date'
      endDateSemantics column: 'lic_end_date_semantics_fk'
-                 tags cascade: 'all-delete-orphan', joinTable: [name: 'license_tag', key: 'license_tags_id']
+                tags cascade: 'save-update', joinTable: [name: 'license_tag', key: 'license_tags_id']
                 links cascade: 'all-delete-orphan'
              contacts cascade: 'all-delete-orphan'
                  docs cascade: 'all-delete-orphan', joinTable: [name: 'license_document_attachment', key: 'license_docs_id']
     supplementaryDocs cascade: 'all-delete-orphan', joinTable: [name: 'license_supp_doc', key: 'licsd_lic_fk', column: 'licsd_da_fk']
+     customProperties cascade: 'all-delete-orphan'
   }
 
   static transients = ['openEnded']

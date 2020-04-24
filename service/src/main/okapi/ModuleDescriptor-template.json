@@ -30,9 +30,14 @@
           "pathPattern": "/licenses/licenses/{id}",
           "permissionsRequired": [ "licenses.licenses.item.put" ]
         },{
+          "methods": ["POST"],
+          "pathPattern": "/licenses/licenses/{id}/clone",
+          "permissionsRequired": [ "licenses.licenses.item.clone" ]
+        },{
           "methods": ["DELETE"],
           "pathPattern": "/licenses/licenses/{id}",
-          "permissionsRequired": [ "licenses.licenses.item.delete" ]
+          "permissionsRequired": [ "licenses.licenses.item.delete" ],
+          "modulePermissions": [ "erm.agreements.linkedLicenses.get" ]
         },
         
         {
@@ -173,7 +178,8 @@
     "subPermissions": [
       "licenses.licenses.view",
       "licenses.licenses.item.post",
-      "licenses.licenses.item.put"
+      "licenses.licenses.item.put",
+      "licenses.licenses.item.clone"
     ]
   },{
     "permissionName": "licenses.licenses.manage",
