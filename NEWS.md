@@ -1,3 +1,13 @@
+## 2.2.0 2020-06-11
+ * ERM-880 remove duplicate JSON fields in mod-licenses
+ * ERM-828 Add support for "Alternative name" for licenses
+ * ERM-814 Duplicate license
+ * ERM-735 Separate refdata categories into "internal" and "user" lists
+ * ERM-713 Produce license term comparison report
+ * ERM-705 Support filtering licenses on the basis of terms being set/not set
+ * ERM-668 Add ability to search/filter licenses based on custom properties (aka "terms")
+ * ERM-193 Deleting a License (and possibly Agreement) with a Tag isn't possible
+
 ## 2.1.1 2020-04-01
  * ERM-783 Term descriptions are limited to 255 characters
 
