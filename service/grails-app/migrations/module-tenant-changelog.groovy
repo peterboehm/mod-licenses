@@ -13,4 +13,5 @@ databaseChangeLog = {
   include file: 'update-mod-license-2-0.groovy'
   include file: 'update-mod-license-2-1.groovy'
   include file: 'update-mod-license-2-2.groovy'
+  include file: 'update-mod-license-2-3.groovy'
 }
