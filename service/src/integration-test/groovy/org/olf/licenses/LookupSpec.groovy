@@ -1,18 +1,13 @@
-package org.olf.licenses
-
-import org.apache.commons.lang.math.RandomUtils
+package org.olf.licenses;
 
 import grails.testing.mixin.integration.Integration
 import spock.lang.Shared
 import spock.lang.Stepwise
 import spock.lang.Unroll
 
-/**
- * Test the new amendment abstraction model.
- */
 @Stepwise
 @Integration
-class LicenseAmendmentSpec extends BaseSpec {
+class LookupSpec extends BaseSpec {
   
   @Shared
   Map<String, String> data = [
@@ -196,87 +191,76 @@ class LicenseAmendmentSpec extends BaseSpec {
 
     // First set should use defaults, second should be overridden
     termData << [[
-       'concurrentAccess': [internal: true, note: 'Note for concurrentAccess', publicNote: 'Public note for concurrentAccess'],
-       'authorisedUsers': [internal: false, note: 'Note for authorisedUsers', publicNote: 'Public note for authorisedUsers'],
-       'remoteAccess': [internal: false],
-       'illElectronic': [internal: true]
-     ],[
-       'concurrentAccess': [internal: false],
-       'authorisedUsers': [internal: true],
-       'remoteAccess': [internal: true],
-       'illElectronic': [internal: false]
-     ]]
+                   'concurrentAccess': [internal: true, note: 'Note for concurrentAccess', publicNote: 'Public note for concurrentAccess'],
+                   'authorisedUsers': [internal: false, note: 'Note for authorisedUsers', publicNote: 'Public note for authorisedUsers'],
+                   'remoteAccess': [internal: false],
+                   'illElectronic': [internal: true]
+                 ],[
+                   'concurrentAccess': [internal: false],
+                   'authorisedUsers': [internal: true],
+                   'remoteAccess': [internal: true],
+                   'illElectronic': [internal: false]
+                 ]]
   }
   
-  @Unroll
-  void 'Add amendments to license #licenseId' (licenseId) {
-    
-    given: 'Read licence'
-      Map httpResult = doGet("/licenses/licenses/${licenseId}")
-
-    and: 'Check current amendments'
-      final int currentAmends = httpResult.amendments?.size() ?: 0
-      
-    and: 'Add amendment'
-      httpResult = doPut("/licenses/licenses/${licenseId}") {
-        amendments ([{
-          name "Amendment 1"
-          description "My first added amendment"
-          status "Active"
-          startDate "2019-03-01"
-          openEnded true
-          customProperties {
-            concurrentAccess ([15])
-            remoteAccess (["No"])
-          }
-        }
+  void 'Check we have licenses' () {
+    given: 'Lookup licence'
+      Map httpResult = doGet('/licenses/licenses', [
+        stats: true, // Returns object with metadata instead of list
       ])
-    }
-      
-    expect: 'Amendments increase by 1'
-      httpResult.amendments.size() == (currentAmends + 1)
-
-    where:
-      licenseId << data['licenses'].collect { name, val -> val.id }
-  }
-  
-  void 'Test amendments serialized out' () {
-    given: 'Read first license'
-      Map httpResult = doGet("/licenses/licenses/${data['licenses'].values().getAt(0).get('id')}")
-      
-    expect: 'Amendments should contain more than just the id property'
-      assert httpResult.amendments.every {
-        it.keySet().size() > 1
-      }
-      
-    and: 'Amendment status should be active'
-      // Check first amendment has status property
-      assert httpResult['amendments'][0]['status']['value'] == 'active'
+    expect:
+      (data.total = httpResult.totalRecords) > 0
   }
   
   @Unroll
-  void 'Remove amendment from #licenseId' (licenseId) {
+  void 'Lookup by #propertyName = #value' (final String propertyName, final def value, final int expect) {
+    
+    given: 'Lookup licence'
+      Map httpResult = doGet('/licenses/licenses', [
+        stats: true, // Returns object with metadata instead of list
+        filters: [
+          "customProperties.${propertyName}==${value}"
+        ]
+      ])
+    expect:
+      httpResult.totalRecords == expect
       
-    given: 'Read licence'
-      Map httpResult = doGet("/licenses/licenses/${licenseId}")
-      
-    and: 'Check current amendments'
-      final int currentAmends = httpResult.amendments?.size() ?: 0
-      
-    and: 'Record random amendment'
-      int randomIndex = RandomUtils.nextInt(httpResult.amendments.size())
-      Map amendment = httpResult.amendments[randomIndex]
-      
-    and: 'Remove amendment and put license back'
-      amendment['_delete'] = true
-      httpResult = doPut("/licenses/licenses/${licenseId}", httpResult)
-      
-    expect: 'Amendment has gone'
-      assert httpResult.amendments.size() == (currentAmends - 1)
-      assert httpResult.amendments.find { it.id == amendment.id } == null
-
     where:
-      licenseId << data['licenses'].collect { name, val -> val.id }
+      propertyName                    | value       || expect
+      'remoteAccess.value.value'      | 'yes'       || 1
+      'concurrentAccess.value'        | 20          || 1
+      'remoteAccess.value.value'      | 'no'        || 1
+      'concurrentAccess.value'        | 32          || 0
+      'remoteAccess'                  | 'no'        || data.total
+      'concurrentAccess'              | 32          || data.total
+  }
+  
+  
+  
+  @Unroll
+  void 'Lookup refdata by id #propertyName = #value from category #rdc' (final String propertyName, final String rdc, final def value, final int expect) {
+    
+    when: 'Lookup rdv id from category_id=#rdc and value #value'
+      def cat = doGet("/licenses/refdata/${rdc}")
+      
+      def val = cat.values.find { it.value == value }
+      
+    then: 'Value found'
+      val?.id != null
+      
+    when: 'Lookup licence'
+      Map httpResult = doGet('/licenses/licenses', [
+        stats: true, // Returns object with metadata instead of list
+        filters: [
+          "customProperties.${propertyName}==${val.id}"
+        ]
+      ])
+    then:
+      httpResult.totalRecords == expect
+      
+    where:
+      propertyName              | rdc                               | value       || expect
+      'remoteAccess.value'      | data['refdata']['Yes/No/Other']   | 'yes'       || 1
+      'remoteAccess.value'      | data['refdata']['Yes/No/Other']   | 'no'        || 1
   }
 }
-

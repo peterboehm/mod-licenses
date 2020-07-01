@@ -80,6 +80,9 @@ dependencies {
   compile 'org.liquibase:liquibase-core:3.5.5'
   compile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.1'
   
+  
+  compile 'com.opencsv:opencsv:4.6'
+  
   // Better test reports.
   testCompile( 'com.athaydes:spock-reports:1.6.1' ) {
     transitive = false // this avoids affecting your version of Groovy/Spock
@@ -88,8 +91,8 @@ dependencies {
 
 // Changed this to enable inline development of the includes listed below.
 def includes = [
-  'web-toolkit-ce'   : 'com.k_int.grails:web-toolkit-ce:3.6.0',
-  'grails-okapi'  : 'com.k_int.okapi:grails-okapi:3.6.2'
+  'web-toolkit-ce' : 'com.k_int.grails:web-toolkit-ce:4.3.2',
+  'grails-okapi'   : 'com.k_int.okapi:grails-okapi:3.7.1'
 ]
 
 bootRun {
@@ -260,7 +263,7 @@ task createDockerfile(type: Dockerfile, dependsOn: prepareDocker) {
 
   destFile = project.file("${dockerBuildDir}/Dockerfile")
 
-  from 'folioci/openjdk8-jre-alpine:latest'
+  from 'folioci/alpine-jre-openjdk8:latest'
   maintainer 'Knowledge Integration'
 
   exposePort 8080

@@ -1,3 +1,54 @@
+## 2.2.1 2020-06-23
+ * ERM-841 Duplicate license: Files are not copied to the duplicated license record
+
+## 2.2.0 2020-06-11
+ * ERM-880 remove duplicate JSON fields in mod-licenses
+ * ERM-828 Add support for "Alternative name" for licenses
+ * ERM-814 Duplicate license
+ * ERM-735 Separate refdata categories into "internal" and "user" lists
+ * ERM-713 Produce license term comparison report
+ * ERM-705 Support filtering licenses on the basis of terms being set/not set
+ * ERM-668 Add ability to search/filter licenses based on custom properties (aka "terms")
+ * ERM-193 Deleting a License (and possibly Agreement) with a Tag isn't possible
+
+## 2.1.1 2020-04-01
+ * ERM-783 Term descriptions are limited to 255 characters
+
+## 2.1.0 2020-03-13
+ * ERM-747 Custom Properties: Unable to correctly save decimals with german browser locale
+ * ERM-675 mod-license upgrade from Q3.2 to Q4 fails
+ * ERM-668 Add ability to search/filter licenses based on custom properties (aka "terms")
+ * ERM-655 Sorting limits output in some cases
+ * ERM-647 Sort custom properties alphabetically within order weights
+ * ERM-591 Filters across custom properties do not work
+
+## 2.0.1 2020-01-19
+ * ERM-675 mod-license upgrade from Q3.2 to Q4 fails 
+
+## 2.0.0 2019-12-04
+ * ERM-638 Use JVM features to manage container memory 
+ * ERM-538 Support health check endpoint (for example /admin/health provided by RMB)
+ * ERM-505 Move test data so it's only active for the diku tenant only
+ * ERM-477 License and agreement APIs are not protected by FOLIO permissions
+   * ERM-478 Add permission definitions and api endpoint config
+ * ERM-464 Agreements | Amendment with the most recent "Start date" takes precedence
+ * ERM-436 Licenses | Provide user friendly error message on name field unique constraint
+ * ERM-430 Display license and license amendment terms on agreement
+ * ERM-419 Duplicate refdata entries in folio builds
+ * ERM-417 /licenses/custprops cannot be sorted via the "sort" query param
+ * ERM-362 Issue with calling install?purge=true option multiple times
+ * ERM-297 File attachment over 10MB causes out of memory errors 
+
+## 1.11.0 2019-09-11
+ * ERM-279 Provide integration tests for license creation covering start date, end date, status, type and end date semantics
+   * ERM-369 Integration tests for license tags
+   * ERM-368 Integration tests for license link
+   * ERM-367 Integration tests for license endDateSemantics
+   * ERM-366 Integration tests for license type
+   * ERM-365 Integration tests for license status
+   * ERM-364 Integration tests for license start-date
+   * ERM-363 Integration tests for license end-date 
+
 ## 1.10.0 2019-08-21
  * Re-release of 1.9.0 with updated module version
 
