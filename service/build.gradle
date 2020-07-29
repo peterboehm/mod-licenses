@@ -1,6 +1,8 @@
 buildscript {
     repositories {
         mavenLocal()
+        jcenter()
+        mavenCentral()
         maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
@@ -26,6 +28,8 @@ apply plugin:"com.bmuschko.docker-remote-api"
 repositories {
   mavenLocal()
   maven { url 'http://maven.k-int.com/content/repositories/releases' }
+  jcenter()
+  mavenCentral()
   maven { url "https://repo.grails.org/grails/core" }
 }
 
@@ -91,7 +95,7 @@ dependencies {
 
 // Changed this to enable inline development of the includes listed below.
 def includes = [
-  'web-toolkit-ce' : 'com.k_int.grails:web-toolkit-ce:4.3.1',
+  'web-toolkit-ce' : 'com.k_int.grails:web-toolkit-ce:4.3.2',
   'grails-okapi'   : 'com.k_int.okapi:grails-okapi:3.7.1'
 ]
 

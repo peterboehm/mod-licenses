@@ -19,6 +19,7 @@ public class LicenseOrg implements MultiTenant<LicenseOrg>, Clonable<LicenseOrg>
   @CategoryId(defaultInternal=true)
   @Defaults(['Licensor', 'Licensee', 'Consortium', 'Consortium Administrator'])
   RefdataValue role
+  String note
 
   static belongsTo = [
     owner: License
@@ -30,12 +31,14 @@ public class LicenseOrg implements MultiTenant<LicenseOrg>, Clonable<LicenseOrg>
                 owner column: 'sao_owner_fk'
                   org column: 'sao_org_fk'
                  role column: 'sao_role'
+                 note column: 'sao_note', type: 'text'
   }
 
   static constraints = {
     owner(nullable:false, blank:false)
     org(nullable:true)
     role(nullable:true)
+    note(nullable:true, blank:false)
   }
   
   @Override
