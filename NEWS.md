@@ -1,3 +1,13 @@
+## 3.0.0 2020-10-14
+ * ERM-1046 Non-phrase searching support for licenses
+ * ERM-967 Add "Note" to Organisation link in Licenses
+ * ERM-904 Update tooling and framework
+   * ERM-906 Update licenses to Grails 4
+   * ERM-909 Update docker image to Java 11
+ * ERM-828 Add support for "Alternative name" for licenses
+ * ERM-975 Licenses: Use /organizations/ instead of /organizations-storage/
+ * ERM-742 Custom properties: Backend validation not working
+
 ## 2.2.2 2020-06-25
  * ERM-970 500 status on when licenses have Documents without a file attachment
 
